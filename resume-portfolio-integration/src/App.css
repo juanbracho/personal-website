@@ -1,0 +1,63 @@
+/* App.css */
+
+/* Layout Container */
+.app-container {
+  margin: 0 auto;
+  padding: 1rem;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Section Styles */
+.section {
+  background-color: var(--section-bg-color);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Utility Classes */
+.center {
+  text-align: center;
+}
+
+.text-highlight {
+  color: var(--highlight-color);
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+
+/* Centered content with 90% width */
+.content-wrapper {
+  width: 90%;
+  margin: 2rem auto; /* Center with top margin */
+  padding: 1rem;
+  border-radius: 10px; /* Slight rounded corners */
+}
+
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}

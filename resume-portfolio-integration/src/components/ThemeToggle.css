@@ -1,0 +1,45 @@
+/* Theme Toggle Container */
+.theme-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Checkbox (hidden) */
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+/* Toggle Switch */
+.label {
+  background-color: var(--button-bg-color);
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Toggle Circle */
+.label .inner {
+  background-color: var(--highlight-color); /* Dynamic color */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: 0.3s ease;
+}
+
+.checkbox:checked + .label .inner {
+  left: 27px; /* Slide circle to the right */
+}
+
+.checkbox:checked + .label {
+  background-color: var(--color-grey-4);
+}

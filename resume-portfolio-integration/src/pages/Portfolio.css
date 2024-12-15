@@ -1,0 +1,117 @@
+/* Portfolio Page Layout */
+.portfolio-container {
+    padding: 2rem;
+    background-color: var(--bg-color); /* Consistent background */
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Space between sections */
+  }
+  
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--section-bg-color);
+    color: var(--text-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    color: var(--highlight-color);
+    margin-bottom: 1rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    color: var(--header-text-color);
+  }
+  
+  /* Portfolio Section */
+  .portfolio-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Space between carousels */
+  }
+  
+  /* Carousel Styling Consistency */
+  .projects-carousel,
+  .assignments-carousel {
+    background-color: var(--section-bg-color);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .projects-carousel h2,
+  .assignments-carousel h2 {
+    font-size: 2rem;
+    color: var(--header-text-color);
+    margin-bottom: 1rem;
+  }
+  
+  .projects-carousel__container,
+  .assignments-carousel__container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 1rem;
+    padding: 1rem 0;
+    scrollbar-width: none; /* Hide scrollbar */
+  }
+  
+  .projects-carousel__container::-webkit-scrollbar,
+  .assignments-carousel__container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .projects-carousel__item,
+  .assignments-carousel__item {
+    flex: 0 0 auto;
+    width: 150px;
+    text-align: center;
+  }
+  
+  .projects-carousel__thumbnail,
+  .assignments-carousel__thumbnail {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    transition: transform 0.2s;
+  }
+  
+  .projects-carousel__thumbnail:hover,
+  .assignments-carousel__thumbnail:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .portfolio-container {
+      padding: 1rem;
+    }
+  
+    .hero h1 {
+      font-size: 2rem;
+    }
+  
+    .hero p {
+      font-size: 1rem;
+    }
+  
+    .projects-carousel__container,
+    .assignments-carousel__container {
+      gap: 0.5rem;
+    }
+  
+    .projects-carousel__thumbnail,
+    .assignments-carousel__thumbnail {
+      width: 120px;
+      height: 160px;
+    }
+  }
+  

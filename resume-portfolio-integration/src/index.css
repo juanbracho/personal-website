@@ -1,0 +1,80 @@
+/* index.css */
+
+/* CSS Variables for Light and Dark Themes */
+/* Light Theme */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --header-bg-color: #f8f9fa;
+  --header-text-color: #555555;
+  --section-bg-color: #f5f5f5;
+  --highlight-color: #70a288; /* Light green for toggle */
+  --button-bg-color: #e0e0e0;
+  --button-hover-bg-color: #d6d6d6;
+
+  /* New Colors */
+  --color-primary: #ffffff;
+  --color-secondary: #70a288; /* Light green for light theme */
+  --color-grey-4: #454e56;
+  --color-white: #454e56;
+  --color-black: #000;
+}
+
+/* Dark Theme */
+body.dark-mode {
+  --bg-color: #30323d;
+  --text-color: #e0e0e0;
+  --header-bg-color: ##30323d;
+  --header-text-color: #bbbbbb;
+  --section-bg-color: #1a1a1a;
+  --highlight-color: #e8c547; /* Yellow for toggle in dark mode */
+  --button-bg-color: #454e56;
+  --button-hover-bg-color: #444444;
+
+  /* New Colors */
+  --color-primary: #30323d;
+  --color-secondary: #e8c547; /* Yellow for toggle */
+  --color-grey-4: #454e56;
+  --color-white: #ffffff;
+  --color-black: #000;
+}
+
+
+/* Global Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: var(--button-bg-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--button-hover-bg-color);
+}

@@ -1,0 +1,132 @@
+/* Header layout */
+.header {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: var(--header-bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header__info h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.header__info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--header-text-color);
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Buttons */
+.header__button {
+  padding: 0.5rem 1rem;
+  background-color: var(--button-bg-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+.header__button:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+/* Dropdown Menu */
+.header__dropdown {
+  position: relative;
+}
+
+.dropdown__menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--section-bg-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 0.5rem 0;
+  z-index: 1000;
+}
+
+.dropdown__item {
+  padding: 0.5rem 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.dropdown__item:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+@media (max-width: 750px) {
+  .header {
+    flex-direction: column; /* Stack header items vertically */
+    padding: 1rem;
+    text-align: center;
+    gap: 1rem; /* Space between sections */
+  }
+
+  .header__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allow content to wrap if necessary */
+    gap: 0.5rem;
+  }
+
+  .header__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  .header__info h1 {
+    font-size: 1.2rem; /* Adjust title size */
+  }
+
+  .header__info p {
+    font-size: 0.9rem; /* Adjust subtitle size */
+  }
+
+  .header__right {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap; /* Buttons wrap on smaller screens */
+  }
+
+  .header__button {
+    flex: 1; /* Buttons adjust size to fill available space */
+    min-width: 100px; /* Prevent buttons from becoming too small */
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .content-wrapper {
+    width: 100%; /* Content takes full width */
+    padding: 1rem;
+  }
+}

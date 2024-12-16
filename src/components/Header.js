@@ -14,7 +14,7 @@ const Header = () => {
         </div>
       </div>
       <div className="header__right">
-        <Link to="/" className="header__button">About</Link>
+        <Link to="/home" className="header__button">About</Link>
         <Link to="/portfolio" className="header__button">Portfolio</Link>
         <Link to="/resume" className="header__button">Resume</Link>
       </div>

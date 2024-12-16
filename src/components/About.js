@@ -8,7 +8,7 @@ const About = () => {
         <div className="left-about">
           <h4 className="about-title">A Little Bit About Me.</h4>
           <p>
-              Growing up in Maracaibo, Venezuela, I studied law and took part in
+            Growing up in Maracaibo, Venezuela, I studied law and took part in
             political initiatives aimed at helping my country during difficult
             times. Family values found me partaking in many community service
             activities, including one of the most impactful as a camp counselor

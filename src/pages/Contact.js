@@ -1,100 +1,60 @@
 import React, { useState } from 'react';
 import './Contact.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faEnvelope, faPhone, faLanguage } from '@fortawesome/free-solid-svg-icons';
-import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
-const Contact = () => {
-  const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
-  const [status, setStatus] = useState(null);
+const ContactUs = () => {
+  const [result, setResult] = useState(""); // To handle submission status
 
-  const handleChange = (e) => {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
-  };
+  const onSubmit = async (event) => {
+    event.preventDefault(); // Prevent default form submission
+    setResult("Sending...");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Mock submission logic
-    if (formState.name && formState.email && formState.subject && formState.message) {
-      setStatus('success');
-      setTimeout(() => setStatus(null), 3000);
-      setFormState({ name: '', email: '', subject: '', message: '' });
-    } else {
-      setStatus('error');
+    // Collect form data
+    const formData = new FormData(event.target);
+    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
+
+    try {
+      // Send the form data to Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Form Submitted Successfully");
+        event.target.reset(); // Clear the form
+      } else {
+        setResult("Failed to submit form. Please try again later.");
+        console.error("Web3Forms Error:", data);
+      }
+    } catch (error) {
+      setResult("An error occurred. Please try again later.");
+      console.error("Submission Error:", error);
     }
   };
 
   return (
-    <div className="contact-container">
-      {/* Left Section */}
-      <div className="contact-info">
-        <h2>Do not hesitate to reach out</h2>
-        <div className="info-item">
-          <FontAwesomeIcon icon={faMapMarkerAlt} className="info-icon" />
-          <p>Dallas, Texas. United States</p>
-        </div>
-        <div className="info-item">
-          <FontAwesomeIcon icon={faEnvelope} className="info-icon" />
-          <a href="mailto:jdbrachoavila@gmail.com">jdbrachoavila@gmail.com</a>
-        </div>
-        <div className="info-item">
-          <FontAwesomeIcon icon={faLinkedin} className="info-icon" />
-          <a href="https://www.linkedin.com/in/juan-bracho-avila-71250a121/" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
-        </div>
-        <div className="info-item">
-          <FontAwesomeIcon icon={faPhone} className="info-icon" />
-          <a href="tel:+12148176960">+1 214-817-6960</a>
-        </div>
-        <div className="info-item">
-          <FontAwesomeIcon icon={faLanguage} className="info-icon" />
-          <p>Spanish and English</p>
-        </div>
-      </div>
+    <section className="contact-container">
+      <h2>Connect With Me</h2>
+      <p>Feel free to reach out through the form below:</p>
+      <form onSubmit={onSubmit} className="contact-form">
+        <label htmlFor="user_name">Name</label>
+        <input type="text" name="user_name" id="user_name" placeholder="Your Name" required />
 
-      {/* Right Section */}
-      <div className="contact-form">
-        <h2>Contact Me</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formState.name}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={formState.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="subject"
-            placeholder="Subject"
-            value={formState.subject}
-            onChange={handleChange}
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="Type your message here"
-            value={formState.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-          <button type="submit">Submit</button>
-        </form>
-        {status === 'success' && <p className="success-message">Your message has been sent!</p>}
-        {status === 'error' && <p className="error-message">Please fill out all fields correctly.</p>}
-      </div>
-    </div>
+        <label htmlFor="user_email">Email</label>
+        <input type="email" name="user_email" id="user_email" placeholder="Your Email" required />
+
+        <label htmlFor="message">Message</label>
+        <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+
+        <button type="submit" className="submit-button">
+          Send Message
+        </button>
+      </form>
+      {result && <div className="form-status">{result}</div>}
+    </section>
   );
 };
 
-export default Contact;
+export default ContactUs;

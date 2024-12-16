@@ -7,6 +7,7 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--color-secondary); /* Subtle border */
 }
 
 .header__left {
@@ -32,40 +33,6 @@
   align-items: center;
   gap: 1rem;
 }
-
-/* Dropdown Menu - Hover Activation */
-.header__dropdown {
-  position: relative;
-}
-
-.header__dropdown:hover .dropdown__menu {
-  display: block;
-}
-
-.dropdown__menu {
-  display: none; /* Hidden by default */
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: var(--button-bg-color);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  padding: 0.5rem 0;
-  z-index: 1000;
-}
-
-.dropdown__item {
-  padding: 0.5rem 1rem;
-  color: var(--text-color);
-  text-decoration: none;
-  display: block;
-  transition: background-color 0.3s;
-}
-
-.dropdown__item:hover {
-  background-color: var(--button-hover-bg-color);
-}
-
 
 /* Buttons */
 .header__button {

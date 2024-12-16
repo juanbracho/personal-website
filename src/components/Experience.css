@@ -1,0 +1,106 @@
+/* Experience Container */
+.experience-container {
+  padding: 2rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.experience-header {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.experience-header .experience-bg-text {
+  font-size: 3rem;
+  color: var(--header-text-color);
+  opacity: 0.1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.experience-header h2 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.experience-header h2 span {
+  color: var(--highlight-color);
+}
+
+/* Carousel */
+.carousel {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  animation: scroll 20s linear infinite; /* Keyframe animation */
+}
+
+.carousel-card {
+  flex: 0 0 auto;
+  min-width: 300px;
+  max-width: 400px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--color-secondary); /* Subtle border */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: left;
+  margin: 0 1rem;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.carousel-card:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.carousel-card h3 {
+  font-size: 1.5rem;
+  color: var(--highlight-color);
+}
+
+.carousel-card p {
+  margin: 0.5rem 0;
+  color: var(--header-text-color);
+}
+
+.experience-responsibilities {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  list-style-type: disc;
+}
+
+.experience-responsibilities li {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+/* Keyframes */
+@keyframes scroll {
+  from {
+    transform: translateX(0); /* Start position */
+  }
+  to {
+    transform: translateX(-100%); /* Move to the end */
+  }
+}
+
+/* Pause on Hover */
+.carousel-track:hover {
+  animation-play-state: paused; /* Pause animation */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .carousel-card {
+    max-width: 100%;
+  }
+}

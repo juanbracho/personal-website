@@ -10,13 +10,16 @@
   }
   
   .projects-carousel h2 {
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
+    padding-bottom: 1rem;
     text-align: center;
-    color: var(--color-secondary);
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-  }
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.projects-carousel h2:hover {
+  color: var(--color-secondary);
+}
   
   .projects-carousel__container {
     display: flex;

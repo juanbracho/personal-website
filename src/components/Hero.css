@@ -1,37 +1,71 @@
 /* Hero Section */
 .hero {
+  display: flex;
+  align-items: center; 
+  justify-content:center;
+  gap: 5rem; 
   text-align: center;
-  padding: 3rem 2rem; /* Spacious padding for a prominent hero section */
-  color: var(--text-color); /* Ensure text color aligns with theme */
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem; 
 }
 
 .hero h1 {
-  font-size: 2.5rem; /* Bold heading size */
-  margin-bottom: 1rem;
-  color: var(--highlight-color); /* Use highlight color for emphasis */
+  padding-bottom: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.hero h1:hover {
+  color: var(--color-secondary);
 }
 
 .hero p {
+  text-align: justify;
   font-size: 1.2rem;
-  color: var(--header-text-color); /* Subdued color for subtitle text */
-  max-width: 800px; /* Limit width for better readability */
-  margin: 0 auto; /* Center align the paragraph */
-  line-height: 1.6; /* Comfortable line spacing */
+  color: var(--header-text-color);
+  max-width: 800px; 
+  margin: 0 auto;
+}
+
+.hero__about {
+  width: 50%;
+}
+
+/* Ensure image and text are properly sized */
+.hero__image img {
+  width: 250px;
+  height: auto;
+  box-shadow: var(--box-shadow-1); 
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 750px) {
   .hero {
-    padding: 2rem 1rem; /* Reduce padding for smaller screens */
+      margin-top: 80px;
+      flex-direction: column; /* Places the text above the image */
+      align-items: center;
+      padding: 1rem;
   }
 
-  .hero h1 {
-    font-size: 2rem; /* Scale down heading */
+  .hero__image img {
+    width: 150px; /* Adjust image size for smaller screens */
+    height: auto;
+    margin-top: 1rem; /* Add space between the text and image */
   }
 
-  .hero p {
-    font-size: 1rem; /* Scale down paragraph text */
+  .hero__about {
+    max-width: 100%; /* Allow text to take full width */
+    text-align: center;
+  }
+
+  .hero__about h1 {
+    font-size: 1.5rem; /* Reduce heading size */
+  }
+
+  .hero__about p {
+    font-size: 1rem;
   }
 }

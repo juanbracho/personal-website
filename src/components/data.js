@@ -56,7 +56,7 @@ export const experiences = [
   
   export const education = [
     {
-      title: 'Bootcamp In Data Analytcis and Visualization',
+      title: 'Bootcamp In Data Analytics and Visualization',
       date: 'June 2024 - December 2024',
       organization: 'University of Texas at Austin',
       location: 'Austin, TX, Dallas',
@@ -70,7 +70,7 @@ export const experiences = [
       description: 'Corporate Law specialization with focus on international business law.',
     },
     {
-      title: 'Bachelor of Laws',
+      title: 'Bachelor of Law',
       date: '2014 - 2018',
       organization: 'Rafael Urdaneta University',
       location: 'Maracaibo, Venezuela',

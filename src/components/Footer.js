@@ -10,9 +10,10 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-links">
-          <a href="/" className="footer-link">About</a>
-          <a href="/portfolio" className="footer-link">Portfolio</a>
-          <a href="/contact" className="footer-link">Contact</a>
+          <Link to="/home" className="footer-link">About</Link>
+          <Link to="/portfolio" className="footer-link">Portfolio</Link>
+          <Link to="/resume" className="footer-link">Resume</Link>
+          <Link to="/contact" className="footer-link">Contact</Link>
         </div>
         <div className="footer-socials">
           <a href="https://www.linkedin.com/in/juan-bracho-avila-71250a121/" target="_blank" rel="noopener noreferrer">

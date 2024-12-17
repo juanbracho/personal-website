@@ -1,12 +1,12 @@
 import React from 'react';
 import { education } from './data';
-import './Education.css';
+import './ResumeCarousel.css';
 
 const Education = () => {
   return (
-    <section className="education-container">
-      <div className="education-header">
-        <span className="education-bg-text">MY EDUCATION</span>
+    <section className="experience-container">
+      <div className="experience-header">
+        <span className="experience-bg-text">MY EDUCATION</span>
         <h2>
           MY <span>EDUCATION</span>
         </h2>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { experiences } from './data';
-import './Experience.css';
+import './ResumeCarousel.css';
 
 const Experience = () => {
   return (

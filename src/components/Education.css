@@ -31,35 +31,36 @@
     color: var(--highlight-color);
   }
   
-  /* Carousel */
-  .carousel {
-    position: relative;
-    width: 100%;
-  }
-  
-  .carousel-track {
-    display: flex;
-    animation: scroll 20s linear infinite; /* Keyframe animation */
-  }
-  
-  .carousel-card {
-    flex: 0 0 auto;
-    min-width: 300px;
-    max-width: 400px;
-    background-color: var(--bg-color);
-    border: 1px solid var(--color-secondary); /* Subtle border */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    text-align: left;
-    margin: 0 1rem;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-  
-  .carousel-card:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-  }
+ /* Carousel */
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Hide overflow to constrain to the screen width */
+}
+
+.carousel-track {
+  display: flex;
+  animation: scroll 15s linear infinite; /* Adjust speed here */
+}
+
+.carousel-card {
+  flex: 0 0 auto;
+  min-width: 300px;
+  max-width: 400px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--color-secondary); /* Subtle border */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: left;
+  margin: 0 1rem;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.carousel-card:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
   
   .carousel-card h3 {
     font-size: 1.5rem;
@@ -76,25 +77,24 @@
     color: var(--text-color);
   }
   
-  /* Keyframes */
-  @keyframes scroll {
-    from {
-      transform: translateX(0); /* Start position */
-    }
-    to {
-      transform: translateX(-100%); /* Move to the end */
-    }
+/* Keyframes */
+@keyframes scroll {
+  from {
+    transform: translateX(0); /* Start position */
   }
-  
-  /* Pause on Hover */
-  .carousel-track:hover {
-    animation-play-state: paused; /* Pause animation */
+  to {
+    transform: translateX(-100%); /* Move to the end */
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .carousel-card {
-      max-width: 100%;
-    }
+}
+
+/* Pause on Hover */
+.carousel-track:hover {
+  animation-play-state: paused; /* Pause animation */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .carousel-card {
+    max-width: 100%;
   }
-  
+}

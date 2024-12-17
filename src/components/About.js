@@ -18,6 +18,7 @@ const About = () => {
             the only universal "religion" we need, both toward others and
             ourselves. 
             <br />
+            <br />
             My academic and professional experience began with a
             Bachelor's in Law in Venezuela, driven by my desire to combat
             corruption and see my country through the reimplementation of norms
@@ -31,6 +32,7 @@ const About = () => {
             as it provided me with the confidence to imagine my career path
             after being bound by many limitations in Venezuela.
             <br />
+            <br />
             I met my partner in Argentina and eventually moved to the U.S., where I deepened my
             knowledge in programming and data analytics, leading me to
             transition into a new career. Though unable to practice law due to
@@ -41,12 +43,6 @@ const About = () => {
             emigrating twice. I speak Spanish (native), English (fluent), and
             Italian (intermediate), with the personal goal of becoming a
             polyglot.
-            <br />
-            A strong personal belief I carry, perhaps shaped by my
-            experiences, is inspired by Jean-Jacques Rousseau: “We are good by
-            nature but corrupted by society.” It reminds me to stay vigilant but
-            also to remain hopeful for the good that people are capable of when
-            given the right opportunity.
           </p>
         </div>
         <div className="right-about">

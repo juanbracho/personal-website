@@ -25,20 +25,31 @@ const Experience = () => {
             <p className="card-info">Atwell LLC</p>
             <p className="card-info">Dallas, TX, USA</p>
             <p className="card-info">
-              Provide administrative support to project teams.
+            • Provide administrative support to project teams.
               <br />
-              Due diligence research.
+              • Due diligence research.
               <br />
-              Maintain and create templates (work orders, reports): type,
+              • Maintain and create templates (work orders, reports): type,
               finalize, copy and distribute.
               <br />
-              Revision of service agreements.
+              • Revision of service agreements.
               <br />
-              Client onboarding and vendor management.
+              • Client onboarding and vendor management.
               <br />
-              Monitor project status.
+              • Monitor project status.
               <br />
-              Event organization and coordination.
+              • Event organization and coordination.
+            </p>
+          </div>
+          <div className="scroller-card">
+            <h3 className="card-title">Freelance Project Manager / Consultant</h3>
+            <p className="card-info">February 2024 - August 2024</p>
+            <p className="card-info">Southern Pulse</p>
+            <p className="card-info">Dallas, TX, USA</p>
+            <p className="card-info">
+            • Designed and developed Excel spreadsheets to streamline project cost tracking and forecast potential revenue.
+              <br />
+            • Assisted in the migration of administrative software, ensuring a seamless transition with minimal disruption.
             </p>
           </div>
           <div className="scroller-card">
@@ -47,23 +58,11 @@ const Experience = () => {
             <p className="card-info">State Farm</p>
             <p className="card-info">Dallas, TX, USA</p>
             <p className="card-info">
-              Conducted client changes to policies and questions in English and
+            • Conducted client changes to policies and questions in English and
               Spanish.
               <br />
-              Performed changes to additions and reinstatements of Auto and Fire
+              • Performed changes to additions and reinstatements of Auto and Fire
               Policies.
-            </p>
-          </div>
-          <div className="scroller-card">
-            <h3 className="card-title">Store Manager</h3>
-            <p className="card-info">June 2019 - October 2020</p>
-            <p className="card-info">Mascotas de la Abadia</p>
-            <p className="card-info">Buenos Aires, Argentina</p>
-            <p className="card-info">
-              Supply chain management including tracking inventory, ordering from suppliers.<br />
-              Conducted client consultations in Spanish and English<br />
-              Tracked expenses and profit for stores.<br />
-              Data analysis via Excel including sales projection and per-product sale comparisons across stores.<br />
             </p>
           </div>
           <div className="scroller-card">
@@ -72,19 +71,32 @@ const Experience = () => {
             <p className="card-info">Avaya</p>
             <p className="card-info">Buenos Aires, Argentina</p>
             <p className="card-info">
-              Resource management and allocation, including tracking hours and
+            • Resource management and allocation, including tracking hours and
               expenses.
               <br />
-              Managed calendars for multiple project leaders and staff.
+              • Managed calendars for multiple project leaders and staff.
               <br />
-              Sent invoices to clients and filed contractor bills.
+              • Sent invoices to clients and filed contractor bills.
               <br />
-              Drafted project summaries for resource usage, profits, and
+              • Drafted project summaries for resource usage, profits, and
               summaries.
               <br />
-              Team member for the 2021 ISO9001 Internal Auditing process.
-              <br />
-              Worked with teams in Spanish and English.
+              • Team member for the 2021 ISO9001 Internal Auditing process.
+            </p>
+          </div>
+          <div className="scroller-card">
+            <h3 className="card-title">Store Manager</h3>
+            <p className="card-info">June 2019 - October 2020</p>
+            <p className="card-info">Mascotas de la Abadia</p>
+            <p className="card-info">Buenos Aires, Argentina</p>
+            <p className="card-info">
+            • Supply chain management including tracking inventory, ordering from suppliers.
+            <br />
+            • Conducted client consultations in Spanish and English
+            <br />
+            • Tracked expenses and profit for stores.
+            <br />
+            • Data analysis via Excel including sales projection and per-product sale comparisons across stores.<br />
             </p>
           </div>
         </div>

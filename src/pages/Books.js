@@ -5,15 +5,15 @@ import { books } from '../components/booksData';
 import './Books.css';
 
 const Books = () => {
-  const [sortBy, setSortBy] = useState('rating'); // 'rating', 'year', 'title'
+  const [sortBy, setSortBy] = useState('rating'); // 'rating', 'author', 'title'
 
   // Sort books based on selected criteria
   const sortedBooks = [...books].sort((a, b) => {
     switch (sortBy) {
       case 'rating':
         return b.rating - a.rating;
-      case 'year':
-        return b.yearRead - a.yearRead;
+      case 'author':
+        return a.author.localeCompare(b.author);
       case 'title':
         return a.title.localeCompare(b.title);
       default:
@@ -39,10 +39,10 @@ const Books = () => {
               Rating
             </button>
             <button
-              className={`brutal-button ${sortBy === 'year' ? 'active' : ''}`}
-              onClick={() => setSortBy('year')}
+              className={`brutal-button ${sortBy === 'author' ? 'active' : ''}`}
+              onClick={() => setSortBy('author')}
             >
-              Year
+              Author
             </button>
             <button
               className={`brutal-button ${sortBy === 'title' ? 'active' : ''}`}

@@ -67,7 +67,7 @@ const About = () => {
             <p className="small-text">Law</p>
           </div>
           <div className="about-item">
-            <p className="large-text">4 Years</p>
+            <p className="large-text">5 Years</p>
             <p className="small-text">
               Management
               <br />

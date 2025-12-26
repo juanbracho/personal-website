@@ -10,7 +10,7 @@ const Header = () => {
         <ThemeToggle />
         <div className="header__info">
           <h1>Juan Bracho Avila</h1>
-          <p>Data Analyst | Mobile Developer</p>
+          <p>Data Analyst | Mobile Developer | Admin & Ops Specialist</p>
         </div>
       </div>
       <div className="header__right">

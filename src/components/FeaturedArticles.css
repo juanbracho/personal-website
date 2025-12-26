@@ -3,6 +3,7 @@
 .featured-articles {
   padding: 3rem 0;
   border-bottom: 3px solid var(--brutal-border);
+  overflow: visible;
 }
 
 .featured-articles-header {
@@ -24,6 +25,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  padding: 6px;
+  margin: -6px;
+  overflow: visible;
 }
 
 .featured-article-card {

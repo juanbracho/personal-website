@@ -1,36 +1,35 @@
-// Set up the file structure
 import React from "react";
-import profilePic from "../assets/profile.png";
+import { Link } from "react-router-dom";
 import "./Hero.css";
 
 const Hero = () => {
   return (
-    <section className="content-wrapper hero">
-      <div className="hero__image">
-        <img src={profilePic} alt="Juan Bracho Avila" />
-      </div>
-      <div className="hero__about">
-        <h1>About Me</h1>
-        <p>
-          I am a data analyst passionate about extracting insights from data,
-          with experience in Python, SQL, and data visualization tools. I have
-          completed a Data Analytics Bootcamp and this portfolio showcases the
-          work done during this course. Even thought React was not part of this
-          Bootcamp, with the help of YouTube and ChatGPT I have prepare this
-          website for you see what we cover in the Bootcamp and the different
-          challenges that we had to complete.
+    <section className="hero">
+      <div className="hero-content">
+        <h1 className="hero-name">Juan Bracho Avila</h1>
+        <p className="hero-title mono">Data Analyst <span className="hero-separator">|</span> Mobile Developer</p>
+
+        <p className="hero-description">
+          Building data-driven solutions and cross-platform mobile applications.
+          Transforming complex data into actionable insights while creating intuitive
+          user experiences across iOS and Android platforms.
         </p>
-        <span>
-          LinkedIn:{" "}
-          <a href="https://www.linkedin.com/in/juan-bracho-avila-71250a121/">
-            Juan Bracho Avila{" "}
+
+        <div className="hero-cta">
+          <Link to="/apps" className="brutal-button">View Apps</Link>
+          <Link to="/articles" className="brutal-button">Read Articles</Link>
+          <Link to="/portfolio" className="brutal-button">View Portfolio</Link>
+        </div>
+
+        <div className="hero-links mono">
+          <a href="https://www.linkedin.com/in/juan-bracho-avila-71250a121/" target="_blank" rel="noopener noreferrer">
+            LinkedIn ↗
           </a>
-        </span>
-        |
-        <span>
-          {" "}
-          GitHub: <a href="https://github.com/juanbracho">juanbracho</a>
-        </span>
+          <span className="hero-separator">|</span>
+          <a href="https://github.com/juanbracho" target="_blank" rel="noopener noreferrer">
+            GitHub ↗
+          </a>
+        </div>
       </div>
     </section>
   );

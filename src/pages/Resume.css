@@ -1,22 +1,25 @@
-/* Portfolio Page */
+/* Resume Page */
 
-.portfolio-page {
+.resume-page {
   width: 100%;
 }
 
-.portfolio-header {
+.resume-header {
   text-align: center;
   padding: 4rem 0 3rem;
   border-bottom: 3px solid var(--brutal-border);
 }
 
-.portfolio-header h1 {
+.resume-header h1 {
   font-size: 3rem;
   color: var(--highlight-color);
   margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.portfolio-header p {
+.resume-header p {
   font-size: 1.1rem;
   color: var(--header-text-color);
   text-transform: uppercase;
@@ -25,15 +28,15 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .portfolio-header {
+  .resume-header {
     padding: 3rem 0 2rem;
   }
 
-  .portfolio-header h1 {
+  .resume-header h1 {
     font-size: 2rem;
   }
 
-  .portfolio-header p {
+  .resume-header p {
     font-size: 0.9rem;
   }
 }

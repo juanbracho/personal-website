@@ -1,48 +1,53 @@
 import React from 'react';
-import './ResumeCarousel.css';
+import './Education.css';
 
 const Education = () => {
-  React.useEffect(() => {
-    const scrollers = document.querySelectorAll(".education-scroller-track");
-    scrollers.forEach((track) => {
-      track.innerHTML += track.innerHTML; // Duplicate content for smooth scroll
-    });
-  }, []);
+  const education = [
+    {
+      degree: 'Bootcamp in Data Analytics',
+      date: 'June 2024 - December 2024',
+      institution: 'University of Texas at Austin',
+      location: 'Austin, TX, USA',
+      description: 'Bootcamp in Data Analytics with focus on using Python, SQL, Tableau, JavaScript, among others.'
+    },
+    {
+      degree: 'Master of Arts in Corporate Law',
+      date: 'April 2020 - December 2022',
+      institution: 'Universidad Argentina de la Empresa',
+      location: 'Buenos Aires, Argentina',
+      description: 'Corporate Law specialization with focus on international business law.'
+    },
+    {
+      degree: 'Bachelor of Arts in Law',
+      date: 'May 2014 - May 2018',
+      institution: 'Universidad Rafael Urdaneta',
+      location: 'Maracaibo, Venezuela',
+      description: 'Comprehensive legal education with focus on civil and corporate law.'
+    }
+  ];
 
   return (
-    <div className="experience-container">
-      <div className="experience-header">
-        <span className="experience-bg-text">MY EDUCATION</span>
-        <h2>
-          MY <span>EDUCATION</span>
-        </h2>
+    <section className="resume-section">
+      <h2 className="section-title">Education</h2>
+
+      <div className="education-grid">
+        {education.map((edu, index) => (
+          <div key={index} className="education-card brutal-card">
+            <div className="education-header-card">
+              <h3 className="education-degree">{edu.degree}</h3>
+              <p className="education-date mono">{edu.date}</p>
+            </div>
+
+            <div className="education-meta">
+              <p className="education-institution mono">{edu.institution}</p>
+              <p className="education-location mono">{edu.location}</p>
+            </div>
+
+            <p className="education-description">{edu.description}</p>
+          </div>
+        ))}
       </div>
-      <div className="education-scroller">
-        <div className="education-scroller-track">
-          <div className="scroller-card">
-            <h3>Bootcamp In Data Analytics</h3>
-            <p>June 2024 - December 2024</p>
-            <p>University of Texas at Austin</p>
-            <p>Austin, TX, Dallas</p>
-            <p>Bootcamp in Data Analytics with focus on using Python, SQL, Tableau, JavaScript, among others.</p>
-          </div>
-          <div className="scroller-card">
-            <h3>Master of Arts</h3>
-            <p>April 2020 - December 2022</p>
-            <p>Universidad Argentina de la Empresa</p>
-            <p>Buenos Aires, Argentina</p>
-            <p>Corporate Law specialization with focus on international business law.</p>
-          </div>
-          <div className="scroller-card">
-            <h3>Bachelor of Arts</h3>
-            <p>May 2014 - May 2018</p>
-            <p>Universidad Rafael Urdaneta</p>
-            <p>Maracaibo, Venezuela</p>
-            <p>Comprehensive legal education with focus on civil and corporate law.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };
 

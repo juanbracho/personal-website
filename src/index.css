@@ -4,18 +4,38 @@
 
 /* Light Theme */
 :root {
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --font-display: 'Space Mono', monospace;
+
+  /* Original Colors */
   --bg-color: #ffffff;
   --text-color: #333333;
   --header-bg-color: #f8f9fa;
   --header-text-color: #555555;
   --section-bg-color: #f5f5f5;
-  --highlight-color: #70a288;
+  --highlight-color: #2563eb;
+  --accent-purple: #9333ea;
+  --accent-blue-light: #60a5fa;
   --button-bg-color: #e0e0e0;
   --button-hover-bg-color: #d6d6d6;
 
+  /* Brutalist Palette */
+  --brutal-black: #0a0a0a;
+  --brutal-white: #fafafa;
+  --brutal-border: #000000;
+  --brutal-shadow: rgba(0, 0, 0, 0.25);
+
+  /* High Contrast Grays */
+  --gray-100: #f5f5f5;
+  --gray-200: #e0e0e0;
+  --gray-800: #2a2a2a;
+  --gray-900: #1a1a1a;
+
   /* New Colors */
   --color-primary: #ffffff;
-  --color-secondary: #70a288;
+  --color-secondary: #2563eb;
   --color-grey-4: #454e56;
   --color-white: #454e56;
   --color-black: #000;
@@ -25,19 +45,54 @@
 body.dark-mode {
   --bg-color: #30323d;
   --text-color: #e0e0e0;
-  --header-bg-color: ##30323d;
+  --header-bg-color: #30323d;
   --header-text-color: #bbbbbb;
   --section-bg-color: #1a1a1a;
-  --highlight-color: #e8c547;
+  --highlight-color: #60a5fa;
+  --accent-purple: #a78bfa;
+  --accent-blue-light: #93c5fd;
   --button-bg-color: #454e56;
   --button-hover-bg-color: #444444;
 
+  /* Brutalist Palette (Dark Mode) */
+  --brutal-black: #fafafa;
+  --brutal-white: #0a0a0a;
+  --brutal-border: #ffffff;
+  --brutal-shadow: rgba(255, 255, 255, 0.1);
+
   /* New Colors */
   --color-primary: #30323d;
-  --color-secondary: #e8c547;
+  --color-secondary: #60a5fa;
   --color-grey-4: #454e56;
   --color-white: #ffffff;
   --color-black: #000;
+}
+
+/* Contrast Theme - High Contrast / Inverted Colors */
+body.contrast-mode {
+  --bg-color: #000000;
+  --text-color: #00ff00;
+  --header-bg-color: #0a0a0a;
+  --header-text-color: #00ff00;
+  --section-bg-color: #1a1a1a;
+  --highlight-color: #ff00ff;
+  --accent-purple: #00ffff;
+  --accent-blue-light: #ffff00;
+  --button-bg-color: #0a0a0a;
+  --button-hover-bg-color: #1a1a1a;
+
+  /* Brutalist Palette (Contrast Mode) */
+  --brutal-black: #00ff00;
+  --brutal-white: #000000;
+  --brutal-border: #00ff00;
+  --brutal-shadow: rgba(0, 255, 0, 0.3);
+
+  /* New Colors */
+  --color-primary: #000000;
+  --color-secondary: #ff00ff;
+  --color-grey-4: #00ff00;
+  --color-white: #00ff00;
+  --color-black: #000000;
 }
 
 
@@ -49,10 +104,11 @@ body.dark-mode {
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: var(--font-primary);
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
+  letter-spacing: -0.01em;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -78,4 +134,71 @@ button {
 
 button:hover {
   background-color: var(--button-hover-bg-color);
+}
+
+/* Typography System */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Brutalist Utility Classes */
+.brutal-border {
+  border: 3px solid var(--brutal-border);
+  border-radius: 0;
+}
+
+.brutal-shadow {
+  box-shadow: 4px 4px 0px var(--brutal-shadow);
+}
+
+.brutal-shadow:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--brutal-shadow);
+  transition: all 0.1s ease;
+}
+
+.brutal-button {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  border: 2px solid var(--text-color);
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.brutal-button:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+
+.brutal-card {
+  border: 2px solid var(--brutal-border);
+  border-radius: 0;
+  background: var(--section-bg-color);
+  transition: all 0.15s ease;
+}
+
+.brutal-card:hover {
+  border-color: var(--highlight-color);
+  box-shadow: 4px 4px 0px var(--brutal-shadow);
+  transform: translate(-2px, -2px);
+}
+
+/* Monospace Text */
+.mono {
+  font-family: var(--font-mono);
+}
+
+.display-mono {
+  font-family: var(--font-display);
 }

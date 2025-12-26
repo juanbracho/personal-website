@@ -1,0 +1,147 @@
+/* Resume Section */
+
+.resume-section {
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: var(--highlight-color);
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Experience Grid */
+
+.experience-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.experience-card {
+  padding: 2rem;
+  background: var(--section-bg-color);
+  border: 3px solid var(--brutal-border);
+  transition: all 0.15s ease;
+}
+
+.experience-card:hover {
+  border-color: var(--highlight-color);
+  box-shadow: 6px 6px 0px var(--brutal-shadow);
+  transform: translate(-2px, -2px);
+}
+
+.experience-header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--brutal-border);
+  gap: 1rem;
+}
+
+.experience-title {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin: 0;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex: 1;
+}
+
+.experience-date {
+  font-size: 0.9rem;
+  color: var(--accent-purple);
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.experience-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.experience-org {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.experience-location {
+  font-size: 0.9rem;
+  color: var(--header-text-color);
+  margin: 0;
+}
+
+.experience-responsibilities {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.experience-responsibilities li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.experience-responsibilities li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--highlight-color);
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .resume-section {
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .experience-card {
+    padding: 1.5rem;
+  }
+
+  .experience-header-card {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .experience-title {
+    font-size: 1.2rem;
+  }
+
+  .experience-date {
+    font-size: 0.85rem;
+  }
+
+  .experience-org {
+    font-size: 1rem;
+  }
+
+  .experience-responsibilities li {
+    font-size: 0.9rem;
+  }
+}

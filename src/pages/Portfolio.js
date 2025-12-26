@@ -1,20 +1,31 @@
 // src/pages/Portfolio.js
 import React from 'react';
-import Hero from '../components/Hero';
-import AssignmentsCarousel from '../components/AssignmentsCarousel';
-import ProjectsCarousel from '../components/ProjectsCarousel';
+import ProjectGrid from '../components/ProjectGrid';
+import { assignments, projects } from '../components/projectsData';
+import './Portfolio.css';
 
 const Portfolio = () => {
   return (
-    <section>
-      <div className="App">
-        <main>
-          <Hero />
-          <AssignmentsCarousel />
-          <ProjectsCarousel />
-        </main>
+    <div className="portfolio-page">
+      <div className="portfolio-header">
+        <h1>Data Analytics Portfolio</h1>
+        <p className="mono">Bootcamp projects, assignments, and data science work from UT Austin</p>
       </div>
-    </section>
+
+      <div className="content-wrapper">
+        <ProjectGrid
+          projects={projects}
+          title="Major Projects"
+          columns={3}
+        />
+
+        <ProjectGrid
+          projects={assignments}
+          title="Bootcamp Assignments"
+          columns={3}
+        />
+      </div>
+    </div>
   );
 };
 

@@ -1,35 +1,72 @@
 // src/components/ThemeToggle.js
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon, faAdjust } from '@fortawesome/free-solid-svg-icons';
 import './ThemeToggle.css';
 
 const ThemeToggle = () => {
-  const [darkMode, setDarkMode] = useState(true); // Set default to dark mode
+  const [theme, setTheme] = useState('dark'); // 'light', 'dark', 'contrast'
 
   useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('dark-mode');
-      document.body.classList.remove('light-mode');
-    } else {
-      document.body.classList.add('light-mode');
-      document.body.classList.remove('dark-mode');
-    }
-  }, [darkMode]);
+    // Remove all theme classes
+    document.body.classList.remove('light-mode', 'dark-mode', 'contrast-mode');
 
-  const toggleTheme = () => setDarkMode(!darkMode);
+    // Add the current theme class
+    if (theme === 'light') {
+      document.body.classList.add('light-mode');
+    } else if (theme === 'dark') {
+      document.body.classList.add('dark-mode');
+    } else if (theme === 'contrast') {
+      document.body.classList.add('contrast-mode');
+    }
+  }, [theme]);
+
+  const cycleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else if (theme === 'dark') {
+      setTheme('contrast');
+    } else {
+      setTheme('light');
+    }
+  };
+
+  const getIcon = () => {
+    switch (theme) {
+      case 'light':
+        return faSun;
+      case 'dark':
+        return faMoon;
+      case 'contrast':
+        return faAdjust;
+      default:
+        return faMoon;
+    }
+  };
+
+  const getTitle = () => {
+    switch (theme) {
+      case 'light':
+        return 'Switch to Dark Mode';
+      case 'dark':
+        return 'Switch to Contrast Mode';
+      case 'contrast':
+        return 'Switch to Light Mode';
+      default:
+        return 'Toggle Theme';
+    }
+  };
 
   return (
     <div className="theme-toggle">
-      <input
-        type="checkbox"
-        id="switch"
-        className="checkbox"
-        onChange={toggleTheme}
-        checked={darkMode}
-      />
-      <label htmlFor="switch" className="label">
-        <span className="inner" />
-        <span className="switch" />
-      </label>
+      <button
+        className="theme-button"
+        onClick={cycleTheme}
+        aria-label={getTitle()}
+        title={getTitle()}
+      >
+        <FontAwesomeIcon icon={getIcon()} />
+      </button>
     </div>
   );
 };

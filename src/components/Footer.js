@@ -11,9 +11,11 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-links">
           <Link to="/home" className="footer-link">About</Link>
-          <Link to="/portfolio" className="footer-link">Portfolio</Link>
           <Link to="/resume" className="footer-link">Resume</Link>
-          <Link to="/contact" className="footer-link">Contact</Link>
+          <Link to="/apps" className="footer-link">Apps</Link>
+          <Link to="/books" className="footer-link">Books</Link>
+          <Link to="/articles" className="footer-link">Articles</Link>
+          <Link to="/portfolio" className="footer-link">Portfolio</Link>
         </div>
         <div className="footer-socials">
           <a href="https://www.linkedin.com/in/juan-bracho-avila-71250a121/" target="_blank" rel="noopener noreferrer">
@@ -27,7 +29,7 @@ const Footer = () => {
           </Link>
         </div>
         <div className="footer-copyright">
-          © 2024 Juan Bracho Avila. All rights reserved.
+          © 2025 Juan Bracho Avila. All rights reserved.
         </div>
       </div>
     </footer>

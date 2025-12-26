@@ -6,7 +6,7 @@ export const books = [
     title: 'Unfuck Your Brain',
     author: 'Dr. Faith Harper',
     yearRead: 2025,
-    rating: 8,
+    rating: 9,
     review: 'Add your review here',
     tags: ['Psychology', 'Mental Health', 'Self-Help'],
     coverImage: null,

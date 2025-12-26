@@ -50,11 +50,26 @@
 /* Centered content with 90% width */
 .content-wrapper {
   width: 90%;
-  margin: 2rem auto; /* Center with top margin */
-  border-radius: 10px; /* Slight rounded corners */
+  max-width: 100%;
+  margin: 2rem auto;
+  overflow-x: hidden;
+}
+
+.App {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+main {
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 @media (max-width: 768px) {
+  .content-wrapper {
+    width: 95%;
+  }
+
   .grid-2,
   .grid-3 {
     grid-template-columns: 1fr;

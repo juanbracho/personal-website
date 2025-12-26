@@ -233,11 +233,9 @@
 
 /*Timeline section*/
 .timeline {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr) [2];
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2rem;
+  gap: 2rem;
   padding-bottom: 3rem;
   padding-left: 2rem;
   overflow: visible;
@@ -245,10 +243,7 @@
 
 .timeline .timeline-item {
   position: relative;
-  padding-left: 3rem;
-  border-left: 3px solid var(--brutal-border);
-  padding: 1.5rem;
-  padding-left: 3.5rem;
+  padding: 1.5rem 1.5rem 1.5rem 3.5rem;
   background: var(--section-bg-color);
   border: 2px solid var(--brutal-border);
   border-left: 3px solid var(--highlight-color);
@@ -256,7 +251,8 @@
   margin-bottom: 1rem;
 }
 
-.timeline .timeline-item:hover {
+.timeline .timeline-item:hover,
+.timeline .timeline-item:focus-within {
   border-color: var(--highlight-color);
   box-shadow: 4px 4px 0px var(--brutal-shadow);
   transform: translate(-2px, -2px);
@@ -269,22 +265,16 @@
   background-color: var(--color-secondary);
   width: 40px;
   height: 40px;
-  border-radius: 0;
   border: 3px solid var(--brutal-border);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   box-shadow: 3px 3px 0px var(--brutal-shadow);
   transition: all 0.15s ease;
 }
 
-.timeline .timeline-item:hover .timeline-icon {
+.timeline .timeline-item:hover .timeline-icon,
+.timeline .timeline-item:focus-within .timeline-icon {
   background-color: var(--highlight-color);
   border-color: var(--highlight-color);
 }
@@ -298,7 +288,6 @@
   padding: 0.4rem 0.8rem;
   background-color: var(--bg-color);
   border: 2px solid var(--brutal-border);
-  border-radius: 0;
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.75rem;

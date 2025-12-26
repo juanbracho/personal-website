@@ -101,6 +101,19 @@ body.contrast-mode {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border-radius: 0; /* Brutalist: no rounded corners */
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
@@ -112,6 +125,10 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   overflow-x: clip;
   max-width: 100vw;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 #root {
@@ -122,6 +139,14 @@ body {
 img {
   max-width: 100%;
   height: auto;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Lazy loading optimization */
+img[loading="lazy"] {
+  content-visibility: auto;
 }
 
 a {
@@ -155,7 +180,6 @@ h1, h2, h3, h4, h5, h6 {
 /* Brutalist Utility Classes */
 .brutal-border {
   border: 3px solid var(--brutal-border);
-  border-radius: 0;
 }
 
 .brutal-shadow {
@@ -183,22 +207,35 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
 }
 
-.brutal-button:hover {
+.brutal-button:hover,
+.brutal-button:focus-visible {
   background: var(--text-color);
   color: var(--bg-color);
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
 }
 
 .brutal-card {
   border: 2px solid var(--brutal-border);
-  border-radius: 0;
   background: var(--section-bg-color);
   transition: all 0.15s ease;
 }
 
-.brutal-card:hover {
+.brutal-card:hover,
+.brutal-card:focus-within {
   border-color: var(--highlight-color);
   box-shadow: 4px 4px 0px var(--brutal-shadow);
   transform: translate(-2px, -2px);
+}
+
+/* Focus states for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
 }
 
 /* Monospace Text */

@@ -40,7 +40,7 @@ const Books = () => {
     <div className="books-page">
       <div className="books-header">
         <h1>Book Recommendations</h1>
-        <p className="mono">My reading list from 2025 with honest reviews and ratings. You will find here a paragraph of my thoughts on the book, followed by a more professional and boring paragraph of the book's summary.</p>
+        <p className="mono">My reading list from 2025 with honest reviews and ratings. You will find here a small comment of my thoughts on the book, followed by a more professional and boring paragraph of the book's summary.</p>
       </div>
 
       <div className="content-wrapper">

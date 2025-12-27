@@ -164,7 +164,6 @@ export const webApps = [
     thumbnail: require('../assets/thumbnails/finance-dashboard.png'),
     description: 'Comprehensive personal finance management system with income/expense tracking, budget management, and financial analytics using Flask backend with interactive Plotly visualizations.',
     github: 'https://github.com/juanbracho/personal_finance',
-    status: 'private-repo',
     tech: ['Flask', 'Python', 'SQLAlchemy', 'Plotly.js', 'Bootstrap']
   },
   {
@@ -173,7 +172,6 @@ export const webApps = [
     thumbnail: require('../assets/thumbnails/girasoul-inventory.png'),
     description: 'Business inventory management system for second-hand clothing resale with automated SKU generation, sales tracking, and comprehensive financial analytics for Instagram-based retail operations.',
     github: 'https://github.com/juanbracho/girasoulresale',
-    status: 'private-repo',
     tech: ['Flask', 'Python', 'SQLAlchemy', 'SQLite', 'Bootstrap']
   }
 ];

@@ -96,6 +96,14 @@
   transition: all 0.3s ease;
 }
 
+.book-review p {
+  margin: 0 0 1.2rem 0;
+}
+
+.book-review p:last-child {
+  margin-bottom: 0;
+}
+
 .book-review.collapsed {
   display: -webkit-box;
   -webkit-line-clamp: 3;

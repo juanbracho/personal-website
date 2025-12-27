@@ -62,9 +62,11 @@ const BookCard = ({ book, index }) => {
 
       {book.review && book.review !== 'Add your review here' && (
         <div className="book-review-section">
-          <p className={`book-review ${expanded ? 'expanded' : 'collapsed'}`}>
-            {book.review}
-          </p>
+          <div className={`book-review ${expanded ? 'expanded' : 'collapsed'}`}>
+            {book.review.split('\n\n').map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
           {shouldShowMore && (
             <button
               className="toggle-review"

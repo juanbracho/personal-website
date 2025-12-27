@@ -1,7 +1,7 @@
 {
   "name": "resume-portfolio-integration",
   "version": "0.1.0",
-  "homepage": "https://juanbracho.github.io/personal-website/",
+  "homepage": "https://juanbracho.com",
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

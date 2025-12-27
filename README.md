@@ -1,6 +1,24 @@
-# Getting Started with Create React App
+# Juan Bracho - Personal Website
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+**Live Site:** [https://juanbracho.com](https://juanbracho.com)
+
+## Custom Domain Setup
+
+This site uses a custom domain (juanbracho.com) configured with Cloudflare and GitHub Pages.
+
+### Important Files for Custom Domain:
+- `public/CNAME` - Contains the custom domain name. Required for GitHub Pages to serve the site at the custom domain.
+- `package.json` - The `homepage` field is set to `https://juanbracho.com` to ensure assets load from the correct path.
+
+### DNS Configuration (Cloudflare):
+The following DNS records are configured at Cloudflare:
+- **4 A Records** pointing to GitHub Pages IPs (185.199.108-111.153)
+- **1 CNAME Record** for www subdomain pointing to juanbracho.github.io
+
+### Deployment:
+When deploying with `npm run deploy`, the CNAME file is automatically included in the build, ensuring the custom domain configuration persists.
 
 ## Available Scripts
 

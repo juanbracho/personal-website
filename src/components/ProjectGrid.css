@@ -108,6 +108,44 @@
   border-top: 2px solid var(--brutal-border);
 }
 
+.project-link-disabled {
+  color: var(--header-text-color);
+  opacity: 0.6;
+}
+
+/* Status Badges */
+.project-status-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  padding: 0.2rem 0.4rem;
+  margin-left: 0.5rem;
+  border-radius: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-private {
+  background: var(--highlight-color);
+  color: var(--bg-color);
+  border: 1px solid var(--highlight-color);
+}
+
+.badge-local {
+  background: transparent;
+  color: var(--highlight-color);
+  border: 1px solid var(--highlight-color);
+}
+
+/* No GitHub Link Styling */
+.project-card.no-github {
+  cursor: default;
+}
+
+.project-card.no-github:hover .project-thumbnail img {
+  transform: none;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .project-grid {

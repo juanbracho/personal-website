@@ -5,11 +5,26 @@ import { books } from '../components/booksData';
 import './Books.css';
 
 const Books = () => {
-  const [sortBy, setSortBy] = useState('rating'); // 'rating', 'author', 'title'
+  const [sortBy, setSortBy] = useState('readingOrder'); // 'readingOrder', 'rating', 'author', 'title'
 
   // Sort books based on selected criteria
   const sortedBooks = [...books].sort((a, b) => {
     switch (sortBy) {
+      case 'readingOrder':
+        // Books with order property come first, sorted by order
+        // Books without order property come last, sorted by id
+        const aHasOrder = a.order !== undefined;
+        const bHasOrder = b.order !== undefined;
+
+        if (aHasOrder && bHasOrder) {
+          return a.order - b.order;
+        } else if (aHasOrder) {
+          return -1; // a comes first
+        } else if (bHasOrder) {
+          return 1; // b comes first
+        } else {
+          return a.id.localeCompare(b.id); // Both without order, sort by id
+        }
       case 'rating':
         return b.rating - a.rating;
       case 'author':
@@ -32,6 +47,12 @@ const Books = () => {
         <div className="books-controls">
           <span className="sort-label mono">Sort By:</span>
           <div className="sort-buttons">
+            <button
+              className={`brutal-button ${sortBy === 'readingOrder' ? 'active' : ''}`}
+              onClick={() => setSortBy('readingOrder')}
+            >
+              Reading Order
+            </button>
             <button
               className={`brutal-button ${sortBy === 'rating' ? 'active' : ''}`}
               onClick={() => setSortBy('rating')}

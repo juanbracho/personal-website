@@ -6,13 +6,13 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="hero-content">
-        <h1 className="hero-name">Juan Bracho Avila</h1>
-        <p className="hero-title mono">Data Analyst <span className="hero-separator">|</span> Mobile Developer</p>
+        <h1 className="hero-name">Juan Bracho</h1>
+        <p className="hero-title mono">Constant learner <span className="hero-separator">|</span> AI enabled App Builder</p>
 
         <p className="hero-description">
-          Building data-driven solutions and cross-platform mobile applications.
-          Transforming complex data into actionable insights while creating intuitive
-          user experiences across iOS and Android platforms.
+          Building apps for fun to solve my own problems, leveraging AI throughout the process.
+          I share them on iOS and Android hoping they might solve someone else's problem too.
+          By day, I try to pursue my passions, learning new languages, writting my thoughts and hoardering knowledge through books.
         </p>
 
         <div className="hero-cta">

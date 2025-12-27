@@ -23,16 +23,29 @@
 }
 
 .experience-card {
-  padding: 2rem;
+  padding: 1.5rem;
   background: var(--section-bg-color);
   border: 3px solid var(--brutal-border);
   transition: all 0.15s ease;
+  position: relative;
 }
 
 .experience-card:hover {
   border-color: var(--highlight-color);
   box-shadow: 6px 6px 0px var(--brutal-shadow);
   transform: translate(-2px, -2px);
+}
+
+/* Experience Header Button - Clickable */
+.experience-header-button {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  display: block;
+  position: relative;
 }
 
 .experience-header-card {
@@ -67,7 +80,45 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
+}
+
+/* Expand Icon */
+.expand-icon-exp {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--highlight-color);
+  font-family: var(--font-mono);
+  transition: transform 0.2s ease;
+  background: var(--section-bg-color);
+  padding: 0.25rem 0.5rem;
+  border: 2px solid var(--highlight-color);
+  line-height: 1;
+}
+
+/* Experience Details Container */
+.experience-details {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.2s ease, margin-top 0.3s ease;
+}
+
+/* Collapsed State */
+.experience-card.collapsed .experience-details {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+}
+
+/* Expanded State */
+.experience-card.expanded .experience-details {
+  max-height: 2000px;
+  opacity: 1;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--brutal-border);
 }
 
 .experience-org {

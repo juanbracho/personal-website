@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Skills.css';
 
 const Skills = () => {
+  const [expandedCategory, setExpandedCategory] = useState(null);
+
   const skillCategories = [
     {
       category: 'Languages',
@@ -92,14 +94,37 @@ const Skills = () => {
     return levelMap[level] || 'level-intermediate';
   };
 
+  const toggleCategory = (categoryIndex) => {
+    setExpandedCategory(expandedCategory === categoryIndex ? null : categoryIndex);
+  };
+
   return (
     <section className="skills-section content-wrapper">
       <h4 className="stats-title">My Skills</h4>
       <div className="skills-grid">
         {skillCategories.map((category, categoryIndex) => (
-          <div key={categoryIndex} className="skill-category brutal-card">
-            <h5 className="category-title mono">{category.category}</h5>
-            <div className="skills-list">
+          <div
+            key={categoryIndex}
+            className={`skill-category brutal-card ${expandedCategory === categoryIndex ? 'expanded' : 'collapsed'}`}
+          >
+            <button
+              className="category-header"
+              onClick={() => toggleCategory(categoryIndex)}
+              aria-expanded={expandedCategory === categoryIndex}
+              aria-controls={`skills-list-${categoryIndex}`}
+            >
+              <h5 className="category-title mono">
+                {category.category}
+                <span className="skill-count">({category.skills.length})</span>
+              </h5>
+              <span className="expand-icon">{expandedCategory === categoryIndex ? '−' : '+'}</span>
+            </button>
+
+            <div
+              id={`skills-list-${categoryIndex}`}
+              className="skills-list"
+              aria-hidden={expandedCategory !== categoryIndex}
+            >
               {category.skills.map((skill, skillIndex) => (
                 <div key={skillIndex} className="skill-item">
                   <span className="skill-name">{skill.name}</span>

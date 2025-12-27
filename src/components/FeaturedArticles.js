@@ -5,7 +5,17 @@ import './FeaturedArticles.css';
 
 const FeaturedArticles = () => {
   const navigate = useNavigate();
-  const featuredArticles = articles.filter(article => article.featured).slice(0, 3);
+
+  // Always show the Master's thesis
+  const thesis = articles.find(article => article.id === 'right-to-be-forgotten');
+
+  // Get the 2 most recent articles (excluding the thesis)
+  const recentArticles = articles
+    .filter(article => article.id !== 'right-to-be-forgotten' && article.featured)
+    .slice(0, 2);
+
+  // Combine: thesis first, then recent articles
+  const featuredArticles = thesis ? [thesis, ...recentArticles] : recentArticles;
 
   const handleArticleClick = (article) => {
     if (article.type === 'external') {

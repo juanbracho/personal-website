@@ -12,6 +12,16 @@ export const articles = [
     featured: true
   },
   {
+    id: 'right-to-be-forgotten',
+    title: 'The Right to Be Forgotten - Master\'s Thesis',
+    description: 'My Master\'s thesis examining the right to be forgotten as an emerging aspect of digital privacy. Explores the tension between internet connectivity and individual privacy rights, with focus on Argentina\'s legal framework. Originally written in Spanish and translated to English, completed through emigration challenges and pandemic disruptions.',
+    date: '2024-08-01',
+    type: 'external',
+    externalUrl: 'https://www.linkedin.com/posts/juan-bracho-avila-71250a121_right-to-be-forgotten-juan-bracho-avila-activity-7313586510853722112-uq79',
+    tags: ['Privacy', 'Law', 'Research', 'Digital Rights'],
+    featured: true
+  },
+  {
     id: 'achieve-goals',
     title: 'How hard is it to achieve your goals?',
     description: 'A personal essay on resilience through immigration from Venezuela to the US. Drawing on Stoic philosophy to navigate bureaucratic obstacles, unexpected detours, and the emotional journey of pursuing education across continents.',
@@ -40,15 +50,6 @@ export const articles = [
     externalUrl: 'https://www.linkedin.com/pulse/build-habit-controlling-your-dopamine-juan-bracho-avila-spirc/',
     tags: ['Mental Health', 'Habits', 'Productivity'],
     featured: true
-  },
-  {
-    id: 'getting-started',
-    title: 'Getting Started with Data Analytics',
-    description: 'An introduction to my journey in data analytics, covering the fundamentals and key learnings from the UT Austin bootcamp.',
-    date: '2024-12-01',
-    type: 'internal',
-    tags: ['Data Analytics', 'Career', 'Education'],
-    featured: false
   }
 ];
 

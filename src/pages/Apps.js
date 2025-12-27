@@ -7,7 +7,7 @@ const Apps = () => {
     <div className="content-wrapper apps-page">
       <div className="apps-header">
         <h1>Mobile Applications</h1>
-        <p>Building cross-platform mobile experiences for iOS and Android</p>
+        <p className="mono">Apps I built for fun to solve my own problems, shared on iOS and Android hoping they help you too</p>
       </div>
 
       <div className="apps-grid">
@@ -55,10 +55,6 @@ const Apps = () => {
         ))}
       </div>
 
-      <div className="apps-footer">
-        <h3>Tech Stack</h3>
-        <p>Cross-platform mobile applications built with diverse technologies: <strong>Kaizen</strong> uses React + TypeScript as a PWA, <strong>Kage</strong> combines native SwiftUI for iOS with React/Capacitor for Android, and <strong>Kioku</strong> leverages Flutter for true cross-platform development. All apps prioritize offline-first architecture, modern state management, and mobile-optimized UX.</p>
-      </div>
     </div>
   );
 };

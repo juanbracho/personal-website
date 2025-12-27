@@ -1,14 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.32bfe56d.css",
-    "main.js": "/static/js/main.d8cb54c3.js",
+    "main.css": "/static/css/main.21207bfb.css",
+    "main.js": "/static/js/main.ad70354e.js",
     "static/media/mapping.png": "/static/media/mapping.babf45f26d66a5e03c31.png",
+    "static/media/finance-dashboard.png": "/static/media/finance-dashboard.7bcacd560bf0510e4de0.png",
     "static/media/vba.png": "/static/media/vba.4eae0a0ec7090d01cd2b.png",
     "static/media/etl-project.png": "/static/media/etl-project.dca9d6c5fc96dbaab32a.png",
     "static/media/stock-analysis.png": "/static/media/stock-analysis.38baafd8f43ef6228d83.png",
     "static/media/data-visualization-track.png": "/static/media/data-visualization-track.b4b419e9bccddaf13cc7.png",
     "static/media/python.png": "/static/media/python.e5b2b5776ba33b7c8937.png",
     "static/media/excel.png": "/static/media/excel.99fbf369420d1ecba72d.png",
+    "static/media/girasoul-inventory.png": "/static/media/girasoul-inventory.dfc76bc945aa480e2af5.png",
     "static/media/big-data.png": "/static/media/big-data.e92520f41e928f9b0433.png",
     "static/media/capstone-project.png": "/static/media/capstone-project.3353c3992e43864105c2.png",
     "static/media/tableau.png": "/static/media/tableau.26f184189e05016f8da1.png",
@@ -24,11 +26,11 @@
     "static/media/unsupervised-learning.png": "/static/media/unsupervised-learning.d6ec9250fa9e7b46d5b0.png",
     "static/media/advanced-sql.png": "/static/media/advanced-sql.f2fbb4454b1de3eebc9c.png",
     "index.html": "/index.html",
-    "main.32bfe56d.css.map": "/static/css/main.32bfe56d.css.map",
-    "main.d8cb54c3.js.map": "/static/js/main.d8cb54c3.js.map"
+    "main.21207bfb.css.map": "/static/css/main.21207bfb.css.map",
+    "main.ad70354e.js.map": "/static/js/main.ad70354e.js.map"
   },
   "entrypoints": [
-    "static/css/main.32bfe56d.css",
-    "static/js/main.d8cb54c3.js"
+    "static/css/main.21207bfb.css",
+    "static/js/main.ad70354e.js"
   ]
 }

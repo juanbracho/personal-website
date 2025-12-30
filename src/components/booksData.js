@@ -348,6 +348,17 @@ export const books = [
     tags: ['Stoicism', 'Philosophy', 'Wisdom'],
     coverImage: null,
   },
+  {
+    id: 'becoming-bulletproof',
+    title: 'Becoming Bulletproof',
+    author: 'Evy Poumpouras',
+    yearRead: 2025,
+    rating: 9,
+    order: 32,
+    review: 'READING NOW\n\nAI: Part memoir, part self-defense and psychology manual built from Poumpouras\'s career as a U.S. Secret Service agent protecting presidents and interrogating suspects. She defines becoming "bulletproof" as developing mental toughness, emotional control, and strong situational awareness so you can stay calm under pressure, protect yourself and others, and handle conflict without freezing or overreacting. Drawing on high-risk assignments including surviving 9/11 at Ground Zero, she illustrates how fear can be turned into focus and how preparation, training, and mindset matter more than raw toughness or bravado. The book is organized around three broad shields: protection, reading people, and influence. In protection, she covers personal security basics—planning ahead, scanning environments, trusting intuition, and having simple physical and legal self-defense strategies so you\'re proactive rather than reactive. In reading people, she explains how to interpret body language, micro-expressions, tone, and inconsistencies between words and behavior to detect deception, assess intent, and decide who to trust. In influence, she focuses on communication: priming how others see you, holding firm boundaries, having hard conversations, and using empathy and clarity to steer situations rather than be steamrolled. Throughout, Poumpouras emphasizes that real courage is quiet and internal—you build it through small, repeated acts of facing discomfort, correcting weaknesses, and refusing to see yourself as a victim, until you become the person you can rely on when things go wrong.',
+    tags: ['Memoir', 'Psychology', 'Leadership'],
+    coverImage: null,
+  },
 ];
 
 // Helper function to get books by rating (for filtering)

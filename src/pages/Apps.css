@@ -100,6 +100,26 @@
   letter-spacing: 0.05em;
 }
 
+.learn-more-button {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.9rem 1.5rem;
+  margin-top: 1rem;
+  background: var(--highlight-color);
+  color: var(--bg-color);
+  border-color: var(--highlight-color);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.learn-more-button:hover {
+  background: var(--bg-color);
+  color: var(--highlight-color);
+  border-color: var(--brutal-border);
+}
+
 .app-store-buttons {
   display: flex;
   gap: 1rem;

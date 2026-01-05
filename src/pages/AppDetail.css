@@ -1,0 +1,269 @@
+/* App Detail Page Styles */
+
+.app-detail {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.app-not-found {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.app-not-found h1 {
+  margin-bottom: 1rem;
+  color: var(--highlight-color);
+}
+
+.app-not-found p {
+  margin-bottom: 2rem;
+  color: var(--header-text-color);
+}
+
+.back-button {
+  margin-bottom: 2rem;
+}
+
+/* Hero Section */
+.app-detail-hero {
+  text-align: center;
+  padding: 3rem 2rem;
+  border: 2px solid var(--brutal-border);
+  background: var(--section-bg-color);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.app-detail-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--app-color, var(--highlight-color));
+}
+
+.app-detail-title {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: var(--highlight-color);
+  line-height: 1.2;
+}
+
+.app-detail-tagline {
+  font-size: 1.2rem;
+  color: var(--header-text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.app-platforms {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* App Sections */
+.app-section {
+  border: 2px solid var(--brutal-border);
+  padding: 2rem;
+  background: var(--section-bg-color);
+  margin-bottom: 2rem;
+}
+
+.app-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--highlight-color);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--app-color, var(--brutal-border));
+}
+
+.app-section h3 {
+  font-size: 1.3rem;
+  margin: 1.5rem 0 1rem;
+  color: var(--text-color);
+}
+
+.app-full-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.app-philosophy {
+  background: var(--bg-color);
+  border: 2px solid var(--brutal-border);
+  border-left: 4px solid var(--app-color, var(--highlight-color));
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.app-philosophy h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.app-philosophy p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* Features List */
+.app-features-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.app-features-list li {
+  background: var(--bg-color);
+  border: 2px solid var(--brutal-border);
+  padding: 1rem 1.5rem;
+  color: var(--text-color);
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.app-features-list li::before {
+  content: '→';
+  position: absolute;
+  left: 1rem;
+  color: var(--app-color, var(--highlight-color));
+  font-weight: bold;
+}
+
+/* Tech Stack */
+.app-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Download Section */
+.app-download {
+  text-align: center;
+}
+
+.store-buttons-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.store-button-large {
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+  padding: 1.2rem 2rem;
+  font-size: 1.1rem;
+}
+
+.store-button-large.play-store {
+  background: var(--bg-color);
+}
+
+/* Legal Links */
+.app-legal-links {
+  background: var(--bg-color);
+  border-left: 4px solid var(--app-color, var(--highlight-color));
+}
+
+.legal-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.legal-link {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 1.5rem;
+}
+
+.legal-link:hover {
+  background: var(--app-color, var(--highlight-color));
+  color: var(--bg-color);
+  border-color: var(--app-color, var(--brutal-border));
+}
+
+/* Footer */
+.app-detail-footer {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-detail {
+    padding: 1rem;
+  }
+
+  .app-detail-hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .app-detail-title {
+    font-size: 2rem;
+  }
+
+  .app-detail-tagline {
+    font-size: 1rem;
+  }
+
+  .app-section {
+    padding: 1.5rem;
+  }
+
+  .app-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .app-full-description {
+    font-size: 1rem;
+  }
+
+  .app-features-list {
+    gap: 0.75rem;
+  }
+
+  .app-features-list li {
+    padding: 0.75rem 1rem 0.75rem 2rem;
+    font-size: 0.95rem;
+  }
+
+  .store-buttons-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .store-button-large {
+    min-width: auto;
+    max-width: none;
+  }
+
+  .legal-links-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-detail-title {
+    font-size: 1.75rem;
+  }
+
+  .app-section h2 {
+    font-size: 1.3rem;
+  }
+}

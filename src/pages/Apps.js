@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { mobileApps } from '../components/appsData';
 import './Apps.css';
 
@@ -31,6 +32,13 @@ const Apps = () => {
                   <span key={index} className="tech-tag">{tech}</span>
                 ))}
               </div>
+
+              <Link
+                to={`/apps/${app.id}`}
+                className="brutal-button learn-more-button"
+              >
+                Learn More →
+              </Link>
 
               <div className="app-store-buttons">
                 <a

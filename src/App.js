@@ -8,6 +8,9 @@ import './App.css';
 // Import pages
 import About from './pages/Home';
 import Apps from './pages/Apps';
+import AppDetail from './pages/AppDetail';
+import AppLegal from './pages/AppLegal';
+import AppSupport from './pages/AppSupport';
 import Portfolio from './pages/Portfolio';
 import Articles from './pages/Articles';
 import ArticleDetail from './pages/ArticleDetail';
@@ -27,6 +30,11 @@ function App() {
             <Route path="/" element={<Navigate to="/home" replace />} />
             <Route path="/home" element={<About />} />
             <Route path="/apps" element={<Apps />} />
+            {/* App detail pages */}
+            <Route path="/apps/:appId" element={<AppDetail />} />
+            <Route path="/apps/:appId/privacy" element={<AppLegal legalType="privacy" />} />
+            <Route path="/apps/:appId/terms" element={<AppLegal legalType="terms" />} />
+            <Route path="/apps/:appId/support" element={<AppSupport />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/articles/:articleId" element={<ArticleDetail />} />

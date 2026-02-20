@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.08baf958.css",
-    "main.js": "/static/js/main.36acbe51.js",
+    "main.css": "/static/css/main.7ca69f89.css",
+    "main.js": "/static/js/main.1c5b8fed.js",
     "static/media/mapping.png": "/static/media/mapping.babf45f26d66a5e03c31.png",
     "static/media/finance-dashboard.png": "/static/media/finance-dashboard.7bcacd560bf0510e4de0.png",
     "static/media/vba.png": "/static/media/vba.4eae0a0ec7090d01cd2b.png",
     "static/media/etl-project.png": "/static/media/etl-project.dca9d6c5fc96dbaab32a.png",
+    "static/media/1st_world.jpeg": "/static/media/1st_world.57d0b7816b4b9c23efc8.jpeg",
     "static/media/stock-analysis.png": "/static/media/stock-analysis.38baafd8f43ef6228d83.png",
     "static/media/data-visualization-track.png": "/static/media/data-visualization-track.b4b419e9bccddaf13cc7.png",
     "static/media/python.png": "/static/media/python.e5b2b5776ba33b7c8937.png",
@@ -26,11 +27,11 @@
     "static/media/unsupervised-learning.png": "/static/media/unsupervised-learning.d6ec9250fa9e7b46d5b0.png",
     "static/media/advanced-sql.png": "/static/media/advanced-sql.f2fbb4454b1de3eebc9c.png",
     "index.html": "/index.html",
-    "main.08baf958.css.map": "/static/css/main.08baf958.css.map",
-    "main.36acbe51.js.map": "/static/js/main.36acbe51.js.map"
+    "main.7ca69f89.css.map": "/static/css/main.7ca69f89.css.map",
+    "main.1c5b8fed.js.map": "/static/js/main.1c5b8fed.js.map"
   },
   "entrypoints": [
-    "static/css/main.08baf958.css",
-    "static/js/main.36acbe51.js"
+    "static/css/main.7ca69f89.css",
+    "static/js/main.1c5b8fed.js"
   ]
 }

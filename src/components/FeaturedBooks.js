@@ -8,7 +8,10 @@ import './FeaturedBooks.css';
 const FeaturedBooks = () => {
   const featuredBooks = books
     .filter(book => book.order !== undefined)
-    .sort((a, b) => b.order - a.order)
+    .sort((a, b) => {
+      if (b.yearRead !== a.yearRead) return b.yearRead - a.yearRead;
+      return b.order - a.order;
+    })
     .slice(0, 4);
 
   const renderStars = (rating) => {

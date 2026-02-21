@@ -1,6 +1,8 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { articles, articleContent } from '../components/articlesData';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { articles } from '../components/articlesData';
 import './ArticleDetail.css';
 
 const ArticleDetail = () => {
@@ -21,8 +23,6 @@ const ArticleDetail = () => {
     );
   }
 
-  const content = articleContent[articleId];
-
   return (
     <div className="content-wrapper article-detail">
       <button className="back-button brutal-button" onClick={() => navigate('/articles')}>
@@ -31,8 +31,16 @@ const ArticleDetail = () => {
 
       <article className="article-content">
         <header className="article-detail-header">
-          <h1 className="article-detail-title">{content.title}</h1>
-          <p className="article-detail-date mono">{content.date}</p>
+          {article.image && (
+            <img
+              src={article.image}
+              alt={article.title}
+              className="article-cover-image"
+            />
+          )}
+
+          <h1 className="article-detail-title">{article.title}</h1>
+          <p className="article-detail-date mono">{article.date}</p>
 
           {article.tags && (
             <div className="article-detail-tags">
@@ -43,10 +51,11 @@ const ArticleDetail = () => {
           )}
         </header>
 
-        <div
-          className="article-body"
-          dangerouslySetInnerHTML={{ __html: content.content }}
-        />
+        <div className="article-body">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {article.content}
+          </ReactMarkdown>
+        </div>
       </article>
 
       <footer className="article-detail-footer">

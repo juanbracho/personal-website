@@ -1,6 +1,14 @@
 // src/components/articlesData.js
+//
+// ─── GENERATED IMPORTS ───────────────────────────────────────────────────────
+// The import lines below are injected automatically by add_article.py.
+// Do not edit this section by hand — run the script to add new articles.
+// ─────────────────────────────────────────────────────────────────────────────
+
+import whatIsAFirstWorldCountryArticle from '../articles/what-is-a-first-world-country';
 
 export const articles = [
+  whatIsAFirstWorldCountryArticle,
   {
     id: 'ai-solutions',
     title: 'How to use AI to build solutions WITH you',
@@ -9,7 +17,7 @@ export const articles = [
     type: 'external',
     externalUrl: 'https://www.linkedin.com/pulse/how-use-ai-build-solutions-you-juan-avila-5xopc/',
     tags: ['AI', 'Development', 'Productivity'],
-    featured: true
+    featured: false
   },
   {
     id: 'right-to-be-forgotten',
@@ -29,7 +37,7 @@ export const articles = [
     type: 'external',
     externalUrl: 'https://www.linkedin.com/pulse/how-hard-achieve-your-goals-juan-bracho-avila-0ggbc/',
     tags: ['Personal Growth', 'Resilience', 'Immigration'],
-    featured: true
+    featured: false
   },
   {
     id: 'immigrant',
@@ -52,27 +60,3 @@ export const articles = [
     featured: true
   }
 ];
-
-// Article content for internal articles
-export const articleContent = {
-  'getting-started': {
-    title: 'Getting Started with Data Analytics',
-    date: '2024-12-01',
-    content: `
-      <h2>My Journey into Data Analytics</h2>
-      <p>After completing the Data Analytics Bootcamp at the University of Texas at Austin, I've gained comprehensive skills in Python, SQL, Tableau, and more. This journey has transformed the way I approach problem-solving and data-driven decision making.</p>
-
-      <h3>Key Learnings</h3>
-      <ul>
-        <li>Python for Data Analysis and Visualization</li>
-        <li>SQL for Database Management and Queries</li>
-        <li>Tableau for Interactive Dashboards</li>
-        <li>Machine Learning Fundamentals</li>
-        <li>Statistical Analysis and Hypothesis Testing</li>
-      </ul>
-
-      <h3>What's Next</h3>
-      <p>I'm excited to apply these skills in real-world projects and continue learning in the ever-evolving field of data analytics. Stay tuned for more articles about specific projects and techniques!</p>
-    `
-  }
-};

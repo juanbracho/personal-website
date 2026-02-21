@@ -6,9 +6,13 @@ import './Books.css';
 
 const Books = () => {
   const [sortBy, setSortBy] = useState('readingOrder'); // 'readingOrder', 'rating', 'author', 'title'
+  const [selectedYear, setSelectedYear] = useState(2026);
+
+  // Filter books by selected year
+  const filteredBooks = books.filter(book => book.yearRead === selectedYear);
 
   // Sort books based on selected criteria
-  const sortedBooks = [...books].sort((a, b) => {
+  const sortedBooks = [...filteredBooks].sort((a, b) => {
     switch (sortBy) {
       case 'readingOrder':
         // Books with order property come first, sorted by order
@@ -40,11 +44,28 @@ const Books = () => {
     <div className="books-page">
       <div className="books-header">
         <h1>Book Recommendations</h1>
-        <p className="mono">My reading list from 2025 with honest reviews and ratings. You will find here a small comment of my thoughts on the book, followed by a more professional and boring paragraph of the book's summary.</p>
+        <p className="mono">My reading list from {selectedYear} with honest reviews and ratings. You will find here a small comment of my thoughts on the book, followed by a more professional and boring paragraph of the book's summary.</p>
       </div>
 
       <div className="content-wrapper">
         <div className="books-controls">
+          <div className="year-toggle">
+            <span className="sort-label mono">Year:</span>
+            <div className="sort-buttons">
+              <button
+                className={`brutal-button ${selectedYear === 2025 ? 'active' : ''}`}
+                onClick={() => { setSelectedYear(2025); setSortBy('readingOrder'); }}
+              >
+                2025
+              </button>
+              <button
+                className={`brutal-button ${selectedYear === 2026 ? 'active' : ''}`}
+                onClick={() => { setSelectedYear(2026); setSortBy('readingOrder'); }}
+              >
+                2026
+              </button>
+            </div>
+          </div>
           <span className="sort-label mono">Sort By:</span>
           <div className="sort-buttons">
             <button
@@ -80,9 +101,9 @@ const Books = () => {
           ))}
         </div>
 
-        {books.length === 0 && (
+        {filteredBooks.length === 0 && (
           <div className="books-empty">
-            <p className="mono">No books yet. Add some to booksData.js!</p>
+            <p className="mono">No books logged for {selectedYear} yet. Check back soon!</p>
           </div>
         )}
       </div>

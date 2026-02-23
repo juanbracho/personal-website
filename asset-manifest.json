@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.7ca69f89.css",
-    "main.js": "/static/js/main.1c5b8fed.js",
+    "main.js": "/static/js/main.f1c7b5fa.js",
     "static/media/mapping.png": "/static/media/mapping.babf45f26d66a5e03c31.png",
     "static/media/finance-dashboard.png": "/static/media/finance-dashboard.7bcacd560bf0510e4de0.png",
     "static/media/vba.png": "/static/media/vba.4eae0a0ec7090d01cd2b.png",
@@ -18,6 +18,7 @@
     "static/media/data-collection.png": "/static/media/data-collection.95d01074c2b8a156812f.png",
     "static/media/interactive-visualizations.png": "/static/media/interactive-visualizations.8d365e549d7131535e80.png",
     "static/media/sql.png": "/static/media/sql.b0eda655894464423d19.png",
+    "static/media/Kanso.png": "/static/media/Kanso.c94c6f6dd8a25b547218.png",
     "static/media/neural-networks.png": "/static/media/neural-networks.1807de28c971df80762d.png",
     "static/media/data-analysis.png": "/static/media/data-analysis.a51acbe4c8a75bf427b0.png",
     "static/media/python-apis.png": "/static/media/python-apis.5cd9b19ff76cf9272ae8.png",
@@ -28,10 +29,10 @@
     "static/media/advanced-sql.png": "/static/media/advanced-sql.f2fbb4454b1de3eebc9c.png",
     "index.html": "/index.html",
     "main.7ca69f89.css.map": "/static/css/main.7ca69f89.css.map",
-    "main.1c5b8fed.js.map": "/static/js/main.1c5b8fed.js.map"
+    "main.f1c7b5fa.js.map": "/static/js/main.f1c7b5fa.js.map"
   },
   "entrypoints": [
     "static/css/main.7ca69f89.css",
-    "static/js/main.1c5b8fed.js"
+    "static/js/main.f1c7b5fa.js"
   ]
 }

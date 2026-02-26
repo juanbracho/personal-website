@@ -7,7 +7,10 @@
 
 import whatIsAFirstWorldCountryArticle from '../articles/what-is-a-first-world-country';
 
+import iBuildMyOwnMoneyTrackingAppArticle from '../articles/i-built-my-own-money-tracking-app';
+
 export const articles = [
+  iBuildMyOwnMoneyTrackingAppArticle,
   whatIsAFirstWorldCountryArticle,
   {
     id: 'ai-solutions',

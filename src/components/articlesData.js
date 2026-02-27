@@ -9,7 +9,10 @@ import whatIsAFirstWorldCountryArticle from '../articles/what-is-a-first-world-c
 
 import iBuildMyOwnMoneyTrackingAppArticle from '../articles/i-built-my-own-money-tracking-app';
 
+import aJackOfAllTradesArticle from '../articles/a-jack-of-all-trades';
+
 export const articles = [
+  aJackOfAllTradesArticle,
   iBuildMyOwnMoneyTrackingAppArticle,
   whatIsAFirstWorldCountryArticle,
   {

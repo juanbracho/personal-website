@@ -52,10 +52,49 @@ def docx_to_markdown(docx_path):
 
 def generate_article_js(slug, var_name, title, description, article_date, tags, featured, content):
     """Generate the JS module for src/articles/{slug}.js."""
+    default_image = "  image: require('../assets/articles/default.png'), // TODO: update filename"
+    return generate_article_js_with_image(
+        slug, var_name, title, description, article_date, tags, featured, content, default_image
+    )
+
+
+def parse_existing_article(article_path):
+    """Extract metadata from an already-generated article JS file."""
+    with open(article_path, "r", encoding="utf-8") as f:
+        text = f.read()
+
+    def get_single_quoted(field):
+        m = re.search(rf"{field}:\s*'((?:[^'\\]|\\.)*)'", text)
+        return m.group(1).replace("\\'", "'") if m else ""
+
+    title = get_single_quoted("title")
+    description = get_single_quoted("description")
+    article_date = get_single_quoted("date")
+
+    tags = []
+    m = re.search(r"tags:\s*\[(.*?)\]", text)
+    if m and m.group(1).strip():
+        tags = [t.strip().strip("'\"") for t in m.group(1).split(",") if t.strip()]
+
+    featured = True
+    m = re.search(r"featured:\s*(true|false)", text)
+    if m:
+        featured = m.group(1) == "true"
+
+    # Preserve the existing image require() line so we don't clobber a custom image
+    image_line = "  image: require('../assets/articles/default.png'), // TODO: update filename"
+    m = re.search(r"  image:.*", text)
+    if m:
+        image_line = m.group(0)
+
+    return title, description, article_date, tags, featured, image_line
+
+
+def generate_article_js_with_image(slug, var_name, title, description, article_date, tags, featured, content, image_line):
+    """Like generate_article_js but uses a caller-supplied image line."""
     today = date.today().isoformat()
     tags_js = ", ".join(f"'{tag}'" for tag in tags)
     featured_js = "true" if featured else "false"
-    # Escape single quotes in title/description for JS single-quoted strings
     safe_title = title.replace("'", "\\'")
     safe_description = description.replace("'", "\\'")
 
@@ -71,7 +110,7 @@ def generate_article_js(slug, var_name, title, description, article_date, tags, 
         f"  description: '{safe_description}',\n"
         f"  date: '{article_date}',\n"
         f"  type: 'internal',\n"
-        f"  image: require('../assets/articles/default.png'), // TODO: update filename\n"
+        f"{image_line}\n"
         f"  tags: [{tags_js}],\n"
         f"  featured: {featured_js},\n"
         f"  content: `{content}`\n"
@@ -145,8 +184,41 @@ def main():
         sys.exit(1)
 
     slug = slugify(title)
+    var_name = camel_case(slug) + "Article"
     print(f"  → Slug: {slug}")
 
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    articles_dir = os.path.join(script_dir, "src", "articles")
+    os.makedirs(articles_dir, exist_ok=True)
+    article_path = os.path.join(articles_dir, f"{slug}.js")
+
+    # --- Update mode: article already exists ---
+    if os.path.isfile(article_path):
+        print(f"\n  Article already exists — updating content only.")
+        ex_title, ex_description, ex_date, ex_tags, ex_featured, ex_image = parse_existing_article(article_path)
+        print(f"  Preserving:")
+        print(f"    title:       {ex_title}")
+        print(f"    date:        {ex_date}")
+        print(f"    description: {ex_description}")
+        print(f"    tags:        {', '.join(ex_tags)}")
+        print(f"    featured:    {ex_featured}")
+
+        article_js = generate_article_js_with_image(
+            slug, var_name, ex_title, ex_description, ex_date, ex_tags, ex_featured, content, ex_image
+        )
+        with open(article_path, "w", encoding="utf-8") as f:
+            f.write(article_js)
+        print(f"\nUpdated:  {article_path}")
+        update_articles_data(slug, var_name)
+        print(f"Checked:  src/components/articlesData.js (no changes needed)")
+        print(
+            f"\nDone! Content refreshed.\n"
+            f"  npm start   → preview at /#/articles/{slug}\n"
+            f"  npm run build && npm run deploy   → publish\n"
+        )
+        return
+
+    # --- New article mode ---
     today = date.today().isoformat()
     date_input = input(f"Date [{today}]: ").strip()
     article_date = date_input if date_input else today
@@ -159,14 +231,6 @@ def main():
     featured_input = input("Featured? (y/n) [y]: ").strip().lower()
     featured = featured_input != "n"
 
-    var_name = camel_case(slug) + "Article"
-
-    # --- Create src/articles/{slug}.js ---
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    articles_dir = os.path.join(script_dir, "src", "articles")
-    os.makedirs(articles_dir, exist_ok=True)
-
-    article_path = os.path.join(articles_dir, f"{slug}.js")
     article_js = generate_article_js(
         slug, var_name, title, description, article_date, tags, featured, content
     )

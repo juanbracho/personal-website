@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.7ca69f89.css",
-    "main.js": "/static/js/main.6ba64f0d.js",
+    "main.js": "/static/js/main.91041d25.js",
     "static/media/jack_of_all_trades.png": "/static/media/jack_of_all_trades.29baeb0487f84b8fba59.png",
     "static/media/mapping.png": "/static/media/mapping.babf45f26d66a5e03c31.png",
     "static/media/finance-dashboard.png": "/static/media/finance-dashboard.7bcacd560bf0510e4de0.png",
@@ -30,10 +30,10 @@
     "static/media/advanced-sql.png": "/static/media/advanced-sql.f2fbb4454b1de3eebc9c.png",
     "index.html": "/index.html",
     "main.7ca69f89.css.map": "/static/css/main.7ca69f89.css.map",
-    "main.6ba64f0d.js.map": "/static/js/main.6ba64f0d.js.map"
+    "main.91041d25.js.map": "/static/js/main.91041d25.js.map"
   },
   "entrypoints": [
     "static/css/main.7ca69f89.css",
-    "static/js/main.6ba64f0d.js"
+    "static/js/main.91041d25.js"
   ]
 }

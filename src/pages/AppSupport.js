@@ -1,156 +1,85 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import PageShell from '../components/PageShell';
 import { supportContent } from '../components/appSupportData';
 import { appDetailData } from '../components/appDetailData';
-import './AppSupport.css';
 
-const AppSupport = () => {
+export default function AppSupport() {
   const { appId } = useParams();
-  const navigate = useNavigate();
-  const [openFaqs, setOpenFaqs] = useState({});
+  const detail    = appDetailData[appId];
+  const support   = supportContent?.[appId];
+  const [open, setOpen] = useState(null);
 
-  const app = appDetailData[appId];
-  const support = supportContent[appId];
-
-  if (!app || !support) {
-    return (
-      <div className="content-wrapper support-not-found">
-        <h1>Page Not Found</h1>
-        <p>The support page you're looking for doesn't exist.</p>
-        <button className="brutal-button" onClick={() => navigate('/apps')}>
-          ← Back to Apps
-        </button>
-      </div>
-    );
-  }
-
-  const toggleFaq = (categoryKey, faqIndex) => {
-    const key = `${categoryKey}-${faqIndex}`;
-    setOpenFaqs(prev => ({
-      ...prev,
-      [key]: !prev[key]
-    }));
-  };
+  const appColor = detail?.colors?.primary || '#c4633c';
 
   return (
-    <div className="content-wrapper app-support" style={{ '--app-color': app.colors.primary }}>
-      <button className="back-button brutal-button" onClick={() => navigate(`/apps/${appId}`)}>
-        ← Back to {app.name}
-      </button>
-
-      <div className="support-breadcrumbs mono">
-        <Link to="/home">Home</Link>
-        <span> / </span>
-        <Link to="/apps">Apps</Link>
-        <span> / </span>
-        <Link to={`/apps/${appId}`}>{app.name}</Link>
-        <span> / </span>
-        <span>Support</span>
-      </div>
-
-      {/* Header */}
-      <div className="support-header">
-        <h1 className="support-title">{app.name} Support & FAQ</h1>
-        <p className="support-subtitle">Get help with {app.name}</p>
-      </div>
-
-      {/* Contact Section */}
-      <div className="support-contact-section">
-        <h2>📧 Contact Support</h2>
-        <p>Have questions about {app.name}? Need help with features? We're here to help!</p>
-        <div className="contact-info-box">
-          <div className="email-link">
-            <a href={`mailto:${support.email}?subject=${app.name} Support`}>
-              {support.email}
-            </a>
+    <PageShell title={`▰ ${appId?.toUpperCase()} · SUPPORT`}>
+      <div style={{ marginTop: 20, maxWidth: 800 }}>
+        <div style={{
+          background: '#fffaf0',
+          padding: '48px 56px 56px',
+          borderRadius: 4,
+          boxShadow: '0 30px 60px -15px rgba(0,0,0,0.5)',
+        }}>
+          <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 2, color: appColor, textTransform: 'uppercase' }}>
+            {appId} · support
           </div>
-          <div className="response-time">
-            <strong>Response Time:</strong> We typically respond within {support.responseTime}
+          <h1 style={{ fontFamily: '"Fraunces", serif', fontSize: 44, fontWeight: 600, letterSpacing: -1, marginTop: 10, color: '#1f1d18' }}>
+            {support?.title || `${appId} Support`}
+          </h1>
+          <div style={{ fontFamily: '"Caveat", cursive', fontSize: 20, color: '#5a4530', marginTop: 6 }}>
+            {support?.subtitle || 'How can we help?'}
           </div>
-        </div>
-      </div>
 
-      {/* FAQ Sections */}
-      <div className="support-faq-content">
-        <h2>Frequently Asked Questions</h2>
-
-        {Object.entries(support.categories).map(([categoryKey, category]) => (
-          <div key={categoryKey} className="faq-category">
-            <h3>{category.title}</h3>
-
-            {category.faqs.map((faq, index) => {
-              const faqKey = `${categoryKey}-${index}`;
-              const isOpen = openFaqs[faqKey];
-
-              return (
-                <div key={index} className="faq-item">
-                  <div
-                    className="faq-question"
-                    onClick={() => toggleFaq(categoryKey, index)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => e.key === 'Enter' && toggleFaq(categoryKey, index)}
+          {/* FAQ */}
+          {support?.faqs?.length > 0 && (
+            <div style={{ marginTop: 36 }}>
+              <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 2, color: '#5a4530', textTransform: 'uppercase', marginBottom: 16 }}>
+                — frequently asked
+              </div>
+              {support.faqs.map((faq, i) => (
+                <div key={i} style={{ marginBottom: 8, borderBottom: '1px solid rgba(90,69,48,0.15)' }}>
+                  <button
+                    onClick={() => setOpen(open === i ? null : i)}
+                    style={{
+                      width: '100%', textAlign: 'left', padding: '14px 0',
+                      background: 'none', border: 'none', cursor: 'pointer',
+                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    }}
                   >
-                    <h4>{faq.question}</h4>
-                    <svg
-                      className={`chevron ${isOpen ? 'rotated' : ''}`}
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
-                    </svg>
-                  </div>
-                  {isOpen && (
-                    <div className="faq-answer">
-                      <p>{faq.answer}</p>
+                    <span style={{ fontFamily: '"Fraunces", serif', fontSize: 17, fontWeight: 600, color: '#1f1d18', lineHeight: 1.3 }}>
+                      {faq.question}
+                    </span>
+                    <span style={{ color: appColor, fontSize: 20, fontFamily: '"Caveat", cursive', transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s', flexShrink: 0, marginLeft: 16 }}>+</span>
+                  </button>
+                  {open === i && (
+                    <div style={{ paddingBottom: 16 }}>
+                      <p style={{ fontFamily: '"Fraunces", serif', fontSize: 15, lineHeight: 1.65, color: '#3a2f22' }}>{faq.answer}</p>
                     </div>
                   )}
                 </div>
-              );
-            })}
+              ))}
+            </div>
+          )}
+
+          {/* Contact */}
+          <div style={{ marginTop: 40, padding: '24px', background: '#f5e8d4', borderRadius: 10, border: '1px dashed #c4633c' }}>
+            <div style={{ fontFamily: '"Caveat", cursive', fontSize: 22, color: '#a04020', marginBottom: 8 }}>~ still need help?</div>
+            <p style={{ fontFamily: '"Fraunces", serif', fontSize: 15, lineHeight: 1.65, color: '#3a2f22', marginBottom: 12 }}>
+              {support?.contactIntro || 'Reach out directly and I\'ll get back to you as soon as I can.'}
+            </p>
+            <a href="mailto:support@juan.app" style={{
+              display: 'inline-block', padding: '10px 22px',
+              background: appColor, color: '#fff', borderRadius: 8,
+              fontWeight: 600, fontSize: 14,
+            }}>
+              support@juan.app →
+            </a>
           </div>
-        ))}
-      </div>
 
-      {/* Bug Reports */}
-      <div className="support-bug-reports">
-        <h2>🐛 Bug Reports & Feature Requests</h2>
-        <p>Found a bug or have a feature request? We'd love to hear from you!</p>
-        <p>When reporting bugs, please include:</p>
-        <ul>
-          <li>Device model and operating system version</li>
-          <li>App version number (found in Settings)</li>
-          <li>Steps to reproduce the issue</li>
-          <li>Screenshots if possible</li>
-        </ul>
-        <p className="bug-contact-note">
-          Send your bug reports or feature suggestions to <strong>{support.email}</strong>
-        </p>
-      </div>
-
-      {/* Quick Links */}
-      <div className="support-quick-nav">
-        <h3>Related</h3>
-        <div className="support-nav-grid">
-          <Link to={`/apps/${appId}`} className="brutal-button support-nav-link">
-            ← {app.name} Home
-          </Link>
-          <Link to={`/apps/${appId}/privacy`} className="brutal-button support-nav-link">
-            Privacy Policy →
-          </Link>
-          <Link to={`/apps/${appId}/terms`} className="brutal-button support-nav-link">
-            Terms of Service →
-          </Link>
+          <div style={{ marginTop: 32, fontFamily: '"Caveat", cursive', fontSize: 28, color: '#c4633c', transform: 'rotate(-2deg)', display: 'inline-block' }}>~ Juan</div>
         </div>
       </div>
-
-      <footer className="support-footer">
-        <button className="brutal-button" onClick={() => navigate(`/apps/${appId}`)}>
-          ← Back to {app.name}
-        </button>
-      </footer>
-    </div>
+    </PageShell>
   );
-};
-
-export default AppSupport;
+}

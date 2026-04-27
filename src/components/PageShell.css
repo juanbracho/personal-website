@@ -1,0 +1,51 @@
+.page-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 25% 25%, rgba(255,235,195,0.55), transparent 50%),
+    radial-gradient(ellipse at 75% 80%, rgba(120,70,30,0.35), transparent 60%),
+    linear-gradient(160deg, #b88454 0%, #8a5a32 50%, #6b4220 100%);
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  color: #2a1f15;
+}
+
+.page-shell__grain {
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(98deg, transparent 0px, transparent 30px,
+      rgba(60,30,10,0.08) 30px, rgba(60,30,10,0.08) 31px),
+    repeating-linear-gradient(102deg, transparent 0px, transparent 80px,
+      rgba(255,220,180,0.05) 80px, rgba(255,220,180,0.05) 82px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-shell__title {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 80px 0 0;
+}
+
+.page-shell__title-text {
+  font-family: 'Special Elite', monospace;
+  color: rgba(251,238,216,0.7);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.page-shell__content {
+  position: relative;
+  z-index: 10;
+  padding: 20px 60px 80px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .page-shell__content {
+    padding: 20px 24px 60px;
+  }
+}

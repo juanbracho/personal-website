@@ -1,49 +1,44 @@
 import React from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
-// Import pages
-import About from './pages/Home';
-import Apps from './pages/Apps';
-import AppDetail from './pages/AppDetail';
-import AppLegal from './pages/AppLegal';
-import AppSupport from './pages/AppSupport';
-import Portfolio from './pages/Portfolio';
-import Articles from './pages/Articles';
+import Home         from './pages/Home';
+import Apps         from './pages/Apps';
+import AppDetail    from './pages/AppDetail';
+import AppLegal     from './pages/AppLegal';
+import AppSupport   from './pages/AppSupport';
+import Writing      from './pages/Writing';
 import ArticleDetail from './pages/ArticleDetail';
-import Books from './pages/Books';
-import Resume from './pages/Resume';
-import Contact from './pages/Contact';
+import About        from './pages/About';
+import Contact      from './pages/Contact';
+import Study        from './pages/Study';
 
 function App() {
   return (
     <HashRouter>
       <ScrollToTop />
       <div className="App">
-        <Header />
-        <main>
-          <Routes>
-            {/* Redirect root ("/") to "/home" */}
-            <Route path="/" element={<Navigate to="/home" replace />} />
-            <Route path="/home" element={<About />} />
-            <Route path="/apps" element={<Apps />} />
-            {/* App detail pages */}
-            <Route path="/apps/:appId" element={<AppDetail />} />
-            <Route path="/apps/:appId/privacy" element={<AppLegal legalType="privacy" />} />
-            <Route path="/apps/:appId/terms" element={<AppLegal legalType="terms" />} />
-            <Route path="/apps/:appId/support" element={<AppSupport />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/articles" element={<Articles />} />
-            <Route path="/articles/:articleId" element={<ArticleDetail />} />
-            <Route path="/books" element={<Books />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
+        <Routes>
+          <Route path="/"        element={<Navigate to="/home" replace />} />
+          <Route path="/home"    element={<Home />} />
+          <Route path="/apps"    element={<Apps />} />
+          <Route path="/apps/:appId"             element={<AppDetail />} />
+          <Route path="/apps/:appId/privacy"     element={<AppLegal legalType="privacy" />} />
+          <Route path="/apps/:appId/terms"       element={<AppLegal legalType="terms" />} />
+          <Route path="/apps/:appId/support"     element={<AppSupport />} />
+          <Route path="/writing"                 element={<Writing />} />
+          <Route path="/writing/:articleId"      element={<ArticleDetail />} />
+          <Route path="/about"                   element={<About />} />
+          <Route path="/contact"                 element={<Contact />} />
+          <Route path="/study"                   element={<Study />} />
+          {/* Legacy redirects */}
+          <Route path="/articles"               element={<Navigate to="/writing" replace />} />
+          <Route path="/articles/:id"           element={<Navigate to="/writing" replace />} />
+          <Route path="/books"                  element={<Navigate to="/study" replace />} />
+          <Route path="/portfolio"              element={<Navigate to="/study" replace />} />
+          <Route path="/resume"                 element={<Navigate to="/study" replace />} />
+        </Routes>
       </div>
     </HashRouter>
   );

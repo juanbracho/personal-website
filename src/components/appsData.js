@@ -2,19 +2,6 @@
 
 export const mobileApps = [
   {
-    id: 'kaizen',
-    name: 'Kaizen',
-    tagline: 'Routine Management & Workout Tracking',
-    description: 'A mobile app built with Flutter that helps you organize all your routines in one place. Features equipment-based exercise filtering, workout session tracking with built-in timers, visual progress monitoring, and structured routine management. Designed to guide you through each workout with real-time assistance and track your journey over time.',
-    appStoreUrl: 'https://apps.apple.com/us/app/kaizen-workout-app/id6752676636',
-    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.mykaizen.app',
-    appId: '6752676636',
-    tech: ['Flutter', 'Dart', 'Provider', 'Shared Preferences'],
-    platforms: ['iOS', 'Android'],
-    featured: true,
-    order: 1
-  },
-  {
     id: 'kage',
     name: 'Kage',
     tagline: 'Minimalist Habit Tracker',
@@ -23,6 +10,19 @@ export const mobileApps = [
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.kage.app',
     appId: '6751781547',
     tech: ['React', 'TypeScript', 'Capacitor', 'Tailwind CSS', 'PWA'],
+    platforms: ['iOS', 'Android'],
+    featured: true,
+    order: 1
+  },
+  {
+    id: 'kaizen',
+    name: 'Kaizen',
+    tagline: 'Routine Management & Workout Tracking',
+    description: 'A mobile app built with Flutter that helps you organize all your routines in one place. Features equipment-based exercise filtering, workout session tracking with built-in timers, visual progress monitoring, and structured routine management. Designed to guide you through each workout with real-time assistance and track your journey over time.',
+    appStoreUrl: 'https://apps.apple.com/us/app/kaizen-workout-app/id6752676636',
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.mykaizen.app',
+    appId: '6752676636',
+    tech: ['Flutter', 'Dart', 'Provider', 'Shared Preferences'],
     platforms: ['iOS', 'Android'],
     featured: true,
     order: 2

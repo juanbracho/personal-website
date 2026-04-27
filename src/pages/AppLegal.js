@@ -1,140 +1,89 @@
 import React from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import PageShell from '../components/PageShell';
 import { legalContent } from '../components/appLegalData';
 import { appDetailData } from '../components/appDetailData';
-import './AppLegal.css';
 
-const AppLegal = ({ legalType }) => {
+export default function AppLegal({ legalType }) {
   const { appId } = useParams();
-  const navigate = useNavigate();
+  const navigate  = useNavigate();
+  const detail    = appDetailData[appId];
+  const legal     = legalContent[appId]?.[legalType];
 
-  const app = appDetailData[appId];
-  const legal = legalContent[appId]?.[legalType];
-
-  if (!app || !legal) {
+  if (!legal) {
     return (
-      <div className="content-wrapper legal-not-found">
-        <h1>Page Not Found</h1>
-        <p>The page you're looking for doesn't exist.</p>
-        <button className="brutal-button" onClick={() => navigate('/apps')}>
-          ← Back to Apps
-        </button>
-      </div>
+      <PageShell title="NOT FOUND">
+        <div style={{ color: '#fbeed8', fontFamily: '"Fraunces", serif', fontSize: 28, marginTop: 40 }}>
+          Legal page not found. <span onClick={() => navigate('/apps')} style={{ cursor: 'pointer', color: '#d4a056', textDecoration: 'underline' }}>Back to apps →</span>
+        </div>
+      </PageShell>
     );
   }
 
-  const renderSection = (section, index) => {
-    switch (section.type) {
-      case 'intro':
-        return (
-          <p key={index} className="legal-intro">
-            <strong>{section.content}</strong>
-          </p>
-        );
-
-      case 'paragraph':
-        return (
-          <div key={index} className="legal-section">
-            {section.heading && <h2>{section.heading}</h2>}
-            <p>{section.content}</p>
-          </div>
-        );
-
-      case 'list':
-        return (
-          <div key={index} className="legal-section">
-            {section.heading && <h2>{section.heading}</h2>}
-            {section.intro && <p>{section.intro}</p>}
-            <ul className="legal-list">
-              {section.items.map((item, itemIndex) => (
-                <li key={itemIndex}>{item}</li>
-              ))}
-            </ul>
-            {section.footer && <p className="legal-list-footer"><strong>{section.footer}</strong></p>}
-          </div>
-        );
-
-      case 'guarantee':
-        return (
-          <div key={index} className="legal-guarantee" style={{ borderLeftColor: app.colors.primary }}>
-            <h3>🔒 {section.heading}</h3>
-            <p><strong>{section.content}</strong></p>
-          </div>
-        );
-
-      case 'contact':
-        return (
-          <div key={index} className="legal-contact">
-            <h3>{section.heading}</h3>
-            <p>{section.content}</p>
-          </div>
-        );
-
-      case 'acknowledgment':
-        return (
-          <div key={index} className="legal-acknowledgment">
-            <p><em>{section.content}</em></p>
-          </div>
-        );
-
-      default:
-        return null;
-    }
-  };
+  const appColor = detail?.colors?.primary || '#c4633c';
 
   return (
-    <div className="content-wrapper app-legal" style={{ '--app-color': app.colors.primary }}>
-      <button className="back-button brutal-button" onClick={() => navigate(`/apps/${appId}`)}>
-        ← Back to {app.name}
-      </button>
+    <PageShell title={`▰ ${appId?.toUpperCase()} · ${legalType?.toUpperCase()}`}>
+      <div style={{ marginTop: 20, maxWidth: 800 }}>
+        {/* Paper */}
+        <div style={{
+          background: '#fffaf0',
+          padding: '48px 56px 56px',
+          borderRadius: 4,
+          boxShadow: '0 30px 60px -15px rgba(0,0,0,0.5)',
+        }}>
+          <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 2, color: appColor, textTransform: 'uppercase' }}>
+            {appId} · {legalType}
+          </div>
+          <h1 style={{ fontFamily: '"Fraunces", serif', fontSize: 44, fontWeight: 600, letterSpacing: -1, marginTop: 10, color: '#1f1d18' }}>
+            {legal.title}
+          </h1>
+          {legal.lastUpdated && (
+            <div style={{ fontFamily: '"Caveat", cursive', fontSize: 18, color: '#5a4530', marginTop: 6 }}>
+              Last updated: {legal.lastUpdated}
+            </div>
+          )}
 
-      <div className="legal-breadcrumbs mono">
-        <Link to="/home">Home</Link>
-        <span> / </span>
-        <Link to="/apps">Apps</Link>
-        <span> / </span>
-        <Link to={`/apps/${appId}`}>{app.name}</Link>
-        <span> / </span>
-        <span>{legalType === 'privacy' ? 'Privacy Policy' : 'Terms of Service'}</span>
-      </div>
+          <div style={{ marginTop: 32 }}>
+            {legal.sections?.map((section, i) => (
+              <div key={i} style={{ marginBottom: 26 }}>
+                {section.heading && (
+                  <h2 style={{ fontFamily: '"Fraunces", serif', fontSize: 22, fontWeight: 600, color: '#1f1d18', marginBottom: 10 }}>
+                    {section.heading}
+                  </h2>
+                )}
+                {section.type === 'paragraph' && (
+                  <p style={{ fontFamily: '"Fraunces", serif', fontSize: 16, lineHeight: 1.7, color: '#3a2f22' }}>{section.content}</p>
+                )}
+                {section.type === 'intro' && (
+                  <p style={{ fontFamily: '"Fraunces", serif', fontSize: 16, lineHeight: 1.7, color: '#3a2f22', fontStyle: 'italic', borderLeft: `4px solid ${appColor}`, paddingLeft: 16 }}>{section.content}</p>
+                )}
+                {section.type === 'list' && (
+                  <div>
+                    {section.intro && <p style={{ fontFamily: '"Fraunces", serif', fontSize: 15, color: '#3a2f22', marginBottom: 8 }}>{section.intro}</p>}
+                    <ul style={{ paddingLeft: 20 }}>
+                      {section.items?.map((item, j) => (
+                        <li key={j} style={{ fontFamily: '"Fraunces", serif', fontSize: 15, lineHeight: 1.65, color: '#3a2f22', marginBottom: 4 }}>{item}</li>
+                      ))}
+                    </ul>
+                    {section.footer && <p style={{ fontFamily: '"Fraunces", serif', fontSize: 14, color: '#5a4530', marginTop: 8, fontStyle: 'italic' }}>{section.footer}</p>}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
 
-      <div className="legal-content">
-        <div className="legal-header">
-          <h1 className="legal-title">{legal.title}</h1>
-          <p className="legal-last-updated mono">Last Updated: {legal.lastUpdated}</p>
+          <div style={{ marginTop: 40, padding: '16px 20px', background: '#f5e8d4', borderRadius: 8, border: '1px dashed #c4633c' }}>
+            <div style={{ fontFamily: '"Caveat", cursive', fontSize: 18, color: '#a04020' }}>
+              Questions? Reach us at support@juan.app
+            </div>
+          </div>
+
+          <div style={{ marginTop: 32, fontFamily: '"Caveat", cursive', fontSize: 28, color: '#c4633c', transform: 'rotate(-2deg)', display: 'inline-block' }}>
+            ~ Juan
+          </div>
         </div>
-
-        <div className="legal-body">
-          {legal.sections.map((section, index) => renderSection(section, index))}
-        </div>
       </div>
-
-      {/* Quick Navigation */}
-      <div className="legal-quick-nav">
-        <h3>Related</h3>
-        <div className="legal-nav-grid">
-          <Link to={`/apps/${appId}`} className="brutal-button legal-nav-link">
-            ← {app.name} Home
-          </Link>
-          <Link
-            to={`/apps/${appId}/${legalType === 'privacy' ? 'terms' : 'privacy'}`}
-            className="brutal-button legal-nav-link"
-          >
-            {legalType === 'privacy' ? 'Terms of Service' : 'Privacy Policy'} →
-          </Link>
-          <Link to={`/apps/${appId}/support`} className="brutal-button legal-nav-link">
-            Support & FAQ →
-          </Link>
-        </div>
-      </div>
-
-      <footer className="legal-footer">
-        <button className="brutal-button" onClick={() => navigate(`/apps/${appId}`)}>
-          ← Back to {app.name}
-        </button>
-      </footer>
-    </div>
+    </PageShell>
   );
-};
-
-export default AppLegal;
+}

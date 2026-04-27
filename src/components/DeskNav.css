@@ -1,0 +1,128 @@
+.desk-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  z-index: 200;
+}
+
+/* ── Home variant ── */
+.desk-nav--home .desk-nav__brand {
+  font-family: 'Special Elite', monospace;
+  color: #fbeed8;
+  font-size: 13px;
+  letter-spacing: 2px;
+  min-width: 240px;
+}
+
+.desk-nav--home .desk-nav__tip {
+  min-width: 260px;
+  text-align: right;
+  font-family: 'Caveat', cursive;
+  color: #fbeed8;
+  font-size: 17px;
+  background: rgba(0,0,0,0.25);
+  padding: 6px 14px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  transition: opacity 0.3s;
+}
+
+/* ── Page variant ── */
+.desk-nav--page .desk-nav__back {
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  background: rgba(251,238,216,0.95);
+  color: #2a1f15;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.desk-nav--page .desk-nav__back:hover {
+  background: #fffaf0;
+}
+
+.desk-nav--page .desk-nav__sig {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: #fbeed8;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* ── Shared pills ── */
+.desk-nav__pills {
+  display: flex;
+  gap: 6px;
+}
+
+.desk-nav__pill {
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(0,0,0,0.25);
+  color: #fbeed8;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s, color 0.2s;
+}
+
+.desk-nav__pill:hover {
+  background: rgba(251,238,216,0.75);
+  color: #2a1f15;
+}
+
+.desk-nav__pill--active {
+  background: rgba(251,238,216,0.95);
+  color: #2a1f15;
+}
+
+/* ── Mobile (< 768px) ── */
+@media (max-width: 767px) {
+  .desk-nav {
+    padding: 0 16px;
+    height: 52px;
+  }
+
+  /* Page variant: hide signature, make pills scrollable */
+  .desk-nav--page .desk-nav__sig {
+    display: none;
+  }
+
+  .desk-nav--page .desk-nav__back {
+    font-size: 11px;
+    padding: 7px 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .desk-nav__pills {
+    flex: 1;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 8px;
+  }
+
+  .desk-nav__pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .desk-nav__pill {
+    padding: 6px 12px;
+    font-size: 11px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+}

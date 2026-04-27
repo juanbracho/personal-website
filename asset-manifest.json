@@ -1,16 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.7ca69f89.css",
-    "main.js": "/static/js/main.9fbcfb37.js",
+    "main.css": "/static/css/main.45a804d5.css",
+    "main.js": "/static/js/main.5031d771.js",
     "static/media/jack_of_all_trades.png": "/static/media/jack_of_all_trades.29baeb0487f84b8fba59.png",
+    "static/media/profile2.jpg": "/static/media/profile2.5f27a1b85dbf0e1f2087.jpg",
     "static/media/mapping.png": "/static/media/mapping.babf45f26d66a5e03c31.png",
     "static/media/finance-dashboard.png": "/static/media/finance-dashboard.7bcacd560bf0510e4de0.png",
+    "static/media/kaizen.png": "/static/media/kaizen.d3db85a4c8572d68800c.png",
+    "static/media/kioku.png": "/static/media/kioku.ff3f46fe1cee049106d7.png",
     "static/media/vba.png": "/static/media/vba.4eae0a0ec7090d01cd2b.png",
     "static/media/etl-project.png": "/static/media/etl-project.dca9d6c5fc96dbaab32a.png",
+    "static/media/kage.png": "/static/media/kage.1e2a81cf79b8bcab9a4e.png",
     "static/media/1st_world.jpeg": "/static/media/1st_world.57d0b7816b4b9c23efc8.jpeg",
     "static/media/stock-analysis.png": "/static/media/stock-analysis.38baafd8f43ef6228d83.png",
     "static/media/data-visualization-track.png": "/static/media/data-visualization-track.b4b419e9bccddaf13cc7.png",
     "static/media/python.png": "/static/media/python.e5b2b5776ba33b7c8937.png",
+    "static/media/profile.jpeg": "/static/media/profile.d1ae57e095c547ef857f.jpeg",
     "static/media/excel.png": "/static/media/excel.99fbf369420d1ecba72d.png",
     "static/media/girasoul-inventory.png": "/static/media/girasoul-inventory.dfc76bc945aa480e2af5.png",
     "static/media/big-data.png": "/static/media/big-data.e92520f41e928f9b0433.png",
@@ -29,11 +34,11 @@
     "static/media/unsupervised-learning.png": "/static/media/unsupervised-learning.d6ec9250fa9e7b46d5b0.png",
     "static/media/advanced-sql.png": "/static/media/advanced-sql.f2fbb4454b1de3eebc9c.png",
     "index.html": "/index.html",
-    "main.7ca69f89.css.map": "/static/css/main.7ca69f89.css.map",
-    "main.9fbcfb37.js.map": "/static/js/main.9fbcfb37.js.map"
+    "main.45a804d5.css.map": "/static/css/main.45a804d5.css.map",
+    "main.5031d771.js.map": "/static/js/main.5031d771.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ca69f89.css",
-    "static/js/main.9fbcfb37.js"
+    "static/css/main.45a804d5.css",
+    "static/js/main.5031d771.js"
   ]
 }

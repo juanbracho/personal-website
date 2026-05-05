@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.45a804d5.css",
-    "main.js": "/static/js/main.7fb112f5.js",
+    "main.css": "/static/css/main.47daebf9.css",
+    "main.js": "/static/js/main.5268d648.js",
     "static/media/jack_of_all_trades.png": "/static/media/jack_of_all_trades.29baeb0487f84b8fba59.png",
     "static/media/profile2.jpg": "/static/media/profile2.5f27a1b85dbf0e1f2087.jpg",
     "static/media/mapping.png": "/static/media/mapping.babf45f26d66a5e03c31.png",
@@ -34,11 +34,11 @@
     "static/media/unsupervised-learning.png": "/static/media/unsupervised-learning.d6ec9250fa9e7b46d5b0.png",
     "static/media/advanced-sql.png": "/static/media/advanced-sql.f2fbb4454b1de3eebc9c.png",
     "index.html": "/index.html",
-    "main.45a804d5.css.map": "/static/css/main.45a804d5.css.map",
-    "main.7fb112f5.js.map": "/static/js/main.7fb112f5.js.map"
+    "main.47daebf9.css.map": "/static/css/main.47daebf9.css.map",
+    "main.5268d648.js.map": "/static/js/main.5268d648.js.map"
   },
   "entrypoints": [
-    "static/css/main.45a804d5.css",
-    "static/js/main.7fb112f5.js"
+    "static/css/main.47daebf9.css",
+    "static/js/main.5268d648.js"
   ]
 }

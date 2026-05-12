@@ -377,56 +377,17 @@ Cards on the desk:
 
 ---
 
-**8.1 — `useIsMobile` hook**
-New file: `src/hooks/useIsMobile.js`. Returns `true` when `window.innerWidth < 768`, updates on resize.
-
-**8.2 — `useDraggable`: expose `flipCard(id)`**
-Export a `flipCard(id)` function that directly toggles `flipped[id]`. Used by mobile card `onClick` handlers in place of `startDrag`.
-
-**8.3 — DeskNav: mobile styles**
-On `< 768px`:
-- Hide tip text (`desk-nav__tip`) entirely
-- Keep brand text left (slightly smaller)
-- Pills row: `overflow-x: auto`, hidden scrollbar, `white-space: nowrap` — horizontal scroll if needed
-- No hamburger — the scroll pattern is sufficient for 5 pills
-
-**8.4 — Home: mobile vertical card feed**
-On mobile (`isMobile`):
-- Replace the `position: relative, minHeight: 1200` card surface with a `display: flex, flexDirection: column, gap: 20px, padding: 16px` container
-- Each card becomes `position: relative` (not absolute) with responsive widths
-- Cards maintain all visual styling and flip animations
-- `onMouseDown` → `undefined`; `onClick` → `flipCard(id)` (tap to flip)
-- "↻ tidy desk" footer button hidden
-- Decorative props (coffee ring, pencil) hidden
-- Card order: About → App×3 (stacked) → Article tickets → Skills → Polaroid → Sticky → Shelf preview
-- Article tickets: drop `clipPath` torn edge on mobile (it clips wrongly at narrow widths), use a simple border-left instead
-- App cards: reduce height from 330px → 260px on mobile
-
-**8.5 — Apps.js: responsive grid**
-`gridTemplateColumns: 'repeat(3, 1fr)'` → `repeat(auto-fill, minmax(280px, 1fr))`. On mobile: single column. Title font 56px → 38px.
-
-**8.6 — AppDetail.js: responsive layout**
-Check layout; likely a two-section row → stack. Phone mockup image centered. Stats grid 4-col → 2-col on mobile.
-
-**8.7 — Writing.js: responsive tickets** ✅
-Mobile tickets use a stacked layout: date + "read →" on one row, full-width title below, description, tags. No date column squeezing the title.
-
-**8.8 — ArticleDetail.js: responsive**
-Two-column layout (prose + sidebar) → sidebar moves below prose on mobile. Side rail becomes a horizontal strip.
-
-**8.9 — About.js: responsive passport**
-`gridTemplateColumns: '380px 1fr'` → single column on mobile. Passport goes full-width (sticky removed on mobile). Timeline + right-now boxes stack below.
-
-**8.10 — Contact.js: responsive letter**
-Letter has a max-width and slight rotation — verify padding and font sizes at 375px. Likely minimal changes needed.
-
-**8.11 — Study.js: responsive**
-- Bookshelf: horizontal scroll row of spines (natural on mobile — `overflow-x: auto`). Book rows stack vertically. Featured trio → single column.
-- Filing cabinet: accordion already works; ProjectCard grid → single column.
-- CV table: tabs + content already stack; verify font sizes and padding.
-
-**8.12 — Final mobile QA**
-Test at 375px (iPhone SE), 390px (iPhone 14), 768px (iPad). All nav paths, all flips, all links.
+- [x] 8.1 `useIsMobile` hook — `src/hooks/useIsMobile.js`, updates on resize
+- [x] 8.2 `useDraggable` — `flipCard(id)` exported for tap-to-flip on mobile
+- [x] 8.3 DeskNav — tip text hidden, pills scroll horizontally at < 768px
+- [x] 8.4 Home — vertical card feed on mobile; tap-to-flip; no drag; decorative props hidden; "tidy desk" hidden
+- [x] 8.5 Apps — single column grid on mobile; font scaled
+- [x] 8.6 AppDetail — stacked layout (phone mockup above, content below); stats 2-col on mobile
+- [x] 8.7 Writing — mobile tickets use full-width stacked layout (date + CTA row → title → description → tags)
+- [x] 8.8 ArticleDetail — two-column → single column; padding scaled; margin doodle hidden; sidebar unsticky
+- [x] 8.9 About — passport stacks above bio on mobile; sticky removed; padding scaled
+- [x] 8.10 Contact — letter padding reduced; rotation removed on mobile
+- [x] 8.11 Study — title/h2 fonts scaled; featured books grid → single column; bookshelf already scrolls horizontally
 
 ---
 
@@ -461,3 +422,4 @@ Phases 1–6 can run in parallel once Phase 0 is complete.
 | 2026-04-26 | 7.5 | Bug #9 fixed | Desk layout reordered to match target screenshot |
 | 2026-04-26 | 7.6 | Content review complete | All home page cards reviewed and updated — nameplate, about, skills, polaroid, sticky note, app order, layout polish |
 | 2026-04-26 | 8 | Phase 8 plan written | Mobile strategy: vertical card feed, tap-to-flip, nav pill scroll, responsive inner pages |
+| 2026-04-26 | 8 | Phase 8 complete | All 11 pages responsive at < 768px; build clean; Writing ticket layout improved after visual QA |

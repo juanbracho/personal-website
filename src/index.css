@@ -120,6 +120,7 @@ button {
   line-height: 1.72;
   color: var(--dark);
   margin-top: 1.2em;
+  text-align: justify;
 }
 
 .desk-prose ul, .desk-prose ol {
@@ -129,6 +130,7 @@ button {
   font-size: 18px;
   line-height: 1.65;
   color: var(--dark);
+  text-align: justify;
 }
 
 .desk-prose li { margin-bottom: 0.4em; }

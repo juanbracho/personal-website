@@ -2,20 +2,19 @@
 
 export const experiences = [
     {
-      title: 'Executive Assistant',
+      title: 'Operations & Compliance',
       date: 'August 2025 - Present',
       organization: 'HydroGraph Clean Power Inc.',
-      location: 'Austin, TX, USA (Remote)',
+      location: 'Austin, TX, USA',
       responsibilities: [
-        'Participate in daily operations across IT, facilities, and HR functions, ensuring alignment with leadership priorities and company objectives.',
-        'Coordinate multi-department initiatives, streamline communication among executives, and maintain accountability on key deliverables.',
-        'Led full deployment of centralized device management across the organization, strengthening control, compliance, and data protection.',
-        'Coordinate the implementation of a new project management tool to improve collaboration, visibility, and project tracking across departments.',
-        'Conducted an external cybersecurity assessment with industry consultants, consolidating findings into a clear and actionable remediation roadmap.',
-        'Updated and standardized internal IT and security policies, enhancing governance and operational consistency company-wide.',
-        'Negotiated strategic vendor and service contracts to optimize technology costs and improve operational efficiency.',
-        'Manage vendor relationships, procurement, and facility operations to support business continuity and cost effectiveness.',
-        'Assist in full-cycle recruiting coordination, onboarding, and policy documentation to strengthen internal processes.',
+        'Served as primary liaison for external cybersecurity audit; gathered documentation, coordinated evidence collection, and developed remediation roadmap translating audit findings into actionable IT projects.',
+        'Coordinated gap analysis of cybersecurity posture against NIST CSF 2.0 and ISO 27001, identifying access control risks and supporting compliance readiness initiatives.',
+        'Drafted Cybersecurity Policy Suite from scratch aligned with NIST CSF 2.0 and ISO 27001 frameworks, coordinating internal review and approval with leadership.',
+        'Conducted comprehensive SharePoint governance audit using Python to analyze access permissions across organizational data; developed Node.js/React web application to present compliance gaps to C-Suite.',
+        'Managed daily IT operations coordination with managed service provider (MSP) including ticket review, project tracking, and translation of business requirements into technical specifications.',
+        'Negotiated and managed vendor contracts across multiple categories including janitorial services, waste management, IT MSP, and IT equipment procurement.',
+        'Supported HR recruiting operations including CV review, candidate shortlisting, pre-screening interviews, and hire/no-hire recommendations to C-Suite and VPs.',
+        'Participated in new headquarters coordination managing vendor logistics, security system setup, and inventory tracking for facility launch.',
       ],
     },
     {

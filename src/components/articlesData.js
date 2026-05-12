@@ -11,7 +11,13 @@ import iBuildMyOwnMoneyTrackingAppArticle from '../articles/i-built-my-own-money
 
 import aJackOfAllTradesArticle from '../articles/a-jack-of-all-trades';
 
+import havingAnImaginaryFriendIsSuddenlyNormalArticle from '../articles/having-an-imaginary-friend-is-suddenly-normal';
+
+import onWritingAndTheCourageToSaySomethingOutLoudArticle from '../articles/on-writing-and-the-courage-to-say-something-out-loud';
+
 export const articles = [
+  onWritingAndTheCourageToSaySomethingOutLoudArticle,
+  havingAnImaginaryFriendIsSuddenlyNormalArticle,
   aJackOfAllTradesArticle,
   iBuildMyOwnMoneyTrackingAppArticle,
   whatIsAFirstWorldCountryArticle,
@@ -33,7 +39,7 @@ export const articles = [
     type: 'external',
     externalUrl: 'https://www.linkedin.com/posts/juan-bracho-avila-71250a121_right-to-be-forgotten-juan-bracho-avila-activity-7313586510853722112-uq79',
     tags: ['Privacy', 'Law', 'Research', 'Digital Rights'],
-    featured: true
+    featured: false
   },
   {
     id: 'achieve-goals',
@@ -53,7 +59,7 @@ export const articles = [
     type: 'external',
     externalUrl: 'https://www.linkedin.com/pulse/what-does-mean-immigrant-juan-bracho-avila-4wzxc/',
     tags: ['Immigration', 'Personal Story', 'Culture'],
-    featured: true
+    featured: false
   },
   {
     id: 'dopamine-control',
@@ -63,6 +69,6 @@ export const articles = [
     type: 'external',
     externalUrl: 'https://www.linkedin.com/pulse/build-habit-controlling-your-dopamine-juan-bracho-avila-spirc/',
     tags: ['Mental Health', 'Habits', 'Productivity'],
-    featured: true
+    featured: false
   }
 ];

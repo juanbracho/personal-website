@@ -11,7 +11,7 @@ const aJackOfAllTradesArticle = {
   type: 'internal',
   image: require('../assets/articles/jack_of_all_trades.png'),
   tags: ['Stoicism & Philosophy', 'Writing & Reflection', 'Job Search', 'Modern World Culture'],
-  featured: true,
+  featured: false,
   content: `I checked my LinkedIn page the other day and noticed something I had rarely being paying attention to: over 1,200 impressions on my profile\\. I do not know if that is a lot or not by internet standards, but it was enough to spark a thought\\. Enough to send me back a year, to last February, when the numbers on my profile meant a lot more to me than they probably should have, and yet nothing was really moving\\. Back then, I was refreshing job boards like a man on a sinking ship refreshing the weather app, hoping the storm would disappear if I just stared at the screen long enough\\.
 
 Around that time, something unsettling happened at my previous job\\. I came very close to being out of work entirely\\. The department I had just joined went through unexpected cuts, and it was only thanks to my previous boss, who took me back into his team, that I did not find myself completely unemployed overnight\\. I cannot overstate how much that safety net mattered\\. It bought me time\\. It gave me a salary\\. But more than that, it forced me to ask an uncomfortable question: if the ground under me could disappear this quickly, what exactly was I standing on?

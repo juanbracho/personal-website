@@ -112,7 +112,7 @@ export default function Apps() {
           <div style={{ fontFamily: '"Caveat", cursive', fontSize: 24, color: '#fbeed8' }}>~ the philosophy behind these apps</div>
           <p style={{ fontFamily: '"Fraunces", serif', fontSize: 17, lineHeight: 1.65, color: '#fbeed8', opacity: 0.9, marginTop: 12, maxWidth: 760 }}>
             Each app started as something I needed but couldn't find. Small, focused, local-first.
-            No accounts. No subscriptions. Just tools that respect your time and stay out of your way.
+            No accounts. Just tools that respect your time and stay out of your way.
             Built solo with AI — shipped because they worked for me, shared in case they work for you.
           </p>
         </div>

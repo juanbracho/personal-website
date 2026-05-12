@@ -28,7 +28,7 @@ const TIPS = [
 ];
 
 const SKILLS = [
-  { cat: 'Spoken',     items: 'Spanish · English · Italian · FR · JP (learning)' },
+  { cat: 'Spoken',     items: 'Spanish · English · Italian · French (learning)' },
   { cat: 'Code',       items: 'Python · SQL · JavaScript' },
   { cat: 'Technical',  items: 'Data Analytics · ML · Flutter' },
   { cat: 'Admin',      items: 'Project Mgmt · Process Automation' },
@@ -48,7 +48,7 @@ const NAV = [
 export default function Home() {
   const navigate = useNavigate();
   const { startDrag, cardStyle, flipped, reset, wasDragged, flipCard } = useDraggable();
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile(1100);
   const [tip, setTip] = useState(TIPS[0]);
 
   useEffect(() => {
@@ -65,7 +65,9 @@ export default function Home() {
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 3);
 
-  const shelfBooks = books.slice(0, 8);
+  const shelfBooks = [...books]
+    .sort((a, b) => b.yearRead - a.yearRead || b.order - a.order)
+    .slice(0, 8);
 
   const fmt = (d) => new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 
@@ -113,6 +115,8 @@ export default function Home() {
         justifyContent: isMobile ? 'flex-end' : 'space-between',
         padding: isMobile ? '0 16px' : '0 28px',
         gap: isMobile ? 0 : undefined,
+        maxWidth: isMobile ? undefined : 1320,
+        marginLeft: 'auto', marginRight: 'auto',
       }}>
         {!isMobile && (
           <div style={{ fontFamily: '"Special Elite", monospace', color: '#fbeed8', fontSize: 13, letterSpacing: 2 }}>
@@ -378,7 +382,7 @@ export default function Home() {
 
           {/* ─ Shelf Preview ─ */}
           <div className="desk-card" data-flipped={false}
-            style={{ width: '100%', position: 'relative', transformStyle: 'preserve-3d', userSelect: 'none', cursor: 'pointer' }}
+            style={{ width: '100%', maxWidth: 460, position: 'relative', transformStyle: 'preserve-3d', userSelect: 'none', cursor: 'pointer' }}
             onClick={() => navigate('/study')}>
             <div>
               <div style={{ fontFamily: '"Caveat", cursive', fontSize: 20, color: '#fbeed8', marginBottom: 12 }}>
@@ -413,7 +417,7 @@ export default function Home() {
         </div>
       ) : (
         /* ─ Desktop: absolute card canvas ─ */
-        <div style={{ position: 'relative', marginTop: 36, minHeight: 1200, zIndex: 10 }}>
+        <div style={{ position: 'relative', marginTop: 36, minHeight: 1200, zIndex: 10, maxWidth: 1320, marginLeft: 'auto', marginRight: 'auto' }}>
 
           {/* ─ About Card ─ */}
           <div
@@ -686,7 +690,7 @@ export default function Home() {
 
       {/* ── FOOTER ──────────────────────────────────────────────── */}
       {!isMobile && (
-        <div style={{ position: 'relative', zIndex: 200, display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 32px', marginTop: 20 }}>
+        <div style={{ position: 'relative', zIndex: 200, display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 32px', marginTop: 20, maxWidth: 1320, marginLeft: 'auto', marginRight: 'auto' }}>
           <button onClick={reset} style={{ background: 'rgba(0,0,0,0.35)', color: '#fbeed8', border: 'none', padding: '10px 18px', borderRadius: 999, fontFamily: '"Special Elite", monospace', fontSize: 12, letterSpacing: 1.5, cursor: 'pointer', backdropFilter: 'blur(8px)' }}>↻ tidy desk</button>
           <div style={{ fontFamily: '"Caveat", cursive', fontSize: 28, color: '#fbeed8', textShadow: '0 2px 4px rgba(0,0,0,0.4)' }}>~ Juan</div>
         </div>

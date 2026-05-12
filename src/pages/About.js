@@ -13,7 +13,7 @@ const ALL_TIMELINE = [
   { year: '2022', where: 'Austin, TX', what: 'Re-emigrated to the United States. Started over, again.' },
   { year: '2022', where: 'N. Richland Hills, TX', what: 'Project Administrator at Atwell LLC.' },
   { year: '2024', where: 'Austin, TX', what: 'UT Austin Data Analytics & Visualization Bootcamp.' },
-  { year: '2025', where: 'Austin, TX', what: 'Executive Assistant at HydroGraph Clean Power. Five apps built.' },
+  { year: '2025', where: 'Austin, TX', what: 'Operations & Compliance at HydroGraph Clean Power. Five apps built.' },
   { year: '2025', where: 'The Internet', what: 'Started writing publicly. Still figuring things out.' },
 ];
 

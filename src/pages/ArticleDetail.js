@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm';
 import PageShell from '../components/PageShell';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { articles } from '../components/articlesData';
+import GetALetterCard from '../components/GetALetterCard';
 
 const fmt = (d) => new Date(d).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
@@ -72,19 +73,7 @@ export default function ArticleDetail() {
           <div style={{ height: 1, background: 'rgba(90,69,48,0.2)', margin: '28px 0' }} />
 
           {/* Drop cap first para + body */}
-          <div className="desk-prose" style={{ position: 'relative' }}>
-            {/* Margin doodle */}
-            {!isMobile && (
-              <div style={{
-                position: 'absolute', top: 40, right: -20, transform: 'rotate(8deg)',
-                fontFamily: '"Caveat", cursive', fontSize: 20, color: '#a04020',
-                border: '2px solid #a04020', borderRadius: 999,
-                padding: '5px 12px', background: '#fffaf0',
-              }}>
-                ★ key idea
-              </div>
-            )}
-
+          <div className="desk-prose">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {article.content || ''}
             </ReactMarkdown>
@@ -175,6 +164,9 @@ export default function ArticleDetail() {
               WRITE TO ME →
             </button>
           </div>
+
+          {/* Newsletter card */}
+          <GetALetterCard />
         </div>
       </div>
     </PageShell>

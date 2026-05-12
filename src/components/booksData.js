@@ -471,6 +471,17 @@ export const books = [
     tags: ['Personal Finance', 'Psychology', 'Money'],
     coverImage: null,
   },
+  {
+    id: 'same-as-ever',
+    title: 'Same as Ever',
+    author: 'Morgan Housel',
+    yearRead: 2026,
+    rating: 9,
+    order: 11,
+    review: 'In the world of information we all look for more — more of the new, of the trending, of the new hacks — and forget the eternal wisdom of the innate behaviors of humans and society. History repeats itself because of these behaviors we keep repeating, and still we do not stop to look at them.',
+    tags: ['Psychology', 'History', 'Human Behavior'],
+    coverImage: null,
+  },
 ];
 
 // Helper function to get books by rating (for filtering)

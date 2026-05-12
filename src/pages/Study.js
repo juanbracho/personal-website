@@ -291,6 +291,7 @@ export default function Study() {
   const [activeTab,     setActiveTab]     = useState('experience');
   const [rerollIdx,     setRerollIdx]     = useState(0);
   const [expandedEdu,   setExpandedEdu]   = useState({});
+  const [expandedExp,   setExpandedExp]   = useState({});
   const [selectedBook,  setSelectedBook]  = useState(null);
 
   const toggleEdu  = (i) => setExpandedEdu(prev => ({ ...prev, [i]: !prev[i] }));
@@ -535,14 +536,17 @@ export default function Study() {
                           {exp.organization} · {exp.location}
                         </div>
                         <ul style={{ marginTop: 10, paddingLeft: 18 }}>
-                          {exp.responsibilities.slice(0, 4).map((r, j) => (
+                          {(expandedExp[i] ? exp.responsibilities : exp.responsibilities.slice(0, 4)).map((r, j) => (
                             <li key={j} style={{ fontSize: 13, lineHeight: 1.65, color: '#3a2f22', marginBottom: 4, fontFamily: '"Fraunces", serif' }}>
                               {r}
                             </li>
                           ))}
                           {exp.responsibilities.length > 4 && (
-                            <li style={{ fontSize: 12, color: '#a08456', fontStyle: 'italic', fontFamily: '"Fraunces", serif' }}>
-                              +{exp.responsibilities.length - 4} more...
+                            <li
+                              onClick={() => setExpandedExp(prev => ({ ...prev, [i]: !prev[i] }))}
+                              style={{ fontSize: 12, color: '#a08456', fontStyle: 'italic', fontFamily: '"Fraunces", serif', cursor: 'pointer', userSelect: 'none' }}
+                            >
+                              {expandedExp[i] ? '− show less' : `+${exp.responsibilities.length - 4} more...`}
                             </li>
                           )}
                         </ul>

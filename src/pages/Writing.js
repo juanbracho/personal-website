@@ -28,7 +28,10 @@ export default function Writing() {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
 
-  const sorted = [...articles].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const sorted = [...articles].sort((a, b) => {
+    if (b.featured !== a.featured) return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+    return new Date(b.date) - new Date(a.date);
+  });
 
   const open = (a) => {
     if (a.type === 'external') window.open(a.externalUrl, '_blank');

@@ -1,7 +1,7 @@
 # Planning: "The Bracho Record" Broadsheet Redesign
 
 **Last Updated:** 2026-09-07
-**Current Phase:** Not started — plan drafted, awaiting kickoff on Phase 1
+**Current Phase:** Implementation complete for all routes (Phases 0–3 done); responsive pass and polish remain (Phases 4–5)
 
 ---
 
@@ -141,6 +141,15 @@ Design one self-contained HTML mockup per interior page, matching the homepage's
 - Print stylesheet beyond the CV/Curriculum page
 
 ## Progress Log
+- **2026-09-07 (implementation):** User asked to skip further Phase 1 mockups and implement directly against the live app, with local dev server watching for hot reload. Before touching code, committed the current Desk-era working tree as a snapshot commit and tagged it `desk-design-backup` (git tag, on `master`) so the old design is always recoverable (`git checkout desk-design-backup -- .` or branch off the tag). Then implemented the full broadsheet system:
+  - `public/index.html`: swapped in Bodoni Moda / Source Serif 4 / Special Elite / Caveat font links.
+  - New `src/styles/broadsheet.css`: all design tokens and shared classes (masthead, nav, lead/rail, section heads, preview cards, jobs grid, ads, credentials, skills strip, shelf, classified footer, article reader, contact form).
+  - New `src/components/BroadsheetShell.js`: shared dateline + masthead (big on Home, reduced elsewhere) + real nav + shared classified footer, replacing `PageShell`/`DeskNav`.
+  - `data.js`: added canonical `skills` export (Curriculum's detailed 7-category version, per the Phase 0 decision); `Home.js` and `Curriculum.js` both now read from it.
+  - Rewrote every page to the broadsheet system, wired to real data per the Phase 0 mapping table: `Home.js` (shrunk landing page), `Apps.js`, `AppDetail.js`, `Writing.js`, `ArticleDetail.js`, `Study.js` (shelf + cabinet + CV link), `Curriculum.js` (employment/credentials/skills), `About.js` (lead-story + timeline), `Contact.js` (classified form, kept the working web3forms submit logic), and the lower-priority `AppLegal.js`/`AppSupport.js` for consistency.
+  - Deleted now-unused Desk-era files: `useDraggable.js`, `PageShell.js`/`.css`, `DeskNav.js`/`.css`, `utils/color.js` (`shadeD` helper).
+  - Verified with `CI=true npx react-scripts build` (compiled clean) and spot-checked Home, Apps, Study, Curriculum, About, an article reader, and an app detail page live on the user's running dev server (localhost:3000) — all render correctly with real content (real book spines, real app copy matching `appsData.js`, real employment/education/skills data).
+  - **Known follow-up, not yet done:** `GetALetterCard` (newsletter signup, used in the article reader sidebar) keeps its old dark wood-era styling — functionality preserved but visually it doesn't match the new palette yet. Needs a restyle pass. Responsive/mobile pass (Phase 4) and final polish (Phase 5, e.g. print stylesheet, broken-link check) are still outstanding.
 - **2026-09-07:** T.A.R.P. run for redesign kickoff. Reviewed README + live prototype (`redesign-d-broadsheet.html`) against real data files. Found and logged content-wiring mismatches (stale featured articles, swapped app ad copy, missing `skills` data source, capabilities-strip grouping mismatch). User decided: reuse some old-redesign structure where useful, planning doc lives in `redesign 2.0/`, and interior pages get full prototypes before coding.
 - **2026-09-07 (same session, correction):** User rejected the prototype's one-pager layout and its masthead/lead copy after seeing it live. Site stays multi-page. Reviewed current IA directly (`Home.js`, `About.js`, `Study.js`, `Curriculum.js`) and mapped every prototype section to its existing page (table in Phase 0). Net: Home shrinks to a short intro + link-out previews; full content stays on Apps/Writing/Study/Curriculum/About, just re-skinned. Added a new Home mockup and a shared classified footer to Phase 1's prototype list (now 8 items, not 7).
 - **2026-09-07 (same session, Phase 0 wrap-up):** Found skills data is duplicated three ways (`Home.js` 6 broad categories, `Curriculum.js` 7 detailed categories, prototype's own invented 4 groups) — user decided to consolidate into `data.js` with Curriculum's detailed version as the canonical source. Confirmed featured-article logic stays unchanged (existing `featured` flag + date-descending). Confirmed `/Redesign` has nothing portable (no mobile-specific code in its prototype files; the live pages' own responsive behavior already carries forward). Rewrote Phase 2/3 scope to match the multi-page decision — Phase 2 is now Home-only (shrunk landing page), Phase 3 absorbed the full sections (employment, credentials, skills, shelf, workshop, columns) onto their real pages. Phase 0 is now fully resolved except drafting the actual homepage lead copy, which folds into the Phase 1 `/home` mockup. Next: start Phase 1 mockups, beginning with `/home`.

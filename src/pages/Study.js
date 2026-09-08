@@ -1,624 +1,102 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PageShell from '../components/PageShell';
-import { useIsMobile } from '../hooks/useIsMobile';
+import BroadsheetShell from '../components/BroadsheetShell';
 import { books } from '../components/booksData';
 import { assignments, projects, webApps } from '../components/projectsData';
-import { shadeD } from '../utils/color';
 
-// ── Palette ───────────────────────────────────────────────────────────────
+const SPINE_PALETTE = ['#7c3f2a', '#2c4356', '#5e6b4a', '#8a5a32', '#a8321f', '#3f4a6b', '#6b5a2a', '#4a3550', '#2f5a4a', '#7a3550', '#3a4a3a', '#6b4220'];
 
-const SPINE_PALETTE = [
-  '#c4633c','#5e6b4a','#a08456','#7a5a30','#8a3f28','#6b5c44','#3d4a35','#a87850',
-  '#9a4530','#7a8055','#b08c66','#544540','#c4633c','#5e6b4a','#a08456','#7a5a30',
-  '#8a3f28','#6b5c44','#3d4a35','#a87850','#9a4530','#7a8055','#b08c66','#544540',
+const CABINET = [
+  { label: 'Web Applications', items: webApps },
+  { label: 'Major Projects', items: projects },
+  { label: 'Bootcamp Work', items: assignments },
 ];
-
-const DRAWER_DATA = [
-  {
-    id: 'webapps',
-    label: 'WEB APPLICATIONS',
-    icon: '🌐',
-    items: webApps,
-    color: '#06b6d4',
-  },
-  {
-    id: 'projects',
-    label: 'MAJOR PROJECTS',
-    icon: '⭐',
-    items: projects,
-    color: '#667eea',
-  },
-  {
-    id: 'bootcamp',
-    label: 'BOOTCAMP WORK',
-    icon: '📚',
-    items: assignments,
-    color: '#5e6b4a',
-  },
-];
-
-// ── Book Spine Component ──────────────────────────────────────────────────
 
 function BookSpine({ book, index }) {
-  const [hovered, setHovered]   = useState(false);
-  const [popupPos, setPopupPos] = useState(null);
-  const spineRef = useRef(null);
+  const [hovered, setHovered] = useState(false);
+  const [pos, setPos] = useState(null);
+  const ref = useRef(null);
   const color = SPINE_PALETTE[index % SPINE_PALETTE.length];
-  const h = 160 + ((index * 17) % 65);
+  const height = 100 + ((index * 37) % 42) + 60;
 
-  const handleMouseEnter = () => {
-    if (spineRef.current) {
-      const rect = spineRef.current.getBoundingClientRect();
-      setPopupPos({ x: rect.left + rect.width / 2, y: rect.top - 8 });
+  const onEnter = () => {
+    if (ref.current) {
+      const r = ref.current.getBoundingClientRect();
+      setPos({ x: r.left + r.width / 2, y: r.top - 8 });
     }
     setHovered(true);
   };
 
-  const handleMouseLeave = () => {
-    setHovered(false);
-    setPopupPos(null);
-  };
-
-  // keep popup position in sync if user scrolls while hovering
-  useEffect(() => {
-    if (!hovered) return;
-    const update = () => {
-      if (spineRef.current) {
-        const rect = spineRef.current.getBoundingClientRect();
-        setPopupPos({ x: rect.left + rect.width / 2, y: rect.top - 8 });
-      }
-    };
-    window.addEventListener('scroll', update, true);
-    return () => window.removeEventListener('scroll', update, true);
-  }, [hovered]);
-
   return (
-    <div style={{ position: 'relative', flexShrink: 0 }}>
-      <div
-        ref={spineRef}
-        title={`${book.title} — ${book.author}`}
-        style={{
-          width: 34, height: h,
-          background: `linear-gradient(90deg, ${shadeD(color, 25)} 0%, ${color} 8%, ${color} 92%, ${shadeD(color, -30)} 100%)`,
-          color: '#fbeed8', writingMode: 'vertical-rl',
-          fontFamily: '"Fraunces", serif', fontSize: 10, fontWeight: 600,
-          padding: '12px 0',
-          boxShadow: hovered ? '0 0 0 2px rgba(255,255,255,0.3), 4px 0 12px rgba(0,0,0,0.3)' : '0 4px 8px rgba(0,0,0,0.25)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          letterSpacing: 0.5, textTransform: 'uppercase',
-          cursor: 'pointer', overflow: 'hidden',
-          transform: hovered ? 'translateY(-14px)' : 'translateY(0)',
-          transition: 'transform 0.22s ease, box-shadow 0.22s ease',
-        }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <span style={{ flex: 1, textAlign: 'center', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'clip', maxHeight: '100%' }}>{book.title}</span>
+    <div style={{ position: 'relative' }}>
+      <div ref={ref} className="bs-spine" style={{ background: color, height }} onMouseEnter={onEnter} onMouseLeave={() => setHovered(false)}>
+        <span>{book.title}</span>
       </div>
-
-      {/* Hover card — fixed position escapes overflow container */}
-      {hovered && popupPos && (
+      {hovered && pos && (
         <div style={{
-          position: 'fixed',
-          left: popupPos.x - 100,
-          top: popupPos.y - 195,
-          width: 200,
-          background: '#fffaf0',
-          padding: 14, borderRadius: 4,
-          boxShadow: '0 16px 32px -8px rgba(0,0,0,0.6)',
-          zIndex: 9999, pointerEvents: 'none',
-          borderTop: `4px solid ${color}`,
+          position: 'fixed', left: pos.x - 100, top: pos.y - 130, width: 200, zIndex: 999,
+          background: '#fdfbf5', border: '1px solid var(--rule)', boxShadow: '0 12px 28px rgba(0,0,0,.3)',
+          padding: 14, pointerEvents: 'none', borderTop: `4px solid ${color}`,
         }}>
-          <div style={{ fontFamily: '"Fraunces", serif', fontSize: 15, fontWeight: 600, color: '#1f1d18', lineHeight: 1.25 }}>{book.title}</div>
-          <div style={{ fontSize: 12, color: '#5a4530', marginTop: 3, fontStyle: 'italic' }}>by {book.author}</div>
-          <div style={{ marginTop: 8, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 16, color: color, fontWeight: 600 }}>
-              {'★'.repeat(Math.round(book.rating / 2))}
-            </div>
-            <div style={{ fontFamily: '"Fraunces", serif', fontSize: 18, fontWeight: 600, color: color }}>{book.rating}/10</div>
-          </div>
-          {book.tags && (
-            <div style={{ marginTop: 8, fontSize: 10, color: '#7a5530', fontFamily: '"Special Elite", monospace', letterSpacing: 0.5 }}>
-              {book.tags.slice(0, 2).join(' · ')}
-            </div>
-          )}
+          <div style={{ fontFamily: "'Bodoni Moda', serif", fontSize: 15, fontWeight: 700, lineHeight: 1.25 }}>{book.title}</div>
+          <div style={{ fontSize: 12, fontStyle: 'italic', color: 'var(--mid)', marginTop: 3 }}>by {book.author}</div>
+          <div className="bs-el" style={{ fontSize: 11, color: 'var(--red)', marginTop: 8 }}>{book.rating}/10 · {book.yearRead}</div>
         </div>
       )}
     </div>
   );
 }
-
-// ── Project Card ──────────────────────────────────────────────────────────
-
-function ProjectCard({ item, color }) {
-  return (
-    <a
-      href={item.github}
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        background: '#fffaf0',
-        border: `2px solid ${color}20`,
-        borderRadius: 8, padding: '16px 18px',
-        display: 'flex', flexDirection: 'column', gap: 8,
-        textDecoration: 'none', color: 'inherit',
-        transition: 'border-color 0.2s, transform 0.2s',
-      }}
-      onMouseEnter={e => { e.currentTarget.style.borderColor = color; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-      onMouseLeave={e => { e.currentTarget.style.borderColor = color + '20'; e.currentTarget.style.transform = 'translateY(0)'; }}
-    >
-      <div style={{ fontFamily: '"Fraunces", serif', fontSize: 16, fontWeight: 600, color: '#1f1d18', lineHeight: 1.2 }}>{item.name}</div>
-      {item.description && (
-        <p style={{ fontSize: 12, lineHeight: 1.55, color: '#5a4530', margin: 0 }}>{item.description}</p>
-      )}
-      <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginTop: 4 }}>
-        {item.tech?.slice(0, 3).map(t => (
-          <span key={t} style={{ padding: '2px 8px', background: color + '18', color: color, borderRadius: 999, fontSize: 10, fontFamily: '"Special Elite", monospace', letterSpacing: 0.5 }}>{t}</span>
-        ))}
-      </div>
-      <div style={{ fontFamily: '"Caveat", cursive', fontSize: 16, color: color, marginTop: 'auto' }}>
-        GitHub ↗
-      </div>
-    </a>
-  );
-}
-
-// ── Book Modal ────────────────────────────────────────────────────────────
-
-function BookModal({ book, color, onClose }) {
-  if (!book) return null;
-  return (
-    <div
-      onClick={onClose}
-      style={{
-        position: 'fixed', inset: 0, zIndex: 9999,
-        background: 'rgba(20,12,6,0.75)', backdropFilter: 'blur(4px)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        padding: 24,
-      }}
-    >
-      <div
-        onClick={e => e.stopPropagation()}
-        style={{
-          background: '#fffaf0', borderRadius: 4, padding: '36px 40px',
-          maxWidth: 580, width: '100%',
-          boxShadow: '0 40px 80px -20px rgba(0,0,0,0.7)',
-          borderLeft: `6px solid ${color}`,
-          position: 'relative', maxHeight: '80vh', overflowY: 'auto',
-        }}
-      >
-        <button onClick={onClose} style={{
-          position: 'absolute', top: 16, right: 16,
-          background: 'none', border: 'none', cursor: 'pointer',
-          fontFamily: '"Caveat", cursive', fontSize: 22, color: '#a08456',
-        }}>✕</button>
-        <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 10, letterSpacing: 2, color, textTransform: 'uppercase' }}>
-          ★ {book.rating}/10 · {book.yearRead}
-        </div>
-        <div style={{ fontFamily: '"Fraunces", serif', fontSize: 28, fontWeight: 600, color: '#1f1d18', lineHeight: 1.15, marginTop: 6 }}>{book.title}</div>
-        <div style={{ fontSize: 14, color: '#5a4530', fontStyle: 'italic', marginTop: 4 }}>by {book.author}</div>
-        {book.review && (
-          <div style={{ fontFamily: '"Caveat", cursive', fontSize: 17, color: '#3a2f22', marginTop: 20, lineHeight: 1.65 }}>
-            {book.review}
-          </div>
-        )}
-        {book.tags && (
-          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 20 }}>
-            {book.tags.map(t => (
-              <span key={t} style={{ padding: '3px 10px', background: color + '18', color, borderRadius: 999, fontSize: 11, fontFamily: '"Special Elite", monospace', letterSpacing: 0.5 }}>{t}</span>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ── Drawer ────────────────────────────────────────────────────────────────
-
-function CabinetDrawer({ drawer, isOpen, onToggle }) {
-  return (
-    <div style={{ marginBottom: 4 }}>
-      {/* Handle */}
-      <button
-        onClick={onToggle}
-        style={{
-          width: '100%', padding: '18px 28px',
-          background: isOpen ? '#3a2410' : 'linear-gradient(180deg, #4a3020 0%, #3a2410 100%)',
-          border: 'none', cursor: 'pointer',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          transition: 'background 0.2s',
-        }}
-        onMouseEnter={e => { if (!isOpen) e.currentTarget.style.background = '#4a3020'; }}
-        onMouseLeave={e => { if (!isOpen) e.currentTarget.style.background = 'linear-gradient(180deg, #4a3020 0%, #3a2410 100%)'; }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          {/* Drawer handle bar */}
-          <div style={{
-            width: 60, height: 14,
-            background: 'linear-gradient(180deg, #d4a056 0%, #a87830 50%, #d4a056 100%)',
-            borderRadius: 7,
-            boxShadow: '0 3px 6px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.3)',
-          }} />
-          <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 12, letterSpacing: 2, color: '#fbeed8' }}>
-            {drawer.icon} {drawer.label}
-          </div>
-          <div style={{ fontFamily: '"Caveat", cursive', fontSize: 16, color: 'rgba(251,238,216,0.5)' }}>
-            {drawer.items.length} items
-          </div>
-        </div>
-        <div style={{
-          fontFamily: '"Caveat", cursive', fontSize: 28, color: drawer.color,
-          transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)',
-          transition: 'transform 0.3s',
-        }}>+</div>
-      </button>
-
-      {/* Content — grid-template-rows for smooth open/close without layout snap */}
-      <div style={{
-        display: 'grid',
-        gridTemplateRows: isOpen ? '1fr' : '0fr',
-        transition: 'grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-      }}>
-        <div style={{ overflow: 'hidden' }}>
-          <div style={{
-            background: '#2a1f15',
-            padding: '24px 24px 28px',
-            borderTop: `2px solid ${drawer.color}40`,
-          }}>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-              gap: 14,
-            }}>
-              {drawer.items.map(item => (
-                <ProjectCard key={item.id} item={item} color={drawer.color} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ── Main Study Page ───────────────────────────────────────────────────────
 
 export default function Study() {
-  const isMobile = useIsMobile();
   const navigate = useNavigate();
-  const [openDrawer,   setOpenDrawer]   = useState(null);
-  const [rerollIdx,    setRerollIdx]    = useState(0);
-  const [selectedBook, setSelectedBook] = useState(null);
-
-  const toggleDrawer = (id) => setOpenDrawer(prev => prev === id ? null : id);
-
-  const books2025 = books.filter(b => b.yearRead === 2025).sort((a, b) => a.order - b.order);
-  const books2026 = books.filter(b => b.yearRead === 2026).sort((a, b) => a.order - b.order);
-
-  const recBooks   = [...books].filter(b => b.rating >= 9).sort((a, b) => b.rating - a.rating);
-  const totalGroups = Math.ceil(recBooks.length / 3);
-  const featuredBooks = recBooks.slice(rerollIdx * 3, rerollIdx * 3 + 3);
-  const reroll = () => setRerollIdx(i => (i + 1) % totalGroups);
+  const sorted = [...books].sort((a, b) => (a.yearRead - b.yearRead) || ((a.order || 0) - (b.order || 0)));
 
   return (
-    <PageShell title="▰ THE STUDY ROOM">
-      <div style={{ marginTop: 20 }}>
-
-        {/* ── Title ── */}
-        <h1 style={{ fontFamily: '"Fraunces", serif', fontSize: isMobile ? 38 : 56, fontWeight: 600, color: '#fbeed8', letterSpacing: -2, lineHeight: 1 }}>
-          The Study<span style={{ color: '#d4a056' }}>.</span>
-        </h1>
-        <p style={{ fontFamily: '"Caveat", cursive', fontSize: 22, color: '#fbeed8', opacity: 0.85, marginTop: 8 }}>
-          Books read · projects built · résumé filed.
-        </p>
-
-        {/* ════════════════════════════════════════════════════════
-            ZONE A — BOOKSHELF
-        ════════════════════════════════════════════════════════ */}
-        <div style={{ marginTop: 56 }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 16 }}>
-            <h2 style={{ fontFamily: '"Fraunces", serif', fontSize: isMobile ? 26 : 36, fontWeight: 600, color: '#fbeed8', letterSpacing: -1 }}>
-              The Shelf
-            </h2>
-            <div style={{ fontFamily: '"Caveat", cursive', fontSize: 20, color: 'rgba(251,238,216,0.7)' }}>
-              {books.length} books read in 2025–2026
-            </div>
-          </div>
-
-          {/* 2025 shelf */}
-          <div style={{ marginBottom: 32 }}>
-            <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 2, color: 'rgba(251,238,216,0.6)', marginBottom: 10 }}>
-              ─── 2025 ─── {books2025.length} books
-            </div>
-            <div style={{
-              display: 'flex', gap: 5, alignItems: 'flex-end',
-              minHeight: 250, padding: '0 20px 12px',
-              borderBottom: '18px solid #5a3a1a',
-              background: 'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.12) 100%)',
-              boxShadow: '0 8px 20px rgba(0,0,0,0.4)',
-              flexWrap: 'nowrap', overflowX: 'auto',
-            }}>
-              {books2025.map((b, i) => (
-                <BookSpine key={b.id} book={b} index={i} />
-              ))}
-            </div>
-          </div>
-
-          {/* 2026 shelf */}
-          {books2026.length > 0 && (
-            <div style={{ marginBottom: 40 }}>
-              <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 2, color: 'rgba(251,238,216,0.6)', marginBottom: 10 }}>
-                ─── 2026 ─── {books2026.length} books so far
-              </div>
-              <div style={{
-                display: 'flex', gap: 5, alignItems: 'flex-end',
-                minHeight: 220, padding: '0 20px 12px',
-                borderBottom: '18px solid #5a3a1a',
-                background: 'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.12) 100%)',
-                boxShadow: '0 8px 20px rgba(0,0,0,0.4)',
-                flexWrap: 'nowrap', overflowX: 'auto',
-              }}>
-                {books2026.map((b, i) => (
-                  <BookSpine key={b.id} book={b} index={books2025.length + i} />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Featured trio */}
-          <div style={{ marginTop: 12 }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-              <div style={{ fontFamily: '"Caveat", cursive', fontSize: 26, color: '#fef080' }}>
-                ✦ any year recommendations
-              </div>
-              <button onClick={reroll} style={{
-                fontFamily: '"Caveat", cursive', fontSize: 18, color: '#fef080',
-                background: 'rgba(0,0,0,0.25)', border: '1px solid rgba(254,240,128,0.3)',
-                borderRadius: 999, padding: '6px 18px', cursor: 'pointer',
-                backdropFilter: 'blur(8px)', transition: 'background 0.2s',
-              }}
-              onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.45)'}
-              onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0.25)'}
-              >don't like these? ↻</button>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 18 }}>
-              {featuredBooks.map((b, i) => {
-                const color = SPINE_PALETTE[i % SPINE_PALETTE.length];
-                return (
-                  <div
-                    key={b.id}
-                    onClick={() => setSelectedBook({ book: b, color })}
-                    style={{
-                      background: '#fffaf0', padding: '20px 22px', borderRadius: 4,
-                      boxShadow: '0 14px 28px -10px rgba(0,0,0,0.5)',
-                      borderLeft: `6px solid ${color}`,
-                      cursor: 'pointer', transition: 'transform 0.2s, box-shadow 0.2s',
-                    }}
-                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 20px 36px -10px rgba(0,0,0,0.6)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 14px 28px -10px rgba(0,0,0,0.5)'; }}
-                  >
-                    <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 10, letterSpacing: 2, color: color, textTransform: 'uppercase' }}>
-                      ★ {b.rating}/10 · {b.yearRead}
-                    </div>
-                    <div style={{ fontFamily: '"Fraunces", serif', fontSize: 22, fontWeight: 600, marginTop: 6, lineHeight: 1.15, letterSpacing: -0.3 }}>{b.title}</div>
-                    <div style={{ fontSize: 13, color: '#5a4530', fontStyle: 'italic', marginTop: 2 }}>by {b.author}</div>
-                    <div style={{ fontFamily: '"Caveat", cursive', fontSize: 16, color, marginTop: 10, lineHeight: 1.5 }}>
-                      {b.review?.split('\n\n')[0].slice(0, 120)}...
-                    </div>
-                    <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 10, letterSpacing: 1, color, marginTop: 10, opacity: 0.7 }}>click to read full review →</div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+    <BroadsheetShell pageTitle="The Study">
+      <div className="bs-shead" style={{ marginTop: 20 }}>
+        <h2>On the Shelf</h2>
+        <span className="bs-no">{books.length} books read since 2025</span>
+      </div>
+      <div className="bs-shelf">
+        <div className="bs-spines">
+          {sorted.map((b, i) => <BookSpine key={b.id} book={b} index={i} />)}
         </div>
-
-        {/* ════════════════════════════════════════════════════════
-            ZONE B — FILING CABINET
-        ════════════════════════════════════════════════════════ */}
-        <div style={{ marginTop: 72 }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 24 }}>
-            <h2 style={{ fontFamily: '"Fraunces", serif', fontSize: isMobile ? 26 : 36, fontWeight: 600, color: '#fbeed8', letterSpacing: -1 }}>
-              The Cabinet
-            </h2>
-            <div style={{ fontFamily: '"Caveat", cursive', fontSize: 20, color: 'rgba(251,238,216,0.7)' }}>
-              projects, bootcamp work, web apps
-            </div>
-          </div>
-
-          {/* Cabinet body */}
-          <div style={{
-            background: 'linear-gradient(180deg, #3a2410 0%, #2a1808 100%)',
-            borderRadius: '6px 6px 10px 10px',
-            overflow: 'hidden',
-            boxShadow: '0 20px 40px -10px rgba(0,0,0,0.6), inset 0 1px 0 rgba(212,160,86,0.2)',
-          }}>
-            {/* Cabinet top */}
-            <div style={{
-              height: 20, background: 'linear-gradient(180deg, #5a3a1a 0%, #4a2e14 100%)',
-              borderBottom: '2px solid rgba(212,160,86,0.3)',
-            }} />
-
-            {DRAWER_DATA.map(drawer => (
-              <CabinetDrawer
-                key={drawer.id}
-                drawer={drawer}
-                isOpen={openDrawer === drawer.id}
-                onToggle={() => toggleDrawer(drawer.id)}
-              />
-            ))}
-
-            {/* Cabinet bottom */}
-            <div style={{ height: 16, background: '#2a1808', borderTop: '2px solid rgba(212,160,86,0.15)' }} />
-          </div>
-
-          <div style={{ fontFamily: '"Caveat", cursive', fontSize: 18, color: 'rgba(251,238,216,0.6)', marginTop: 12, textAlign: 'right' }}>
-            click a drawer to open it →
-          </div>
-        </div>
-
-        {/* ════════════════════════════════════════════════════════
-            ZONE C — CV CARD (links to /curriculum)
-        ════════════════════════════════════════════════════════ */}
-        <div style={{ marginTop: 72 }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 20 }}>
-            <h2 style={{ fontFamily: '"Fraunces", serif', fontSize: isMobile ? 26 : 36, fontWeight: 600, color: '#fbeed8', letterSpacing: -1 }}>
-              The CV
-            </h2>
-            <div style={{ fontFamily: '"Caveat", cursive', fontSize: 20, color: 'rgba(251,238,216,0.7)' }}>
-              filed separately — open the dossier →
-            </div>
-          </div>
-
-          {/* Manila folder card — clickable */}
-          <button
-            onClick={() => navigate('/curriculum')}
-            style={{
-              width: '100%',
-              background: 'linear-gradient(180deg, #e0b070 0%, #c4923c 100%)',
-              border: '1.5px solid #6b4220',
-              borderRadius: '0 12px 14px 14px',
-              padding: 14,
-              boxShadow: '0 20px 40px -12px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.2)',
-              cursor: 'pointer',
-              textAlign: 'left',
-              position: 'relative',
-              transition: 'transform 0.2s, box-shadow 0.2s',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.transform = 'translateY(-4px)';
-              e.currentTarget.style.boxShadow = '0 28px 52px -10px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.25)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 20px 40px -12px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.2)';
-            }}
-          >
-            {/* Folder tab on top */}
-            <div style={{
-              position: 'absolute', top: -28, left: 28,
-              padding: '8px 24px 14px',
-              background: 'linear-gradient(180deg, #e0b070 0%, #d4a056 100%)',
-              border: '1.5px solid #6b4220',
-              borderBottom: 'none',
-              borderRadius: '8px 8px 0 0',
-              fontFamily: '"Special Elite", monospace', fontSize: 12, letterSpacing: 1.5,
-              color: '#2a1808',
-              boxShadow: '0 -4px 8px rgba(0,0,0,0.2)',
-            }}>
-              📋 CURRICULUM VITAE
-            </div>
-
-            {/* CONFIDENTIAL stamp */}
-            {!isMobile && (
-              <div style={{
-                position: 'absolute', top: 22, right: 28,
-                border: '2.5px solid #a04020',
-                color: '#a04020',
-                padding: '4px 12px',
-                fontFamily: '"Special Elite", monospace',
-                fontSize: 13, letterSpacing: 2.5, fontWeight: 700,
-                transform: 'rotate(8deg)',
-                opacity: 0.75,
-                boxShadow: 'inset 0 0 0 1px #a04020, inset 0 0 0 3.5px transparent, inset 0 0 0 4.5px rgba(160,64,32,0.35)',
-                borderRadius: 2,
-                pointerEvents: 'none',
-              }}>
-                CONFIDENTIAL
-              </div>
-            )}
-
-            {/* Inner paper */}
-            <div style={{
-              background: '#fdf3d8',
-              backgroundImage: `repeating-linear-gradient(0deg, transparent 0px, transparent 22px, rgba(60,30,10,0.06) 22px, rgba(60,30,10,0.06) 23px),
-                                radial-gradient(rgba(60,30,10,0.04) 1px, transparent 1px)`,
-              backgroundSize: '100% 23px, 4px 4px',
-              borderRadius: '0 6px 8px 8px',
-              padding: isMobile ? '28px 22px' : '40px 50px 36px',
-            }}>
-              <div style={{
-                fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 2,
-                color: '#a04020',
-              }}>
-                CASE FILE / EXPEDIENTE — JUAN D. BRACHO
-              </div>
-              <div style={{
-                fontFamily: '"Fraunces", serif', fontSize: isMobile ? 30 : 40, fontWeight: 700,
-                color: '#1f1d18', lineHeight: 1.05, letterSpacing: -1, marginTop: 6,
-              }}>
-                The Dossier<span style={{ color: '#c4633c' }}>.</span>
-              </div>
-              <div style={{
-                fontFamily: '"Caveat", cursive', fontSize: 20, color: '#5a4530', marginTop: 6,
-              }}>
-                Work history, education, and skills — filed neatly, just in case you're hiring.
-              </div>
-
-              {/* Quick stats row */}
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
-                gap: 14,
-                marginTop: 22,
-                paddingTop: 18,
-                borderTop: '1px dashed rgba(60,30,10,0.3)',
-              }}>
-                {[
-                  { k: 'EXHIBIT A', v: 'Employment', sub: '4 positions' },
-                  { k: 'EXHIBIT B', v: 'Education',  sub: '2 degrees + bootcamp' },
-                  { k: 'EXHIBIT C', v: 'Skills',     sub: 'Compliance · Tech · Ops' },
-                  { k: 'STATUS',    v: 'OPEN',       sub: 'always learning' },
-                ].map(s => (
-                  <div key={s.k}>
-                    <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 9, letterSpacing: 1.8, color: '#a04020' }}>
-                      {s.k}
-                    </div>
-                    <div style={{ fontFamily: '"Fraunces", serif', fontSize: 16, fontWeight: 700, color: '#1f1d18', marginTop: 2 }}>
-                      {s.v}
-                    </div>
-                    <div style={{ fontFamily: '"Caveat", cursive', fontSize: 15, color: '#5a4530', marginTop: 1 }}>
-                      {s.sub}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA */}
-              <div style={{
-                marginTop: 22, paddingTop: 14,
-                borderTop: '1px dashed rgba(60,30,10,0.3)',
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                flexWrap: 'wrap', gap: 8,
-              }}>
-                <div style={{ fontFamily: '"Caveat", cursive', fontSize: 22, color: '#a04020' }}>
-                  open the file →
-                </div>
-                <div style={{
-                  fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 1.5,
-                  color: '#a04020', textTransform: 'uppercase',
-                }}>
-                  /curriculum
-                </div>
-              </div>
-            </div>
-          </button>
-        </div>
-
-        {/* Bottom signature */}
-        <div style={{ marginTop: 60, textAlign: 'right' }}>
-          <div style={{ fontFamily: '"Caveat", cursive', fontSize: 32, color: '#fbeed8', textShadow: '0 2px 4px rgba(0,0,0,0.4)' }}>~ Juan</div>
-          <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 11, color: 'rgba(251,238,216,0.4)', letterSpacing: 2, marginTop: 4 }}>
-            ALWAYS BUILDING · ALWAYS LEARNING
-          </div>
-        </div>
+        <div className="bs-cap">hover a spine for rating &amp; year</div>
       </div>
 
-      {selectedBook && (
-        <BookModal book={selectedBook.book} color={selectedBook.color} onClose={() => setSelectedBook(null)} />
-      )}
-    </PageShell>
+      {CABINET.map(drawer => (
+        <React.Fragment key={drawer.label}>
+          <div className="bs-shead">
+            <h2>{drawer.label}</h2>
+            <span className="bs-no">{drawer.items.length} entries</span>
+          </div>
+          {drawer.items.map((item, i) => (
+            <div className="bs-brief" key={item.id || i} style={{ alignItems: 'flex-start' }}>
+              <span className="bs-n">{String(i + 1).padStart(2, '0')}</span>
+              <div style={{ flex: 1 }}>
+                <h3><a href={item.github} target="_blank" rel="noopener noreferrer">{item.name}</a></h3>
+                {item.description && <p>{item.description}</p>}
+                {item.tech && (
+                  <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginTop: 6 }}>
+                    {item.tech.slice(0, 4).map(t => <span className="bs-el" key={t} style={{ fontSize: 9, color: 'var(--mid)', border: '1px solid var(--rule)', padding: '2px 7px' }}>{t}</span>)}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </React.Fragment>
+      ))}
+
+      <div className="bs-shead">
+        <h2>The CV</h2>
+        <span className="bs-no">printable, one page</span>
+      </div>
+      <div className="bs-preview" onClick={() => navigate('/curriculum')} style={{ cursor: 'pointer', maxWidth: 320 }}>
+        <div className="bs-k">Employment · Credentials · Skills</div>
+        <h3>Full Résumé</h3>
+        <p>Every role, degree, and skill, filed neatly, just in case you're hiring.</p>
+        <span className="bs-go">Read the file →</span>
+      </div>
+    </BroadsheetShell>
   );
 }

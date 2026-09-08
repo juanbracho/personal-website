@@ -106,3 +106,16 @@ export const education = [
     ],
   },
 ];
+
+// Canonical skills source — was previously duplicated separately in Home.js
+// (6 broad categories) and Curriculum.js (this detailed 7-category version).
+// This detailed version wins; pages needing a short list slice/curate from it.
+export const skills = [
+  { cat: 'Procurement & Sourcing', items: ['Vendor sourcing and selection', 'Contract negotiation', 'Purchase order management', 'Invoice validation', 'RFP / requirements gathering'] },
+  { cat: 'Vendor & Contract Management', items: ['Vendor onboarding and offboarding', 'Service transition management', 'SaaS and MSP contract administration', 'Subcontractor agreement review', 'TPRM'] },
+  { cat: 'Supply & Inventory Operations', items: ['Supplier relationship management', 'Inventory / stock level management', 'Multi-site procurement coordination'] },
+  { cat: 'AI-Assisted Research & Tools', items: ['Notion (workflow / dashboard builds)', 'Claude Code', 'Perplexity (research validation)', 'AI-assisted data modeling and process automation'] },
+  { cat: 'Governance & Compliance', items: ['Policy development', 'NIST CSF 2.0', 'ISO 27001', 'ISO 9001', 'Audit coordination', 'Permit compliance', 'Internal controls'] },
+  { cat: 'Technical', items: ['Python (Pandas, NumPy)', 'SQL', 'Excel (dashboards, forecasting)', 'Microsoft 365 / SharePoint Admin', 'MDM', 'Tableau'] },
+  { cat: 'Languages', items: ['Spanish (Native/Bilingual)', 'English (Fluent/Bilingual)', 'Italian (Limited Working)'] },
+];

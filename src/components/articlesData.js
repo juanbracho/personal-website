@@ -9,16 +9,19 @@ import whatIsAFirstWorldCountryArticle from '../articles/what-is-a-first-world-c
 
 import iBuildMyOwnMoneyTrackingAppArticle from '../articles/i-built-my-own-money-tracking-app';
 
-import aJackOfAllTradesArticle from '../articles/a-jack-of-all-trades';
-
 import havingAnImaginaryFriendIsSuddenlyNormalArticle from '../articles/having-an-imaginary-friend-is-suddenly-normal';
 
 import onWritingAndTheCourageToSaySomethingOutLoudArticle from '../articles/on-writing-and-the-courage-to-say-something-out-loud';
 
+import theArtOfDoingNothingArticle from '../articles/the-art-of-doing-nothing';
+
+import whatAreWeDoingArticle from '../articles/what-are-we-doing';
+
 export const articles = [
+  whatAreWeDoingArticle,
+  theArtOfDoingNothingArticle,
   onWritingAndTheCourageToSaySomethingOutLoudArticle,
   havingAnImaginaryFriendIsSuddenlyNormalArticle,
-  aJackOfAllTradesArticle,
   iBuildMyOwnMoneyTrackingAppArticle,
   whatIsAFirstWorldCountryArticle,
   {

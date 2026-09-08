@@ -9,11 +9,11 @@ const ALL_TIMELINE = [
   { year: '2018', where: 'Maracaibo, VE', what: 'Graduated — Bachelor of Law, Rafael Urdaneta University.' },
   { year: '2018', where: 'Buenos Aires, AR', what: 'Emigrated from Venezuela. Began rebuilding from scratch.' },
   { year: '2020', where: 'Buenos Aires, AR', what: 'Started Master of Arts in Corporate Law at UADE.' },
-  { year: '2020', where: 'Buenos Aires, AR', what: 'Project Administrator at Avaya — first data & tech role.' },
+  { year: '2020', where: 'Buenos Aires, AR', what: 'Project Analyst at Avaya — first data & tech role.' },
   { year: '2022', where: 'Austin, TX', what: 'Re-emigrated to the United States. Started over, again.' },
-  { year: '2022', where: 'N. Richland Hills, TX', what: 'Project Administrator at Atwell LLC.' },
+  { year: '2022', where: 'N. Richland Hills, TX', what: 'Project Coordinator at Atwell LLC.' },
   { year: '2024', where: 'Austin, TX', what: 'UT Austin Data Analytics & Visualization Bootcamp.' },
-  { year: '2025', where: 'Austin, TX', what: 'Operations & Compliance at HydroGraph Clean Power. Five apps built.' },
+  { year: '2025', where: 'Austin, TX', what: 'Operations & Supply Chain at HydroGraph . Five apps built.' },
   { year: '2025', where: 'The Internet', what: 'Started writing publicly. Still figuring things out.' },
 ];
 
@@ -96,7 +96,7 @@ export default function About() {
 
           {/* Quick links */}
           <div style={{ marginTop: 20, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <a href="https://www.linkedin.com/in/juan-bracho-avila-71250a121/" target="_blank" rel="noopener noreferrer" style={{ fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 1, color: '#d4a056', textDecoration: 'underline' }}>LinkedIn</a>
+            <a href="https://www.linkedin.com/in/juan-d-bracho/" target="_blank" rel="noopener noreferrer" style={{ fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 1, color: '#d4a056', textDecoration: 'underline' }}>LinkedIn</a>
             <a href="https://github.com/juanbracho" target="_blank" rel="noopener noreferrer" style={{ fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 1, color: '#d4a056', textDecoration: 'underline' }}>GitHub</a>
             <span onClick={() => navigate('/contact')} style={{ fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 1, color: '#d4a056', textDecoration: 'underline', cursor: 'pointer' }}>Write to me</span>
           </div>

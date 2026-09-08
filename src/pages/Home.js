@@ -6,7 +6,7 @@ import { shadeD } from '../utils/color';
 import { mobileApps } from '../components/appsData';
 import { articles } from '../components/articlesData';
 import { books } from '../components/booksData';
-import profileImg from '../assets/profile.jpeg';
+import profileImg from '../assets/profile-sevilla.jpeg';
 import { FaInstagram } from 'react-icons/fa';
 
 const APP_META = {
@@ -28,13 +28,12 @@ const TIPS = [
 ];
 
 const SKILLS = [
-  { cat: 'Spoken',     items: 'Spanish · English · Italian · French (learning)' },
+  { cat: 'Spoken',     items: 'Spanish · English · Italian' },
   { cat: 'Code',       items: 'Python · SQL · JavaScript' },
-  { cat: 'Technical',  items: 'Data Analytics · ML · Flutter' },
-  { cat: 'Admin',      items: 'Project Mgmt · Process Automation' },
-  { cat: 'PM',         items: 'Agile · Operations · Budgeting' },
-  { cat: 'Compliance', items: 'ISO9001 · Legal Review' },
-  { cat: 'AI',         items: 'Prompt Engineering · AI Dev' },
+  { cat: 'Technical',  items: 'Excel · M365 Admin · SharePoint · Tableau' },
+  { cat: 'Operations', items: 'Vendor Mgmt · Procurement · Contracts' },
+  { cat: 'Compliance', items: 'NIST CSF 2.0 · ISO 27001 · ISO 9001' },
+  { cat: 'PM',         items: 'Project Lifecycle · Cross-functional Coord.' },
 ];
 
 const NAV = [
@@ -345,7 +344,7 @@ export default function Home() {
               }}>
                 <div style={{ position: 'absolute', top: -14, left: 44, width: 90, height: 24, background: 'rgba(232,168,120,0.7)', transform: 'rotate(-3deg)', boxShadow: '0 2px 4px rgba(0,0,0,0.15)' }} />
                 <img src={profileImg} alt="Juan" style={{ width: '100%', height: 160, objectFit: 'cover', filter: 'sepia(0.2) saturate(0.85)' }} />
-                <div style={{ fontFamily: '"Caveat", cursive', fontSize: 16, textAlign: 'center', marginTop: 6, color: '#3a2f22' }}>last fall · Granada ↑</div>
+                <div style={{ fontFamily: '"Caveat", cursive', fontSize: 16, textAlign: 'center', marginTop: 6, color: '#3a2f22' }}> Sevilla, Spain ↑</div>
               </div>
               <div className="desk-face desk-back" style={{
                 background: '#fffaf0', padding: 16, borderRadius: 2,
@@ -506,7 +505,7 @@ export default function Home() {
             }}>
               <div style={{ position: 'absolute', top: -16, left: 60, width: 100, height: 28, background: 'rgba(232,168,120,0.7)', transform: 'rotate(-3deg)', boxShadow: '0 2px 4px rgba(0,0,0,0.15)' }} />
               <img src={profileImg} alt="Juan" style={{ width: '100%', height: 192, objectFit: 'cover', filter: 'sepia(0.2) saturate(0.85)' }} />
-              <div style={{ fontFamily: '"Caveat", cursive', fontSize: 20, textAlign: 'center', marginTop: 8, color: '#3a2f22' }}>last fall · Granada, Spain ↑</div>
+              <div style={{ fontFamily: '"Caveat", cursive', fontSize: 20, textAlign: 'center', marginTop: 8, color: '#3a2f22' }}>Sevilla, Spain ↑</div>
             </div>
             <div className="desk-face desk-back" style={{
               background: '#fffaf0', padding: 18, borderRadius: 2,

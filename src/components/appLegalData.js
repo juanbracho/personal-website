@@ -85,7 +85,7 @@ export const legalContent = {
         {
           type: "contact",
           heading: "Contact Us",
-          content: "If you have any questions about this Privacy Policy, please contact us at brachojuan45@gmail.com or through the app's support section."
+          content: "If you have any questions about this Privacy Policy, please contact us at apps@juanbracho.com or through the app's support section."
         }
       ]
     },
@@ -154,7 +154,7 @@ export const legalContent = {
         {
           type: "contact",
           heading: "Contact Information",
-          content: "If you have questions about these Terms of Service, please contact us at brachojuan45@gmail.com or through the app's support section."
+          content: "If you have questions about these Terms of Service, please contact us at apps@juanbracho.com or through the app's support section."
         },
         {
           type: "acknowledgment",
@@ -236,7 +236,7 @@ export const legalContent = {
         {
           type: "contact",
           heading: "Contact Us",
-          content: "If you have any questions about this Privacy Policy, please contact us at brachojuan45@gmail.com or through the app's support section."
+          content: "If you have any questions about this Privacy Policy, please contact us at apps@juanbracho.com or through the app's support section."
         }
       ]
     },
@@ -293,7 +293,7 @@ export const legalContent = {
         {
           type: "contact",
           heading: "Contact Information",
-          content: "If you have questions about these Terms of Service, please contact us at brachojuan45@gmail.com or through the app's support section."
+          content: "If you have questions about these Terms of Service, please contact us at apps@juanbracho.com or through the app's support section."
         },
         {
           type: "acknowledgment",
@@ -385,7 +385,7 @@ export const legalContent = {
         {
           type: "contact",
           heading: "Contact Us",
-          content: "If you have any questions about this Privacy Policy or our data practices, please contact us at brachojuan45@gmail.com or through the app's support section."
+          content: "If you have any questions about this Privacy Policy or our data practices, please contact us at apps@juanbracho.com or through the app's support section."
         }
       ]
     },
@@ -447,7 +447,7 @@ export const legalContent = {
         {
           type: "contact",
           heading: "Contact Information",
-          content: "If you have questions about these Terms of Service, please contact us at brachojuan45@gmail.com or through the app's support section."
+          content: "If you have questions about these Terms of Service, please contact us at apps@juanbracho.com or through the app's support section."
         },
         {
           type: "acknowledgment",

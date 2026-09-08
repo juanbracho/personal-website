@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { books } from '../components/booksData';
 import { assignments, projects, webApps } from '../components/projectsData';
-import { experiences, education } from '../components/data';
 import { shadeD } from '../utils/color';
 
 // ── Palette ───────────────────────────────────────────────────────────────
@@ -287,14 +287,10 @@ function CabinetDrawer({ drawer, isOpen, onToggle }) {
 
 export default function Study() {
   const isMobile = useIsMobile();
-  const [openDrawer,    setOpenDrawer]    = useState(null);
-  const [activeTab,     setActiveTab]     = useState('experience');
-  const [rerollIdx,     setRerollIdx]     = useState(0);
-  const [expandedEdu,   setExpandedEdu]   = useState({});
-  const [expandedExp,   setExpandedExp]   = useState({});
-  const [selectedBook,  setSelectedBook]  = useState(null);
-
-  const toggleEdu  = (i) => setExpandedEdu(prev => ({ ...prev, [i]: !prev[i] }));
+  const navigate = useNavigate();
+  const [openDrawer,   setOpenDrawer]   = useState(null);
+  const [rerollIdx,    setRerollIdx]    = useState(0);
+  const [selectedBook, setSelectedBook] = useState(null);
 
   const toggleDrawer = (id) => setOpenDrawer(prev => prev === id ? null : id);
 
@@ -464,183 +460,151 @@ export default function Study() {
         </div>
 
         {/* ════════════════════════════════════════════════════════
-            ZONE C — CV TABLE
+            ZONE C — CV CARD (links to /curriculum)
         ════════════════════════════════════════════════════════ */}
         <div style={{ marginTop: 72 }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 56 }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 20 }}>
             <h2 style={{ fontFamily: '"Fraunces", serif', fontSize: isMobile ? 26 : 36, fontWeight: 600, color: '#fbeed8', letterSpacing: -1 }}>
               The CV
             </h2>
             <div style={{ fontFamily: '"Caveat", cursive', fontSize: 20, color: 'rgba(251,238,216,0.7)' }}>
-              work history &amp; education
+              filed separately — open the dossier →
             </div>
           </div>
 
-          {/* Manila folder */}
-          <div style={{
-            background: '#d4a056',
-            borderRadius: '0 8px 8px 8px',
-            padding: '0 0 4px',
-            boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5)',
-            position: 'relative',
-          }}>
-            {/* Folder top tabs */}
-            <div style={{ display: 'flex', gap: 0, position: 'absolute', top: -40 }}>
-              {[
-                { key: 'experience', label: '📋 EXPERIENCE' },
-                { key: 'education',  label: '🎓 EDUCATION' },
-              ].map(t => (
-                <button
-                  key={t.key}
-                  onClick={() => setActiveTab(t.key)}
-                  style={{
-                    padding: '10px 28px',
-                    background: activeTab === t.key ? '#d4a056' : '#b08830',
-                    border: 'none', cursor: 'pointer',
-                    fontFamily: '"Special Elite", monospace', fontSize: 12,
-                    letterSpacing: 1.5, color: activeTab === t.key ? '#2a1808' : '#e8c878',
-                    borderRadius: '6px 6px 0 0',
-                    boxShadow: activeTab === t.key ? '0 -4px 8px rgba(0,0,0,0.2)' : 'none',
-                    marginRight: 4,
-                    transition: 'background 0.2s',
-                  }}
-                >{t.label}</button>
-              ))}
+          {/* Manila folder card — clickable */}
+          <button
+            onClick={() => navigate('/curriculum')}
+            style={{
+              width: '100%',
+              background: 'linear-gradient(180deg, #e0b070 0%, #c4923c 100%)',
+              border: '1.5px solid #6b4220',
+              borderRadius: '0 12px 14px 14px',
+              padding: 14,
+              boxShadow: '0 20px 40px -12px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.2)',
+              cursor: 'pointer',
+              textAlign: 'left',
+              position: 'relative',
+              transition: 'transform 0.2s, box-shadow 0.2s',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-4px)';
+              e.currentTarget.style.boxShadow = '0 28px 52px -10px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.25)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 20px 40px -12px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.2)';
+            }}
+          >
+            {/* Folder tab on top */}
+            <div style={{
+              position: 'absolute', top: -28, left: 28,
+              padding: '8px 24px 14px',
+              background: 'linear-gradient(180deg, #e0b070 0%, #d4a056 100%)',
+              border: '1.5px solid #6b4220',
+              borderBottom: 'none',
+              borderRadius: '8px 8px 0 0',
+              fontFamily: '"Special Elite", monospace', fontSize: 12, letterSpacing: 1.5,
+              color: '#2a1808',
+              boxShadow: '0 -4px 8px rgba(0,0,0,0.2)',
+            }}>
+              📋 CURRICULUM VITAE
             </div>
 
-            {/* Folder content */}
+            {/* CONFIDENTIAL stamp */}
+            {!isMobile && (
+              <div style={{
+                position: 'absolute', top: 22, right: 28,
+                border: '2.5px solid #a04020',
+                color: '#a04020',
+                padding: '4px 12px',
+                fontFamily: '"Special Elite", monospace',
+                fontSize: 13, letterSpacing: 2.5, fontWeight: 700,
+                transform: 'rotate(8deg)',
+                opacity: 0.75,
+                boxShadow: 'inset 0 0 0 1px #a04020, inset 0 0 0 3.5px transparent, inset 0 0 0 4.5px rgba(160,64,32,0.35)',
+                borderRadius: 2,
+                pointerEvents: 'none',
+              }}>
+                CONFIDENTIAL
+              </div>
+            )}
+
+            {/* Inner paper */}
             <div style={{
               background: '#fdf3d8',
-              borderRadius: '0 6px 6px 6px',
-              padding: '36px 44px 48px',
-              minHeight: 400,
+              backgroundImage: `repeating-linear-gradient(0deg, transparent 0px, transparent 22px, rgba(60,30,10,0.06) 22px, rgba(60,30,10,0.06) 23px),
+                                radial-gradient(rgba(60,30,10,0.04) 1px, transparent 1px)`,
+              backgroundSize: '100% 23px, 4px 4px',
+              borderRadius: '0 6px 8px 8px',
+              padding: isMobile ? '28px 22px' : '40px 50px 36px',
             }}>
+              <div style={{
+                fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 2,
+                color: '#a04020',
+              }}>
+                CASE FILE / EXPEDIENTE — JUAN D. BRACHO
+              </div>
+              <div style={{
+                fontFamily: '"Fraunces", serif', fontSize: isMobile ? 30 : 40, fontWeight: 700,
+                color: '#1f1d18', lineHeight: 1.05, letterSpacing: -1, marginTop: 6,
+              }}>
+                The Dossier<span style={{ color: '#c4633c' }}>.</span>
+              </div>
+              <div style={{
+                fontFamily: '"Caveat", cursive', fontSize: 20, color: '#5a4530', marginTop: 6,
+              }}>
+                Work history, education, and skills — filed neatly, just in case you're hiring.
+              </div>
 
-              {activeTab === 'experience' && (
-                <div>
-                  <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 2, color: '#7a5530', textTransform: 'uppercase', marginBottom: 24 }}>
-                    — WORK EXPERIENCE
+              {/* Quick stats row */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
+                gap: 14,
+                marginTop: 22,
+                paddingTop: 18,
+                borderTop: '1px dashed rgba(60,30,10,0.3)',
+              }}>
+                {[
+                  { k: 'EXHIBIT A', v: 'Employment', sub: '4 positions' },
+                  { k: 'EXHIBIT B', v: 'Education',  sub: '2 degrees + bootcamp' },
+                  { k: 'EXHIBIT C', v: 'Skills',     sub: 'Compliance · Tech · Ops' },
+                  { k: 'STATUS',    v: 'OPEN',       sub: 'always learning' },
+                ].map(s => (
+                  <div key={s.k}>
+                    <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 9, letterSpacing: 1.8, color: '#a04020' }}>
+                      {s.k}
+                    </div>
+                    <div style={{ fontFamily: '"Fraunces", serif', fontSize: 16, fontWeight: 700, color: '#1f1d18', marginTop: 2 }}>
+                      {s.v}
+                    </div>
+                    <div style={{ fontFamily: '"Caveat", cursive', fontSize: 15, color: '#5a4530', marginTop: 1 }}>
+                      {s.sub}
+                    </div>
                   </div>
-                  <div style={{ position: 'relative', paddingLeft: 30 }}>
-                    <div style={{ position: 'absolute', left: 7, top: 8, bottom: 8, width: 1, background: 'rgba(196,99,60,0.25)' }} />
-                    {experiences.map((exp, i) => (
-                      <div key={i} style={{ marginBottom: 32, position: 'relative' }}>
-                        <div style={{ position: 'absolute', left: -30, top: 6, width: 13, height: 13, background: '#c4633c', borderRadius: '50%', boxShadow: '0 0 0 4px #fdf3d8' }} />
-                        <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 10, letterSpacing: 1.5, color: '#a04020', textTransform: 'uppercase' }}>
-                          {exp.date}
-                        </div>
-                        <div style={{ fontFamily: '"Fraunces", serif', fontSize: 22, fontWeight: 600, color: '#1f1d18', marginTop: 3, lineHeight: 1.2 }}>
-                          {exp.title}
-                        </div>
-                        <div style={{ fontSize: 14, color: '#7a5530', marginTop: 2, fontWeight: 500 }}>
-                          {exp.organization} · {exp.location}
-                        </div>
-                        <ul style={{ marginTop: 10, paddingLeft: 18 }}>
-                          {(expandedExp[i] ? exp.responsibilities : exp.responsibilities.slice(0, 4)).map((r, j) => (
-                            <li key={j} style={{ fontSize: 13, lineHeight: 1.65, color: '#3a2f22', marginBottom: 4, fontFamily: '"Fraunces", serif' }}>
-                              {r}
-                            </li>
-                          ))}
-                          {exp.responsibilities.length > 4 && (
-                            <li
-                              onClick={() => setExpandedExp(prev => ({ ...prev, [i]: !prev[i] }))}
-                              style={{ fontSize: 12, color: '#a08456', fontStyle: 'italic', fontFamily: '"Fraunces", serif', cursor: 'pointer', userSelect: 'none' }}
-                            >
-                              {expandedExp[i] ? '− show less' : `+${exp.responsibilities.length - 4} more...`}
-                            </li>
-                          )}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+                ))}
+              </div>
 
-              {activeTab === 'education' && (
-                <div>
-                  <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 2, color: '#7a5530', textTransform: 'uppercase', marginBottom: 24 }}>
-                    — EDUCATION
-                  </div>
-                  <div style={{ position: 'relative', paddingLeft: 30 }}>
-                    <div style={{ position: 'absolute', left: 7, top: 8, bottom: 8, width: 1, background: 'rgba(94,107,74,0.3)' }} />
-                    {education.map((edu, i) => (
-                      <div key={i} style={{ marginBottom: 32, position: 'relative' }}>
-                        <div style={{ position: 'absolute', left: -30, top: 6, width: 13, height: 13, background: '#5e6b4a', borderRadius: '50%', boxShadow: '0 0 0 4px #fdf3d8' }} />
-                        <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 10, letterSpacing: 1.5, color: '#5e6b4a', textTransform: 'uppercase' }}>
-                          {edu.date}
-                        </div>
-                        <div style={{ fontFamily: '"Fraunces", serif', fontSize: 22, fontWeight: 600, color: '#1f1d18', marginTop: 3, lineHeight: 1.2 }}>
-                          {edu.title}
-                        </div>
-                        <div style={{ fontSize: 14, color: '#7a5530', marginTop: 2, fontWeight: 500 }}>
-                          {edu.organization} · {edu.location}
-                        </div>
-                        {edu.description && (
-                          <p style={{ fontSize: 13, lineHeight: 1.65, color: '#3a2f22', marginTop: 8, fontFamily: '"Fraunces", serif' }}>
-                            {edu.description}
-                          </p>
-                        )}
-                        {edu.thesis && (
-                          <div style={{ marginTop: 8, padding: '8px 12px', background: 'rgba(94,107,74,0.1)', borderLeft: '3px solid #5e6b4a', borderRadius: '0 4px 4px 0' }}>
-                            <div style={{ fontFamily: '"Special Elite", monospace', fontSize: 9, letterSpacing: 1.5, color: '#5e6b4a', textTransform: 'uppercase', marginBottom: 3 }}>Thesis</div>
-                            <div style={{ fontFamily: '"Fraunces", serif', fontSize: 13, fontStyle: 'italic', color: '#3a2f22', lineHeight: 1.5 }}>"{edu.thesis}"</div>
-                          </div>
-                        )}
-                        {edu.coursework && (
-                          <div style={{ marginTop: 10 }}>
-                            <button
-                              onClick={() => toggleEdu(i)}
-                              style={{
-                                background: 'none', border: 'none', cursor: 'pointer', padding: 0,
-                                fontFamily: '"Special Elite", monospace', fontSize: 10,
-                                letterSpacing: 1.5, color: '#5e6b4a', textTransform: 'uppercase',
-                                display: 'flex', alignItems: 'center', gap: 6,
-                              }}
-                            >
-                              <span style={{ display: 'inline-block', transition: 'transform 0.2s', transform: expandedEdu[i] ? 'rotate(180deg)' : 'rotate(0deg)' }}>▾</span>
-                              {expandedEdu[i] ? 'hide' : `${edu.coursework.length} modules`}
-                            </button>
-                            <div style={{
-                              display: 'grid',
-                              gridTemplateRows: expandedEdu[i] ? '1fr' : '0fr',
-                              transition: 'grid-template-rows 0.35s cubic-bezier(0.4,0,0.2,1)',
-                            }}>
-                              <div style={{ overflow: 'hidden' }}>
-                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, paddingTop: 10 }}>
-                                  {edu.coursework.map(c => (
-                                    <span key={c} style={{
-                                      padding: '3px 10px', borderRadius: 999,
-                                      background: 'rgba(94,107,74,0.12)', color: '#5e6b4a',
-                                      fontSize: 11, fontFamily: '"Special Elite", monospace',
-                                      letterSpacing: 0.5,
-                                    }}>{c}</span>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+              {/* CTA */}
+              <div style={{
+                marginTop: 22, paddingTop: 14,
+                borderTop: '1px dashed rgba(60,30,10,0.3)',
+                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                flexWrap: 'wrap', gap: 8,
+              }}>
+                <div style={{ fontFamily: '"Caveat", cursive', fontSize: 22, color: '#a04020' }}>
+                  open the file →
                 </div>
-              )}
-
-              {/* Folder footer */}
-              <div style={{ marginTop: 24, borderTop: '1px dashed rgba(90,69,48,0.3)', paddingTop: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ fontFamily: '"Caveat", cursive', fontSize: 20, color: '#7a5530' }}>
-                  ~ Juan Bracho · Austin, TX
+                <div style={{
+                  fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 1.5,
+                  color: '#a04020', textTransform: 'uppercase',
+                }}>
+                  /curriculum
                 </div>
-                <a
-                  href="https://www.linkedin.com/in/juan-bracho-avila-71250a121/"
-                  target="_blank" rel="noopener noreferrer"
-                  style={{ fontFamily: '"Special Elite", monospace', fontSize: 11, letterSpacing: 1.5, color: '#a04020', textDecoration: 'underline' }}
-                >
-                  VIEW ON LINKEDIN ↗
-                </a>
               </div>
             </div>
-          </div>
+          </button>
         </div>
 
         {/* Bottom signature */}

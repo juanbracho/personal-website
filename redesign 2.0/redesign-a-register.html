@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Juan Bracho — Register</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" />
+<style>
+:root{--bg:#f5f4f0;--ink:#12140f;--mid:#5b5f54;--faint:#c9c8bf;--accent:#3f6212;--rule:#dcdad2}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Spectral',Georgia,serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.mono{font-family:'Space Mono',ui-monospace,monospace}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+header.top{border-bottom:1px solid var(--ink);padding:56px 0 22px;margin-bottom:0}
+.eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
+h1{font-size:clamp(38px,6vw,64px);line-height:1.02;margin:14px 0 10px;font-weight:600;letter-spacing:-.02em}
+.lede{font-size:clamp(19px,2.4vw,23px);line-height:1.4;max-width:34ch;margin:0 0 22px;color:var(--ink)}
+.lede em{font-style:italic;color:var(--accent)}
+.metarow{display:flex;flex-wrap:wrap;gap:10px 26px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:var(--mid);padding-bottom:4px}
+.metarow span::before{content:"";display:inline-block;width:5px;height:5px;background:var(--accent);margin-right:8px;vertical-align:2px}
+nav.filters{display:flex;flex-wrap:wrap;gap:8px;padding:18px 0;border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--bg);z-index:5}
+.chip{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:6px 13px;border:1px solid var(--faint);border-radius:100px;cursor:pointer;background:none;color:var(--mid);transition:.15s}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.count{margin-left:auto;font-family:'Space Mono',monospace;font-size:11px;color:var(--mid);align-self:center;letter-spacing:.08em}
+.rows{padding:8px 0 0}
+.row{display:grid;grid-template-columns:52px 92px 1fr 190px;gap:20px;align-items:baseline;padding:17px 10px 17px 0;border-bottom:1px solid var(--rule);cursor:pointer;transition:background .15s}
+.row:hover{background:#eceade}
+.row.open{background:#eceade}
+.num{font-family:'Space Mono',monospace;font-size:11px;color:var(--faint)}
+.yr{font-family:'Space Mono',monospace;font-size:12px;color:var(--mid);letter-spacing:.04em}
+.ttl{font-size:19px;line-height:1.3}
+.ttl small{display:block;font-size:13.5px;color:var(--mid);font-style:italic;margin-top:3px}
+.kind{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);text-align:right}
+.kind i{font-style:normal;border-bottom:2px solid var(--accent);padding-bottom:2px}
+.detail{grid-column:1/-1;display:none;padding:6px 0 12px 164px}
+.row.open .detail{display:block}
+.detail ul{margin:0 0 12px;padding-left:17px;max-width:70ch}
+.detail li{margin-bottom:5px;font-size:15.5px;line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.06em;padding:3px 9px;border:1px solid var(--faint);color:var(--mid);border-radius:2px}
+.sect{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);padding:34px 0 10px;border-bottom:1px solid var(--ink)}
+footer{border-top:1px solid var(--ink);margin-top:56px;padding:26px 0 70px;display:flex;flex-wrap:wrap;gap:12px 30px;font-family:'Space Mono',monospace;font-size:12px;color:var(--mid)}
+.mark{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--faint);letter-spacing:.1em}
+@media(max-width:720px){.row{grid-template-columns:34px 1fr;gap:8px 12px}.yr{grid-column:2;order:3;margin-top:2px}.kind{grid-column:2;text-align:left;order:4;margin-top:4px}.ttl{grid-column:2}.detail{padding-left:46px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<div class="eyebrow">Austin, Texas · 🇻🇪 → 🇦🇷 → 🇺🇸</div>
+<h1>Juan Bracho</h1>
+<p class="lede">I turn regulation into systems people can <em>actually use</em>.</p>
+<div class="metarow"><span>Operations &amp; Compliance Coordinator, HydroGraph</span><span>MA Business Law</span><span>Four languages, two of them well</span></div>
+</header>
+<nav class="filters" id="filters">
+<button class="chip" aria-pressed="true" data-f="all">Everything</button>
+<button class="chip" aria-pressed="false" data-f="work">Work</button>
+<button class="chip" aria-pressed="false" data-f="build">Built</button>
+<button class="chip" aria-pressed="false" data-f="write">Writing</button>
+<button class="chip" aria-pressed="false" data-f="school">Study</button>
+<span class="count" id="count"></span>
+</nav>
+<div class="rows" id="rows"></div>
+<footer>
+<span>juanbracho16@gmail.com</span><span><a href="#">linkedin.com/in/juan-d-bracho</a></span><span><a href="#">github</a></span><span class="mark" style="margin-left:auto">REGISTER · REV. 2026</span>
+</footer>
+</div>
+<script>
+const R=[
+{k:'work',yr:'2025 —',t:'Operations & Compliance Coordinator',s:'HydroGraph Clean Power Inc. · Austin, TX',b:['Drafted a 14-policy cybersecurity & data governance suite aligned with NIST CSF 2.0 and ISO 27001.','Primary liaison for an external cybersecurity audit — evidence collection, stakeholder access, remediation.','Built Python tools to analyze SharePoint access permissions; shipped a Node/React app to present gaps to the C-suite.','Administer Microsoft 365 for a 35-employee org, including SharePoint, app permissions, and 50+ device MDM.'],g:['NIST CSF 2.0','ISO 27001','Python','M365','SharePoint']},
+{k:'work',yr:'2022–25',t:'Project Administrator',s:'Atwell, LLC · North Richland Hills, TX',b:['Reviewed subcontractor service agreements for legal, insurance, and policy compliance.','Coordinated construction & design permit submissions; tracked local, state, federal compliance.','Managed contracts, purchase orders, resource allocation, and change processing across projects.','Built Excel dashboards for project budgets, expenses, and completion health.'],g:['Excel','Asana','Smartsheet','Contract review']},
+{k:'work',yr:'2020–21',t:'Project Administrator',s:'Avaya · Buenos Aires (Remote)',b:['Supported ISO 9001 internal audits — documented procedures, prepared evidence packages.','Identified budget overruns on a $20M SaaS implementation through resource-utilization analysis.','Built predictive Excel models linking resource allocation to budget health.'],g:['ISO 9001','Excel modeling','OneCloud CCaaS']},
+{k:'work',yr:'2017–18',t:'Legal & Compliance Intern',s:'MYRO Associates · Maracaibo, Venezuela',b:['Reviewed employee documentation for labor-law compliance.','Drafted contracts and powers of attorney in Spanish.','Supported notarization and apostille documentation processes.'],g:['Contracts (ES)','Labor law','Notarial process']},
+{k:'build',yr:'2025',t:'Kaizen',s:'Habit and routine tracking, built for people who quit apps',b:['Personal productivity app, shipped to the App Store and Play Store.'],g:['React Native','Supabase']},
+{k:'build',yr:'2025',t:'Kage',s:'Finance tracker I built because the spreadsheet stopped scaling',b:['Expense tracking, budgets, and category analysis.'],g:['React Native','SQLite']},
+{k:'build',yr:'2025',t:'Kioku',s:'Memory and note capture with spaced review',b:['Note capture with a review schedule that actually holds.'],g:['React Native']},
+{k:'write',yr:'2026',t:'A Jack of All Trades',s:'On being useful in four directions at once',b:[],g:['Essay']},
+{k:'write',yr:'2025',t:'What Is a First World Country?',s:'Three countries in, the definition stopped being obvious',b:[],g:['Essay']},
+{k:'write',yr:'2025',t:'I Built My Own Money Tracking App',s:'What building Kage taught me about my own spending',b:[],g:['Essay']},
+{k:'write',yr:'2025',t:'On Writing and the Courage to Say Something Out Loud',s:'Publishing when you would rather not',b:[],g:['Essay']},
+{k:'school',yr:'2020–24',t:'MA, Business Law',s:'UADE Business School · Buenos Aires',b:['Graduate specialization in corporate & business law. Thesis on the Right to be Forgotten in Argentina.'],g:[]},
+{k:'school',yr:'2024',t:'Data Analytics & Visualization',s:'The University of Texas at Austin',b:['Python, SQL, ETL, Tableau, supervised & deep learning. Full data stack.'],g:['Python','SQL','Tableau']},
+{k:'school',yr:'2014–18',t:'BA, Law Studies',s:'Universidad Rafael Urdaneta · Maracaibo',b:['Five-year law degree — civil, criminal, constitutional, administrative.'],g:[]}];
+const KIND={work:'Role',build:'Built',write:'Wrote',school:'Studied'};
+const rowsEl=document.getElementById('rows'),countEl=document.getElementById('count');
+let filter='all';
+function render(){
+const list=R.filter(r=>filter==='all'||r.k===filter);
+rowsEl.innerHTML=list.map((r,i)=>`<div class="row" data-i="${i}"><div class="num">${String(i+1).padStart(2,'0')}</div><div class="yr">${r.yr}</div><div class="ttl">${r.t}<small>${r.s}</small></div><div class="kind"><i>${KIND[r.k]}</i></div><div class="detail">${r.b.length?`<ul>${r.b.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}${r.g.length?`<div class="tags">${r.g.map(x=>`<span class="tag">${x}</span>`).join('')}</div>`:''}</div></div>`).join('');
+countEl.textContent=String(list.length).padStart(2,'0')+' records';
+}
+rowsEl.addEventListener('click',e=>{const row=e.target.closest('.row');if(row)row.classList.toggle('open')});
+document.getElementById('filters').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;filter=c.dataset.f;[...document.querySelectorAll('.chip')].forEach(x=>x.setAttribute('aria-pressed',x===c));render()});
+render();
+</script>
+</body>
+</html>

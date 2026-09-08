@@ -3,7 +3,7 @@
 
 export const supportContent = {
   kioku: {
-    email: "brachojuan45@gmail.com",
+    email: "apps@juanbracho.com",
     responseTime: "1-2 business days",
     categories: {
       gettingStarted: {
@@ -57,7 +57,7 @@ export const supportContent = {
   },
 
   kage: {
-    email: "brachojuan45@gmail.com",
+    email: "apps@juanbracho.com",
     responseTime: "1-2 business days",
     categories: {
       gettingStarted: {
@@ -94,7 +94,7 @@ export const supportContent = {
   },
 
   kaizen: {
-    email: "brachojuan45@gmail.com",
+    email: "apps@juanbracho.com",
     responseTime: "1-2 business days",
     categories: {
       gettingStarted: {

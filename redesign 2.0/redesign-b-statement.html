@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Juan Bracho</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" />
+<style>
+:root{--bg:#f2f1ec;--ink:#12140f;--mid:#61645a;--faint:#a8aa9f;--accent:#3f6212;--rule:#d8d6cd}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Libre Caslon Text',Georgia,serif;font-size:17.5px;line-height:1.68}
+a{color:var(--ink);text-decoration:none;background-image:linear-gradient(var(--accent),var(--accent));background-size:100% 1px;background-repeat:no-repeat;background-position:0 92%;padding-bottom:1px}
+a:hover{color:var(--accent)}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.col{max-width:640px;margin:0 auto;padding:0 26px}
+.lab{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+header{padding:96px 0 0}
+h1{font-size:clamp(30px,4.4vw,40px);font-weight:400;margin:16px 0 20px;letter-spacing:-.01em;line-height:1.15}
+h1 b{font-weight:700}
+.intro{font-size:19.5px;line-height:1.62}
+.intro p{margin:0 0 18px}
+.intro em{font-style:italic}
+.rule{height:1px;background:var(--rule);margin:52px 0 0}
+section{padding:44px 0 0}
+h2{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--ink);margin:0 0 26px;padding-bottom:9px;border-bottom:1px solid var(--ink)}
+.entry{margin-bottom:34px;position:relative}
+.entry h3{font-size:19px;font-weight:700;margin:0 0 2px;line-height:1.3}
+.entry .sub{font-size:15.5px;font-style:italic;color:var(--mid);margin:0 0 9px}
+.entry .when{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--faint);text-transform:uppercase;margin-bottom:6px}
+.entry p{margin:0 0 9px;font-size:16.5px;line-height:1.6}
+.entry ul{margin:0;padding-left:18px}
+.entry li{font-size:16px;line-height:1.58;margin-bottom:5px}
+.note{position:absolute;left:calc(100% + 26px);top:2px;width:150px;font-family:'JetBrains Mono',monospace;font-size:10.5px;line-height:1.55;color:var(--faint);letter-spacing:.02em}
+.note::before{content:"↖ ";color:var(--accent)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px 34px}
+.skill h4{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 7px;font-weight:500}
+.skill p{margin:0;font-size:15.5px;line-height:1.55;color:var(--mid)}
+.langs{display:flex;flex-direction:column;gap:9px}
+.lang{display:grid;grid-template-columns:78px 1fr 108px;align-items:center;gap:12px;font-size:15px}
+.bar{height:3px;background:var(--rule)}
+.bar i{display:block;height:100%;background:var(--accent)}
+.lang em{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-style:normal}
+footer{padding:58px 0 90px;margin-top:52px;border-top:1px solid var(--ink)}
+footer .lines{display:flex;flex-direction:column;gap:5px;font-size:16px;padding-top:20px}
+.sig{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-top:26px}
+@media(max-width:1080px){.note{position:static;width:auto;margin-top:8px;padding-left:0}}
+</style>
+</head>
+<body>
+<div class="col">
+<header>
+<div class="lab">Juan Bracho · Austin, Texas</div>
+<h1>I write the rules companies have to follow, then <b>build the systems that make following them possible</b>.</h1>
+<div class="intro">
+<p>Operations and compliance, currently at a public clean-energy company. My job is turning regulation — NIST, ISO, whatever the auditor brought this quarter — into workflows that a 35-person org will actually use instead of route around.</p>
+<p>I came to it sideways: a law degree in Venezuela, a master's in business law in Argentina, a data bootcamp in Texas. The through-line is that I read the requirement <em>and</em> ship the tool. When a spreadsheet stops scaling, I write the app.</p>
+</div>
+<div class="rule"></div>
+</header>
+
+<section>
+<h2>Work</h2>
+<div class="entry">
+<div class="when">Aug 2025 — Present</div>
+<h3>Operations &amp; Compliance Coordinator</h3>
+<p class="sub">HydroGraph Clean Power Inc. · Austin, TX</p>
+<ul><li>Drafted a 14-policy cybersecurity and data governance suite aligned with NIST CSF 2.0 and ISO 27001.</li><li>Served as primary liaison for an external cybersecurity audit — evidence collection, stakeholder access, remediation tracking.</li><li>Built Python tools to analyze SharePoint access permissions, then a Node/React app to put the gaps in front of the C-suite.</li><li>Administer Microsoft 365 across the org: SharePoint, app permissions, 50+ device MDM.</li></ul>
+<div class="note">The permissions tool started as a one-off script. It is now how the board sees access risk.</div>
+</div>
+<div class="entry">
+<div class="when">Nov 2022 — Jul 2025</div>
+<h3>Project Administrator</h3>
+<p class="sub">Atwell, LLC · North Richland Hills, TX</p>
+<ul><li>Reviewed subcontractor service agreements for legal, insurance, and policy compliance.</li><li>Coordinated construction and design permit submissions across local, state, and federal requirements.</li><li>Managed contracts, purchase orders, resource allocation, and change processing.</li><li>Built Excel dashboards for budget, expense, and completion health.</li></ul>
+</div>
+<div class="entry">
+<div class="when">Oct 2020 — Nov 2021</div>
+<h3>Project Administrator</h3>
+<p class="sub">Avaya · Buenos Aires (Remote)</p>
+<ul><li>Supported ISO 9001 internal audits — documented procedures, prepared evidence packages.</li><li>Identified budget overruns on a $20M SaaS implementation through resource-utilization analysis.</li><li>Built predictive Excel models linking resource allocation to budget health.</li></ul>
+<div class="note">First audit. Learned that evidence beats explanation.</div>
+</div>
+<div class="entry">
+<div class="when">Jun 2017 — Jan 2018</div>
+<h3>Legal &amp; Compliance Intern</h3>
+<p class="sub">MYRO Associates · Maracaibo, Venezuela</p>
+<ul><li>Reviewed employee documentation for labor-law compliance.</li><li>Drafted contracts and powers of attorney in Spanish; supported notarization and apostille processes.</li></ul>
+</div>
+</section>
+
+<section>
+<h2>Things I built</h2>
+<div class="entry"><h3>Kaizen</h3><p class="sub">Habit and routine tracking</p><p>Built for people who quit habit apps in week two. Shipped to both stores.</p></div>
+<div class="entry"><h3>Kage</h3><p class="sub">Personal finance tracker</p><p>Made because my spreadsheet stopped scaling. I wrote about what it taught me.</p><div class="note">Five apps shipped in 2025. Three of them survived contact with daily use.</div></div>
+<div class="entry"><h3>Kioku</h3><p class="sub">Notes with spaced review</p><p>Capture, then a review schedule that actually holds.</p></div>
+</section>
+
+<section>
+<h2>Writing</h2>
+<div class="entry"><h3><a href="#">A Jack of All Trades</a></h3><p class="sub">On being useful in four directions at once</p></div>
+<div class="entry"><h3><a href="#">What Is a First World Country?</a></h3><p class="sub">Three countries in, the definition stopped being obvious</p></div>
+<div class="entry"><h3><a href="#">I Built My Own Money Tracking App</a></h3><p class="sub">What building Kage taught me about my own spending</p></div>
+<div class="entry"><h3><a href="#">On Writing and the Courage to Say Something Out Loud</a></h3><p class="sub">Publishing when you would rather not</p></div>
+</section>
+
+<section>
+<h2>Education</h2>
+<div class="entry"><div class="when">2020 – 2024</div><h3>MA, Business Law</h3><p class="sub">UADE Business School · Buenos Aires</p><p>Thesis on the Right to be Forgotten in Argentina.</p></div>
+<div class="entry"><div class="when">2024</div><h3>Data Analytics &amp; Visualization</h3><p class="sub">The University of Texas at Austin</p><p>Python, SQL, ETL, Tableau, supervised and deep learning.</p></div>
+<div class="entry"><div class="when">2014 – 2018</div><h3>BA, Law Studies</h3><p class="sub">Universidad Rafael Urdaneta · Maracaibo</p><p>Five-year degree — civil, criminal, constitutional, administrative.</p></div>
+</section>
+
+<section>
+<h2>What I work with</h2>
+<div class="two">
+<div class="skill"><h4>Compliance &amp; Governance</h4><p>Policy development, NIST CSF 2.0, ISO 27001, ISO 9001, audit coordination, gap assessment, internal controls.</p></div>
+<div class="skill"><h4>Program &amp; Project</h4><p>Cross-functional coordination, stakeholder management, executive reporting, issue escalation.</p></div>
+<div class="skill"><h4>Technical</h4><p>Python, SQL, Excel dashboards, Microsoft 365, SharePoint, MDM, Tableau.</p></div>
+<div class="skill"><h4>Operations</h4><p>Vendor management, contracts, procurement, onboarding, documentation.</p></div>
+</div>
+</section>
+
+<section>
+<h2>Languages</h2>
+<div class="langs">
+<div class="lang"><span>Spanish</span><span class="bar"><i style="width:100%"></i></span><em>Native</em></div>
+<div class="lang"><span>English</span><span class="bar"><i style="width:95%"></i></span><em>Bilingual</em></div>
+<div class="lang"><span>Italian</span><span class="bar"><i style="width:35%"></i></span><em>Limited working</em></div>
+<div class="lang"><span>French</span><span class="bar"><i style="width:15%"></i></span><em>Learning, slowly</em></div>
+</div>
+</section>
+
+<footer>
+<div class="lab">Get in touch</div>
+<div class="lines"><a href="mailto:juanbracho16@gmail.com">juanbracho16@gmail.com</a><a href="#">linkedin.com/in/juan-d-bracho</a><a href="#">github.com/juanbracho</a></div>
+<div class="sig">Maracaibo → Buenos Aires → Austin</div>
+</footer>
+</div>
+</body>
+</html>

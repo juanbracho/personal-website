@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Juan Bracho — Operations &amp; Compliance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&family=Geist:wght@400;500&display=swap" />
+<style>
+:root{--bg:#f2f1ec;--panel:#e9e7e0;--ink:#1a1a1a;--mid:#6a675f;--faint:#b4b1a7;--accent:#7c2d12;--rule:#d6d3ca}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Geist',system-ui,sans-serif;font-size:16px;line-height:1.6}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.mono{font-family:'Geist Mono',ui-monospace,monospace}
+.shell{display:grid;grid-template-columns:340px 1fr;gap:0;min-height:100vh;max-width:1240px;margin:0 auto}
+aside{background:var(--panel);border-right:1px solid var(--rule);padding:52px 34px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column}
+.tag{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
+.name{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(40px,4.6vw,54px);line-height:1;margin:18px 0 16px;letter-spacing:-.01em}
+.line{font-family:'Instrument Serif',serif;font-style:italic;font-size:21px;line-height:1.32;color:var(--ink);margin:0 0 24px}
+.line span{color:var(--accent)}
+.blurb{font-size:14.5px;line-height:1.62;color:var(--mid);margin:0 0 auto;max-width:38ch}
+.side-nav{display:flex;flex-direction:column;gap:2px;margin:28px 0 26px}
+.side-nav a{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);padding:7px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between}
+.side-nav a:hover{color:var(--ink);text-decoration:none}
+.side-nav a i{font-style:normal;color:var(--faint)}
+.contact{display:flex;flex-direction:column;gap:5px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.03em}
+.contact a{color:var(--mid)}.contact a:hover{color:var(--accent)}
+.route{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-top:18px;padding-top:14px;border-top:1px solid var(--rule)}
+main{padding:52px 46px 90px;min-width:0}
+h2{font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--mid);margin:0 0 20px;display:flex;align-items:center;gap:12px}
+h2::after{content:"";flex:1;height:1px;background:var(--rule)}
+section{margin-bottom:52px}
+.card{border:1px solid var(--rule);background:#f7f6f2;padding:22px 24px;margin-bottom:12px;transition:.16s}
+.card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.card .hd{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.card h3{font-family:'Instrument Serif',serif;font-size:24px;font-weight:400;margin:0;line-height:1.2}
+.card .when{font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--faint);text-transform:uppercase;white-space:nowrap}
+.card .org{font-size:14px;color:var(--accent);margin:3px 0 12px}
+.card ul{margin:0 0 14px;padding-left:17px}
+.card li{font-size:14.5px;line-height:1.56;margin-bottom:5px;color:#33322d}
+.pills{display:flex;flex-wrap:wrap;gap:5px}
+.pill{font-family:'Geist Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;background:var(--panel);color:var(--mid);border-radius:2px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.mini{border:1px solid var(--rule);background:#f7f6f2;padding:18px 20px}
+.mini h3{font-family:'Instrument Serif',serif;font-size:22px;margin:0 0 3px;font-weight:400}
+.mini p{margin:0;font-size:13.5px;line-height:1.5;color:var(--mid)}
+.mini .k{font-family:'Geist Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:9px}
+.wlist{display:flex;flex-direction:column}
+.wrow{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:13px 2px;border-bottom:1px solid var(--rule)}
+.wrow:hover .wt{color:var(--accent)}
+.wt{font-family:'Instrument Serif',serif;font-size:20px;line-height:1.25}
+.wd{font-size:13.5px;color:var(--mid);margin-top:2px}
+.wy{font-family:'Geist Mono',monospace;font-size:10.5px;color:var(--faint);white-space:nowrap}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.skills h4{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin:0 0 7px;font-weight:500}
+.skills p{margin:0;font-size:14px;line-height:1.55;color:var(--mid)}
+@media(max-width:900px){.shell{grid-template-columns:1fr}aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--rule);padding:40px 26px}.blurb{margin-bottom:6px}main{padding:38px 26px 70px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside>
+<div class="tag">Operations &amp; Compliance · Austin, TX</div>
+<div class="name">Juan Bracho</div>
+<p class="line">I turn regulation into systems people <span>actually use</span>.</p>
+<p class="blurb">Governance, IT systems, and policy for a public clean-energy company. Law degree in Venezuela, master's in Argentina, data bootcamp in Texas. I read the requirement and then ship the tool.</p>
+<nav class="side-nav">
+<a href="#work">Work <i>04</i></a>
+<a href="#built">Built <i>03</i></a>
+<a href="#writing">Writing <i>04</i></a>
+<a href="#study">Education <i>03</i></a>
+<a href="#skills">Capabilities <i>—</i></a>
+</nav>
+<div class="contact">
+<a href="mailto:juanbracho16@gmail.com">juanbracho16@gmail.com</a>
+<a href="#">linkedin.com/in/juan-d-bracho</a>
+<a href="#">github.com/juanbracho</a>
+</div>
+<div class="route">Maracaibo → Buenos Aires → Austin</div>
+</aside>
+<main>
+<section id="work">
+<h2>Work</h2>
+<div class="card"><div class="hd"><h3>Operations &amp; Compliance Coordinator</h3><span class="when">Aug 2025 — Present</span></div><div class="org">HydroGraph Clean Power Inc. · Austin, TX</div><ul><li>Drafted a 14-policy cybersecurity and data governance suite aligned with NIST CSF 2.0 and ISO 27001.</li><li>Primary liaison for an external cybersecurity audit — evidence collection, stakeholder access, remediation.</li><li>Built Python tools to analyze SharePoint access permissions; shipped a Node/React app to present gaps to the C-suite.</li><li>Administer Microsoft 365 for a 35-employee org: SharePoint, app permissions, 50+ device MDM.</li></ul><div class="pills"><span class="pill">NIST CSF 2.0</span><span class="pill">ISO 27001</span><span class="pill">Python</span><span class="pill">M365</span><span class="pill">SharePoint</span></div></div>
+<div class="card"><div class="hd"><h3>Project Administrator</h3><span class="when">Nov 2022 — Jul 2025</span></div><div class="org">Atwell, LLC · North Richland Hills, TX</div><ul><li>Reviewed subcontractor service agreements for legal, insurance, and policy compliance.</li><li>Coordinated construction and design permit submissions across local, state, and federal requirements.</li><li>Managed contracts, purchase orders, resource allocation, and change processing.</li><li>Built Excel dashboards for budget, expense, and completion health.</li></ul><div class="pills"><span class="pill">Excel</span><span class="pill">Asana</span><span class="pill">Smartsheet</span><span class="pill">Contract review</span></div></div>
+<div class="card"><div class="hd"><h3>Project Administrator</h3><span class="when">Oct 2020 — Nov 2021</span></div><div class="org">Avaya · Buenos Aires (Remote)</div><ul><li>Supported ISO 9001 internal audits — documented procedures, prepared evidence packages.</li><li>Identified budget overruns on a $20M SaaS implementation through resource-utilization analysis.</li><li>Built predictive Excel models linking resource allocation to budget health.</li></ul><div class="pills"><span class="pill">ISO 9001</span><span class="pill">Excel modeling</span><span class="pill">OneCloud CCaaS</span></div></div>
+<div class="card"><div class="hd"><h3>Legal &amp; Compliance Intern</h3><span class="when">Jun 2017 — Jan 2018</span></div><div class="org">MYRO Associates · Maracaibo, Venezuela</div><ul><li>Reviewed employee documentation for labor-law compliance.</li><li>Drafted contracts and powers of attorney in Spanish.</li><li>Supported notarization and apostille documentation processes.</li></ul><div class="pills"><span class="pill">Contracts (ES)</span><span class="pill">Labor law</span><span class="pill">Notarial process</span></div></div>
+</section>
+<section id="built">
+<h2>Built</h2>
+<div class="grid3">
+<div class="mini"><div class="k">iOS · Android</div><h3>Kaizen</h3><p>Habit and routine tracking, built for people who quit habit apps in week two.</p></div>
+<div class="mini"><div class="k">iOS · Android</div><h3>Kage</h3><p>Personal finance tracker. Built because the spreadsheet stopped scaling.</p></div>
+<div class="mini"><div class="k">iOS</div><h3>Kioku</h3><p>Note capture with a spaced review schedule that actually holds.</p></div>
+</div>
+</section>
+<section id="writing">
+<h2>Writing</h2>
+<div class="wlist">
+<div class="wrow"><div><div class="wt">A Jack of All Trades</div><div class="wd">On being useful in four directions at once</div></div><span class="wy">2026</span></div>
+<div class="wrow"><div><div class="wt">What Is a First World Country?</div><div class="wd">Three countries in, the definition stopped being obvious</div></div><span class="wy">2025</span></div>
+<div class="wrow"><div><div class="wt">I Built My Own Money Tracking App</div><div class="wd">What building Kage taught me about my own spending</div></div><span class="wy">2025</span></div>
+<div class="wrow"><div><div class="wt">On Writing and the Courage to Say Something Out Loud</div><div class="wd">Publishing when you would rather not</div></div><span class="wy">2025</span></div>
+</div>
+</section>
+<section id="study">
+<h2>Education</h2>
+<div class="grid3">
+<div class="mini"><div class="k">2020 – 2024</div><h3>MA, Business Law</h3><p>UADE Business School, Buenos Aires. Thesis on the Right to be Forgotten in Argentina.</p></div>
+<div class="mini"><div class="k">2024</div><h3>Data Analytics</h3><p>UT Austin. Python, SQL, ETL, Tableau, supervised and deep learning.</p></div>
+<div class="mini"><div class="k">2014 – 2018</div><h3>BA, Law Studies</h3><p>Universidad Rafael Urdaneta, Maracaibo. Five-year degree.</p></div>
+</div>
+</section>
+<section id="skills">
+<h2>Capabilities</h2>
+<div class="skills">
+<div><h4>Compliance &amp; Governance</h4><p>Policy development, NIST CSF 2.0, ISO 27001, ISO 9001, audit coordination, gap assessment, internal controls.</p></div>
+<div><h4>Program &amp; Project</h4><p>Cross-functional coordination, stakeholder management, executive reporting, issue escalation.</p></div>
+<div><h4>Technical</h4><p>Python, SQL, Excel dashboards, Microsoft 365, SharePoint, MDM, Tableau.</p></div>
+<div><h4>Operations</h4><p>Vendor management, contracts, procurement, onboarding, documentation.</p></div>
+<div><h4>Languages</h4><p>Spanish (native), English (bilingual), Italian (limited working), French (learning, slowly).</p></div>
+</div>
+</section>
+</main>
+</div>
+</body>
+</html>

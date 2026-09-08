@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>The Bracho Record</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Special+Elite&family=Caveat:wght@400;600&display=swap" />
+<style>
+:root{--paper:#efe9dc;--paper2:#e7e0d0;--ink:#1b1a17;--mid:#5c574c;--faint:#a49c8a;--red:#a8321f;--blue:#2c4356;--rule:#c8c0ac;--tape:rgba(212,190,140,.55)}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:16.5px;line-height:1.55;background-image:radial-gradient(circle at 12% 20%,rgba(0,0,0,.022) 0 1px,transparent 1px),radial-gradient(circle at 68% 62%,rgba(0,0,0,.018) 0 1px,transparent 1px);background-size:7px 7px,11px 11px}
+a{color:var(--red);text-decoration:none}a:hover{text-decoration:underline}
+.el{font-family:'Special Elite',ui-monospace,monospace}
+.hand{font-family:'Caveat',cursive}
+.sheet{max-width:1180px;margin:0 auto;padding:0 26px 80px}
+/* masthead */
+.dateline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:'Special Elite',monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);padding:20px 0 10px;border-bottom:1px solid var(--ink)}
+.masthead{text-align:center;padding:22px 0 12px;border-bottom:3px double var(--ink)}
+.masthead h1{font-family:'Bodoni Moda',serif;font-weight:900;font-size:clamp(44px,10.5vw,116px);line-height:.9;margin:0;letter-spacing:-.015em}
+.masthead .sub{font-family:'Special Elite',monospace;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--mid);margin-top:12px}
+/* lead */
+.lead{display:grid;grid-template-columns:1.55fr .95fr;gap:0;border-bottom:2px solid var(--ink)}
+.lead .story{padding:26px 30px 26px 0;border-right:1px solid var(--rule)}
+.kicker{font-family:'Special Elite',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.hl{font-family:'Bodoni Moda',serif;font-size:clamp(30px,4.4vw,50px);line-height:1.04;font-weight:700;margin:0 0 14px;letter-spacing:-.01em}
+.hl em{font-style:italic;color:var(--red)}
+.deck{font-size:18px;line-height:1.45;font-style:italic;color:var(--mid);margin:0 0 18px;padding-bottom:16px;border-bottom:1px solid var(--rule)}
+.cols2{columns:2;column-gap:26px;column-rule:1px solid var(--rule)}
+.cols2 p{margin:0 0 11px;font-size:15.5px;line-height:1.56;text-align:justify;hyphens:auto}
+.cols2 p:first-child::first-letter{font-family:'Bodoni Moda',serif;font-weight:900;float:left;font-size:56px;line-height:.82;padding:4px 8px 0 0;color:var(--red)}
+.byline{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-top:14px;padding-top:10px;border-top:1px solid var(--rule)}
+/* polaroid rail */
+.rail{padding:26px 0 26px 28px;display:flex;flex-direction:column;gap:22px}
+.polaroid{background:#fdfbf5;padding:11px 11px 0;box-shadow:0 6px 18px rgba(40,30,15,.18);transform:rotate(-2.2deg);position:relative;align-self:center;max-width:250px}
+.polaroid::before{content:"";position:absolute;top:-13px;left:50%;transform:translateX(-50%) rotate(-3deg);width:88px;height:26px;background:var(--tape);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.polaroid img{display:block;width:100%;height:236px;object-fit:cover;object-position:center 18%;background:var(--paper2);filter:grayscale(.35) contrast(1.06)}
+.polaroid .cap{font-family:'Caveat',cursive;font-size:19px;text-align:center;padding:8px 4px 12px;color:var(--ink)}
+.stampbox{border:1px solid var(--rule);background:rgba(255,253,247,.6);padding:16px 18px}
+.stampbox h4{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 10px;color:var(--mid);padding-bottom:7px;border-bottom:1px solid var(--rule)}
+.facts{display:flex;flex-direction:column;gap:7px;font-size:14.5px}
+.facts b{font-weight:600}
+.facts span{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.facts i{font-style:normal;font-family:'Special Elite',monospace;font-size:10.5px;color:var(--faint);letter-spacing:.06em;text-align:right}
+.stamp{display:inline-block;border:2.5px solid var(--red);color:var(--red);font-family:'Special Elite',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;transform:rotate(-6deg);opacity:.82;margin-top:4px;align-self:center}
+/* section head */
+.shead{display:flex;align-items:center;gap:14px;margin:42px 0 20px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
+.shead h2{font-family:'Bodoni Moda',serif;font-size:clamp(22px,3vw,31px);font-weight:700;margin:0;letter-spacing:-.005em}
+.shead .no{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;margin-left:auto;white-space:nowrap}
+/* employment */
+.jobs{display:grid;grid-template-columns:1fr 1fr;gap:0;border-left:1px solid var(--rule)}
+@media(max-width:640px){.jobs{grid-template-columns:1fr}}
+.job{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:20px 22px;background:rgba(255,253,247,.35)}
+.job .when{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:7px}
+.job h3{font-family:'Bodoni Moda',serif;font-size:21px;font-weight:700;margin:0 0 2px;line-height:1.2}
+.job .org{font-size:14px;font-style:italic;color:var(--mid);margin:0 0 11px}
+.job ul{margin:0 0 12px;padding-left:16px}
+.job li{font-size:14.5px;line-height:1.5;margin-bottom:5px}
+.pills{display:flex;flex-wrap:wrap;gap:5px}
+.pill{font-family:'Special Elite',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rule);color:var(--mid)}
+/* two-up region */
+.region{display:grid;grid-template-columns:1.35fr 1fr;gap:34px}
+/* writing */
+.brief{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:baseline}
+.brief .n{font-family:'Special Elite',monospace;font-size:10px;color:var(--faint);letter-spacing:.1em}
+.brief h3{font-family:'Bodoni Moda',serif;font-size:20px;font-weight:700;margin:0 0 3px;line-height:1.25}
+.brief p{margin:0;font-size:14.5px;color:var(--mid);font-style:italic}
+.brief .yr{margin-left:auto;font-family:'Special Elite',monospace;font-size:10px;color:var(--faint)}
+/* shelf */
+.shelf{background:rgba(255,253,247,.5);border:1px solid var(--rule);padding:18px 18px 0}
+.spines{display:flex;gap:5px;align-items:flex-end;height:150px;padding-bottom:0;border-bottom:9px solid #6b4220;margin:0 -18px;padding-left:18px;padding-right:18px;overflow:hidden}
+.spine{width:26px;border-radius:2px 2px 0 0;display:flex;align-items:center;justify-content:center;cursor:default;transition:transform .16s;box-shadow:inset -3px 0 6px rgba(0,0,0,.18)}
+.spine:hover{transform:translateY(-9px)}
+.spine span{writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Special Elite',monospace;font-size:9px;letter-spacing:.04em;color:rgba(255,250,240,.92);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:8px 0}
+.shelf .cap{font-family:'Caveat',cursive;font-size:17px;color:var(--mid);padding:10px 0 12px;text-align:center}
+/* apps as boxed ads */
+.ads{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px}
+.ad{border:2px solid var(--ink);padding:18px 18px 16px;text-align:center;background:rgba(255,253,247,.5);position:relative}
+.ad::after{content:"";position:absolute;inset:4px;border:1px solid var(--rule);pointer-events:none}
+.ad .k{font-family:'Special Elite',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.ad h3{font-family:'Bodoni Moda',serif;font-size:29px;font-weight:900;margin:7px 0 6px;letter-spacing:-.01em}
+.ad p{margin:0 0 10px;font-size:14px;line-height:1.48;color:var(--mid)}
+.ad .buy{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);border-top:1px solid var(--rule);padding-top:9px;display:block}
+/* credentials */
+.creds{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.cred{border-top:3px solid var(--ink);padding-top:12px}
+.cred .yr{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.12em;color:var(--red);text-transform:uppercase}
+.cred h3{font-family:'Bodoni Moda',serif;font-size:20px;font-weight:700;margin:5px 0 3px}
+.cred p{margin:0;font-size:14px;color:var(--mid);line-height:1.5}
+.cred p.school{font-style:italic;color:var(--ink);margin-bottom:5px}
+/* skills strip */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:20px 0;margin-top:8px}
+.strip h4{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 6px}
+.strip p{margin:0;font-size:14px;line-height:1.52;color:var(--mid)}
+/* classified footer */
+.classified{margin-top:44px;border:3px double var(--ink);padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.classified h4{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin:0 0 8px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
+.classified p{margin:0 0 5px;font-size:14.5px}
+.colophon{text-align:center;font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-top:22px}
+@media(max-width:880px){.lead{grid-template-columns:1fr}.lead .story{border-right:none;padding-right:0}.rail{padding-left:0;border-top:1px solid var(--rule);padding-top:24px}.cols2{columns:1}.region{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<div class="dateline"><span>Austin, Texas · Monday, September 7, 2026</span><span>Vol. XXXI · No. 3</span><span>Weather: 30% chance of paperwork</span></div>
+
+<div class="masthead">
+<h1>The Bracho Record</h1>
+<div class="sub">Operations · Compliance · Occasional Software</div>
+</div>
+
+<div class="lead">
+<div class="story">
+<div class="kicker">Page One · Who's Writing</div>
+<h1 class="hl">I turn regulation into systems people <em>actually use</em>.</h1>
+<p class="deck">Juan Bracho, operations and compliance coordinator, on policy that survives contact with a 35-person company.</p>
+<div class="cols2">
+<p>Most compliance work fails quietly. A policy gets written, filed, and routed around by everyone it was meant to govern. My job is the opposite: take the requirement — NIST, ISO, whatever the auditor brought this quarter — and turn it into something a real team will follow without being chased.</p>
+<p>I came to it sideways. A five-year law degree in Venezuela, a master's in business law in Argentina, a data analytics bootcamp in Texas. The through-line is that I read the regulation <em>and</em> build the tool. When the spreadsheet stops scaling, I write the app.</p>
+<p>Currently at HydroGraph Clean Power, a public company, where I wrote the governance suite, ran point on the external cybersecurity audit, and administer the systems the policies describe.</p>
+</div>
+<div class="byline">Filed from Austin · Maracaibo → Buenos Aires → Austin · Four languages, two of them well</div>
+</div>
+<div class="rail">
+<div class="polaroid"><img src="assets/profile.png" alt="Juan Bracho" /><div class="cap">the one photo where the tie is straight ↑</div></div>
+<div class="stampbox">
+<h4>The Particulars</h4>
+<div class="facts">
+<span><b>Now</b><i>Ops &amp; Compliance · HydroGraph</i></span>
+<span><b>Based</b><i>Austin, Texas</i></span>
+<span><b>Credential</b><i>MA Business Law</i></span>
+<span><b>Frameworks</b><i>NIST CSF 2.0 · ISO 27001</i></span>
+<span><b>Languages</b><i>ES · EN · IT · FR (trying)</i></span>
+</div>
+</div>
+<div class="stamp">Available for the right thing</div>
+</div>
+</div>
+
+<div class="shead"><h2>Employment History</h2><span class="no">Four entries · 2017 to present</span></div>
+<div class="jobs">
+<div class="job"><div class="when">Aug 2025 — Present</div><h3>Operations &amp; Compliance Coordinator</h3><p class="org">HydroGraph Clean Power Inc. · Austin, TX</p><ul><li>Drafted a 14-policy cybersecurity and data governance suite aligned with NIST CSF 2.0 and ISO 27001.</li><li>Primary liaison for an external cybersecurity audit — evidence, access, remediation.</li><li>Built Python tooling for SharePoint permissions analysis; shipped a Node/React app to show the gaps to the C-suite.</li><li>Administer Microsoft 365 for 35 employees and 50+ managed devices.</li></ul><div class="pills"><span class="pill">NIST CSF 2.0</span><span class="pill">ISO 27001</span><span class="pill">Python</span><span class="pill">M365</span></div></div>
+<div class="job"><div class="when">Nov 2022 — Jul 2025</div><h3>Project Administrator</h3><p class="org">Atwell, LLC · North Richland Hills, TX</p><ul><li>Reviewed subcontractor agreements for legal, insurance, and policy compliance.</li><li>Coordinated permit submissions across local, state, and federal requirements.</li><li>Managed contracts, purchase orders, and change processing across projects.</li><li>Built Excel dashboards for budget and completion health.</li></ul><div class="pills"><span class="pill">Excel</span><span class="pill">Asana</span><span class="pill">Smartsheet</span></div></div>
+<div class="job"><div class="when">Oct 2020 — Nov 2021</div><h3>Project Administrator</h3><p class="org">Avaya · Buenos Aires (Remote)</p><ul><li>Supported ISO 9001 internal audits — procedures documented, evidence packaged.</li><li>Found budget overruns on a $20M SaaS implementation via resource-utilization analysis.</li><li>Built predictive models linking allocation to budget health.</li></ul><div class="pills"><span class="pill">ISO 9001</span><span class="pill">Excel modeling</span></div></div>
+<div class="job"><div class="when">Jun 2017 — Jan 2018</div><h3>Legal &amp; Compliance Intern</h3><p class="org">MYRO Associates · Maracaibo, Venezuela</p><ul><li>Reviewed employee documentation for labor-law compliance.</li><li>Drafted contracts and powers of attorney in Spanish.</li><li>Supported notarization and apostille processes.</li></ul><div class="pills"><span class="pill">Contracts (ES)</span><span class="pill">Labor law</span></div></div>
+</div>
+
+<div class="shead"><h2>The Workshop</h2><span class="no">Advertisement · Apps built 2025</span></div>
+<div class="ads">
+<div class="ad"><div class="k">Now on iOS &amp; Android</div><h3>Kaizen</h3><p>Habit and routine tracking, built for people who quit habit apps in week two.</p><span class="buy">Get it →</span></div>
+<div class="ad"><div class="k">Now on iOS &amp; Android</div><h3>Kage</h3><p>A finance tracker, built because the spreadsheet stopped scaling.</p><span class="buy">Get it →</span></div>
+<div class="ad"><div class="k">Now on iOS</div><h3>Kioku</h3><p>Note capture with a spaced review schedule that actually holds.</p><span class="buy">Get it →</span></div>
+</div>
+
+<div class="region" style="margin-top:8px">
+<div>
+<div class="shead"><h2>From the Columns</h2><span class="no">Essays</span></div>
+<div class="brief"><span class="n">01</span><div><h3><a href="#">A Jack of All Trades</a></h3><p>On being useful in four directions at once</p></div><span class="yr">2026</span></div>
+<div class="brief"><span class="n">02</span><div><h3><a href="#">What Is a First World Country?</a></h3><p>Three countries in, the definition stopped being obvious</p></div><span class="yr">2025</span></div>
+<div class="brief"><span class="n">03</span><div><h3><a href="#">I Built My Own Money Tracking App</a></h3><p>What building Kage taught me about my own spending</p></div><span class="yr">2025</span></div>
+<div class="brief"><span class="n">04</span><div><h3><a href="#">On Writing and the Courage to Say Something Out Loud</a></h3><p>Publishing when you would rather not</p></div><span class="yr">2025</span></div>
+</div>
+<div>
+<div class="shead"><h2>On the Shelf</h2><span class="no">Placeholder titles</span></div>
+<div class="shelf">
+<div class="spines" id="spines"></div>
+<div class="cap">placeholder spines — send booksData.js for the real shelf</div>
+</div>
+</div>
+</div>
+
+<div class="shead"><h2>Credentials</h2><span class="no">Three institutions · Two continents</span></div>
+<div class="creds">
+<div class="cred"><div class="yr">2020 – 2024</div><h3>MA, Business Law</h3><p class="school">UADE Business School, Buenos Aires</p><p>Corporate and business law. Thesis on the Right to be Forgotten in Argentina.</p></div>
+<div class="cred"><div class="yr">2024</div><h3>Data Analytics &amp; Visualization</h3><p class="school">The University of Texas at Austin</p><p>Python, SQL, ETL, Tableau, supervised and deep learning.</p></div>
+<div class="cred"><div class="yr">2014 – 2018</div><h3>BA, Law Studies</h3><p class="school">Universidad Rafael Urdaneta, Maracaibo</p><p>Five-year degree — civil, criminal, constitutional, administrative.</p></div>
+</div>
+
+<div class="strip">
+<div><h4>Compliance &amp; Governance</h4><p>Policy development, NIST CSF 2.0, ISO 27001, ISO 9001, audit coordination, gap assessment, internal controls.</p></div>
+<div><h4>Program &amp; Project</h4><p>Cross-functional coordination, stakeholder management, executive reporting, issue escalation.</p></div>
+<div><h4>Technical</h4><p>Python, SQL, Excel dashboards, Microsoft 365, SharePoint, MDM, Tableau.</p></div>
+<div><h4>Operations</h4><p>Vendor management, contracts, procurement, onboarding, documentation.</p></div>
+</div>
+
+<div class="classified">
+<div><h4>Correspondence</h4><p><a href="mailto:juanbracho16@gmail.com">juanbracho16@gmail.com</a></p><p><a href="#">linkedin.com/in/juan-d-bracho</a></p><p><a href="#">github.com/juanbracho</a></p></div>
+<div><h4>Also Inside</h4><p><a href="#">The full shelf</a> — everything read, rated</p><p><a href="#">Projects</a> — the rest of the workshop</p><p><a href="#">The résumé</a> — printable, one page</p></div>
+<div><h4>Notice</h4><p class="hand" style="font-size:19px;line-height:1.35">Somewhere in this paper there is a small game about crossing three borders. Good luck.</p></div>
+</div>
+<div class="colophon">Set in Bodoni Moda, Source Serif &amp; Special Elite · Printed in Austin · juanbracho.com</div>
+
+</div>
+<script>
+const BOOKS=[["Sapiens","#7c3f2a"],["Meditations","#2c4356"],["The Dispossessed","#5e6b4a"],["Thinking, Fast and Slow","#8a5a32"],["Dune","#a8321f"],["Cien Años de Soledad","#3f4a6b"],["Atomic Habits","#6b5a2a"],["The Idiot","#4a3550"],["Shoe Dog","#2f5a4a"],["El Túnel","#7a3550"],["Deep Work","#3a4a3a"],["Ficciones","#6b4220"]];
+document.getElementById('spines').innerHTML=BOOKS.map((b,i)=>`<div class="spine" style="background:${b[1]};height:${100+((i*37)%42)}px"><span>${b[0]}</span></div>`).join('');
+</script>
+</body>
+</html>

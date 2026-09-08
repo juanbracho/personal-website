@@ -13,6 +13,7 @@ import ArticleDetail from './pages/ArticleDetail';
 import About        from './pages/About';
 import Contact      from './pages/Contact';
 import Study        from './pages/Study';
+import Curriculum  from './pages/Curriculum';
 
 function App() {
   return (
@@ -32,12 +33,13 @@ function App() {
           <Route path="/about"                   element={<About />} />
           <Route path="/contact"                 element={<Contact />} />
           <Route path="/study"                   element={<Study />} />
+          <Route path="/curriculum"             element={<Curriculum />} />
           {/* Legacy redirects */}
           <Route path="/articles"               element={<Navigate to="/writing" replace />} />
           <Route path="/articles/:id"           element={<Navigate to="/writing" replace />} />
           <Route path="/books"                  element={<Navigate to="/study" replace />} />
           <Route path="/portfolio"              element={<Navigate to="/study" replace />} />
-          <Route path="/resume"                 element={<Navigate to="/study" replace />} />
+          <Route path="/resume"                 element={<Navigate to="/curriculum" replace />} />
         </Routes>
       </div>
     </HashRouter>

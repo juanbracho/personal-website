@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Juan Bracho</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Special+Elite&family=Caveat:wght@400;600&display=swap" />
+<style>
+:root{--paper:#efe9dc;--paper2:#e7e0d0;--ink:#1b1a17;--mid:#5c574c;--faint:#a49c8a;--red:#a8321f;--blue:#2c4356;--rule:#c8c0ac;--tape:rgba(212,190,140,.55)}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:16.5px;line-height:1.55;background-image:radial-gradient(circle at 12% 20%,rgba(0,0,0,.022) 0 1px,transparent 1px),radial-gradient(circle at 68% 62%,rgba(0,0,0,.018) 0 1px,transparent 1px);background-size:7px 7px,11px 11px}
+a{color:var(--red);text-decoration:none}a:hover{text-decoration:underline}
+.el{font-family:'Special Elite',ui-monospace,monospace}
+.hand{font-family:'Caveat',cursive}
+.sheet{max-width:1180px;margin:0 auto;padding:0 26px 80px}
+/* dateline + wordmark */
+.dateline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:'Special Elite',monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);padding:20px 0 10px;border-bottom:1px solid var(--ink)}
+.wordmark{text-align:center;padding:22px 0 12px;border-bottom:3px double var(--ink)}
+.wordmark h1{font-family:'Bodoni Moda',serif;font-weight:900;font-size:clamp(36px,7vw,72px);line-height:.95;margin:0;letter-spacing:-.01em}
+.wordmark .sub{font-family:'Special Elite',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mid);margin-top:12px}
+/* nav */
+.nav{display:flex;justify-content:center;gap:0;flex-wrap:wrap;padding:14px 0;border-bottom:2px solid var(--ink)}
+.nav a{font-family:'Special Elite',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);padding:0 18px;border-left:1px solid var(--rule)}
+.nav a:first-child{border-left:none}
+.nav a:hover{color:var(--red);text-decoration:none}
+.nav a.active{color:var(--red)}
+/* lead */
+.lead{display:grid;grid-template-columns:1.55fr .95fr;gap:0;border-bottom:2px solid var(--ink)}
+.lead .story{padding:26px 30px 26px 0;border-right:1px solid var(--rule)}
+.kicker{font-family:'Special Elite',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.hl{font-family:'Bodoni Moda',serif;font-size:clamp(26px,3.6vw,40px);line-height:1.1;font-weight:700;margin:0 0 16px;letter-spacing:-.01em}
+.intro p{margin:0 0 14px;font-size:16px;line-height:1.6}
+.intro p:first-child::first-letter{font-family:'Bodoni Moda',serif;font-weight:900;float:left;font-size:52px;line-height:.82;padding:4px 8px 0 0;color:var(--red)}
+.byline{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-top:14px;padding-top:10px;border-top:1px solid var(--rule)}
+/* polaroid rail */
+.rail{padding:26px 0 26px 28px;display:flex;flex-direction:column;gap:22px}
+.polaroid{background:#fdfbf5;padding:11px 11px 0;box-shadow:0 6px 18px rgba(40,30,15,.18);transform:rotate(-2.2deg);position:relative;align-self:center;max-width:220px}
+.polaroid::before{content:"";position:absolute;top:-13px;left:50%;transform:translateX(-50%) rotate(-3deg);width:88px;height:26px;background:var(--tape);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.polaroid img{display:block;width:100%;height:208px;object-fit:cover;object-position:center 18%;background:var(--paper2);filter:grayscale(.35) contrast(1.06)}
+.polaroid .cap{font-family:'Caveat',cursive;font-size:18px;text-align:center;padding:8px 4px 12px;color:var(--ink)}
+.stampbox{border:1px solid var(--rule);background:rgba(255,253,247,.6);padding:16px 18px}
+.stampbox h4{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 10px;color:var(--mid);padding-bottom:7px;border-bottom:1px solid var(--rule)}
+.facts{display:flex;flex-direction:column;gap:7px;font-size:14.5px}
+.facts b{font-weight:600}
+.facts span{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.facts i{font-style:normal;font-family:'Special Elite',monospace;font-size:10.5px;color:var(--faint);letter-spacing:.06em;text-align:right}
+.stamp{display:inline-block;border:2.5px solid var(--red);color:var(--red);font-family:'Special Elite',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;transform:rotate(-6deg);opacity:.82;margin-top:4px;align-self:center}
+/* section head */
+.shead{display:flex;align-items:center;gap:14px;margin:42px 0 18px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
+.shead h2{font-family:'Bodoni Moda',serif;font-size:clamp(20px,2.6vw,26px);font-weight:700;margin:0;letter-spacing:-.005em}
+.shead .no{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;margin-left:auto;white-space:nowrap;text-align:right}
+/* preview strip */
+.previews{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.preview{border:1px solid var(--ink);padding:18px 20px 16px;background:rgba(255,253,247,.5);position:relative}
+.preview::after{content:"";position:absolute;inset:4px;border:1px solid var(--rule);pointer-events:none}
+.preview .k{font-family:'Special Elite',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.preview h3{font-family:'Bodoni Moda',serif;font-size:23px;font-weight:700;margin:7px 0 6px}
+.preview p{margin:0 0 12px;font-size:14px;line-height:1.5;color:var(--mid)}
+.preview .go{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);border-top:1px solid var(--rule);padding-top:9px;display:block}
+/* classified footer */
+.classified{margin-top:44px;border:3px double var(--ink);padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.classified h4{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin:0 0 8px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
+.classified p{margin:0 0 5px;font-size:14.5px}
+.colophon{text-align:center;font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-top:22px}
+@media(max-width:880px){.lead{grid-template-columns:1fr}.lead .story{border-right:none;padding-right:0}.rail{padding-left:0;border-top:1px solid var(--rule);padding-top:24px}}
+/* review-only markers, not part of the shipped design */
+.note{margin-top:6px;font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.05em;color:#8a3f28;background:#f4e9d8;border:1px dashed #8a3f28;padding:6px 10px;display:inline-block}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<div class="dateline"><span>Austin, Texas · Monday, September 7, 2026</span><span>Vol. XXXI · No. 3</span><span>Weather: 30% chance of paperwork</span></div>
+
+<div class="wordmark">
+<h1>Juan Bracho</h1>
+<div class="sub">Welcome to my website</div>
+</div>
+
+<div class="nav">
+<a href="#" class="active">Home</a><a href="#">Apps</a><a href="#">Writing</a><a href="#">About</a><a href="#">Study</a>
+</div>
+
+<div class="lead">
+<div class="story">
+<div class="kicker">Hi, I'm Juan</div>
+<h1 class="hl">A bit about me, and what you'll find here.</h1>
+<div class="intro">
+<p>I'm originally from Maracaibo, Venezuela — went through Buenos Aires, Argentina, and now live in Austin, Texas. Day to day I work in operations and compliance. Outside of that, I read a lot, write the occasional essay, and build small apps mostly for myself, because I wanted them to exist.</p>
+<p>I speak Spanish and English, and I'm slowly working on Italian. This site is where I keep all of it — the apps, the writing, the books I've read, and a proper résumé if you need one.</p>
+</div>
+<div class="byline">Maracaibo → Buenos Aires → Austin</div>
+</div>
+<div class="rail">
+<div class="polaroid"><img src="assets/profile.png" alt="Juan Bracho" /><div class="cap">Sevilla, sometime last year</div></div>
+<div class="stampbox">
+<h4>The Particulars</h4>
+<div class="facts">
+<span><b>Now</b><i>Ops &amp; Compliance · HydroGraph</i></span>
+<span><b>Based</b><i>Austin, Texas</i></span>
+<span><b>Speaks</b><i>ES · EN · IT (learning)</i></span>
+<span><b>Building</b><i>3 personal apps</i></span>
+</div>
+</div>
+<div class="stamp">Open to good opportunities</div>
+</div>
+</div>
+
+<div class="shead"><h2>Around the Site</h2><span class="no">Home preview · full pages linked below</span></div>
+<div class="previews">
+<div class="preview"><div class="k">3 apps, mostly for myself</div><h3>Apps</h3><p>Kaizen, Kage, and Kioku — small tools I built because I wanted them to exist.</p><span class="go">See the apps →</span></div>
+<div class="preview"><div class="k">essays</div><h3>Writing</h3><p>Notes on solitude, AI, and figuring things out as I go.</p><span class="go">Read the columns →</span></div>
+<div class="preview"><div class="k">51 books and counting</div><h3>On My Shelf</h3><p>Everything I've read since 2025, rated honestly.</p><span class="go">Browse the shelf →</span></div>
+<div class="preview"><div class="k">background</div><h3>Skills</h3><p>Compliance, operations, a little code — the short version.</p><span class="go">Full breakdown →</span></div>
+</div>
+<div class="note">Review note: "Skills" preview card pulls a curated subset of the new data.js skills export (Phase 0 decision) — exact 3–4 categories shown here TBD once that data move happens.</div>
+
+<div class="classified">
+<div><h4>Correspondence</h4><p><a href="mailto:juanbracho16@gmail.com">juanbracho16@gmail.com</a></p><p><a href="#">linkedin.com/in/juan-d-bracho</a></p><p><a href="#">github.com/juanbracho</a></p></div>
+<div><h4>Also Inside</h4><p><a href="#">The full shelf</a> — everything read, rated</p><p><a href="#">Projects</a> — the rest of the work</p><p><a href="#">The résumé</a> — printable, one page</p></div>
+<div><h4>Notice</h4><p class="hand" style="font-size:19px;line-height:1.35">Somewhere on this site there is a small game about crossing three borders. Good luck.</p></div>
+</div>
+<div class="colophon">Set in Bodoni Moda, Source Serif &amp; Special Elite · juanbracho.com</div>
+
+</div>
+</body>
+</html>

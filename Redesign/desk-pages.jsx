@@ -168,7 +168,7 @@ function ArticleReader({ article, onBack }) {
 
 For years I told myself this was a normal feeling. Then I read something that stuck: the friction between what tools give you and what you actually need is where everything interesting happens. That's where I live now.
 
-I've been a lawyer in Venezuela. A project administrator in Argentina. An executive assistant in Texas. Each of those careers gave me one thing: a way of seeing problems that the next career didn't have.
+I've been a lawyer in Venezuela. A project analyst in Argentina. An executive assistant in Texas. Each of those careers gave me one thing: a way of seeing problems that the next career didn't have.
 
 The legal training taught me to read a room and to take notes that mattered. The project work taught me that "ship it" beats "perfect it" almost every time. The data work taught me that most of what people call intuition is just pattern-matching with no audit trail.
 

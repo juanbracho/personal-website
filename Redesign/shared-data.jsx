@@ -50,9 +50,9 @@ window.JUAN = {
 
   timeline: [
     { year: "2018", where: "Maracaibo, VE", what: "Bachelor of Law" },
-    { year: "2020", where: "Buenos Aires, AR", what: "Emigrated. Project admin at Avaya." },
+    { year: "2020", where: "Buenos Aires, AR", what: "Emigrated. Project Analyst at Avaya." },
     { year: "2022", where: "Buenos Aires → Texas", what: "Master in Corporate Law. Emigrated again." },
-    { year: "2022", where: "Texas, US", what: "Project administrator at Atwell." },
+    { year: "2022", where: "Texas, US", what: "Project Coordinator at Atwell." },
     { year: "2024", where: "Austin, TX", what: "Data analytics bootcamp at UT Austin." },
     { year: "2025", where: "Austin, TX", what: "Executive Assistant at HydroGraph. Shipped 3 apps." },
   ],

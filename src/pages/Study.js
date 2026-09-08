@@ -7,9 +7,9 @@ import { assignments, projects, webApps } from '../components/projectsData';
 const SPINE_PALETTE = ['#7c3f2a', '#2c4356', '#5e6b4a', '#8a5a32', '#a8321f', '#3f4a6b', '#6b5a2a', '#4a3550', '#2f5a4a', '#7a3550', '#3a4a3a', '#6b4220'];
 
 const CABINET = [
-  { label: 'Web Applications', items: webApps },
-  { label: 'Major Projects', items: projects },
-  { label: 'Bootcamp Work', items: assignments },
+  { id: 'webapps', label: 'Web Applications', items: webApps },
+  { id: 'projects', label: 'Major Projects', items: projects },
+  { id: 'bootcamp', label: 'Bootcamp Work', items: assignments },
 ];
 
 function BookSpine({ book, index }) {
@@ -47,29 +47,38 @@ function BookSpine({ book, index }) {
   );
 }
 
-export default function Study() {
-  const navigate = useNavigate();
-  const sorted = [...books].sort((a, b) => (a.yearRead - b.yearRead) || ((a.order || 0) - (b.order || 0)));
-
+function YearShelf({ year, list }) {
+  if (list.length === 0) return null;
   return (
-    <BroadsheetShell pageTitle="The Study">
-      <div className="bs-shead" style={{ marginTop: 20 }}>
-        <h2>On the Shelf</h2>
-        <span className="bs-no">{books.length} books read since 2025</span>
+    <div style={{ marginBottom: 24 }}>
+      <div className="bs-el" style={{ fontSize: 11, letterSpacing: '.12em', color: 'var(--faint)', marginBottom: 8 }}>
+        {year} · {list.length} books
       </div>
       <div className="bs-shelf">
         <div className="bs-spines">
-          {sorted.map((b, i) => <BookSpine key={b.id} book={b} index={i} />)}
+          {list.map((b, i) => <BookSpine key={b.id} book={b} index={i} />)}
         </div>
-        <div className="bs-cap">hover a spine for rating &amp; year</div>
       </div>
+    </div>
+  );
+}
 
-      {CABINET.map(drawer => (
-        <React.Fragment key={drawer.label}>
-          <div className="bs-shead">
-            <h2>{drawer.label}</h2>
-            <span className="bs-no">{drawer.items.length} entries</span>
-          </div>
+function CabinetSection({ drawer, isOpen, onToggle }) {
+  return (
+    <div style={{ borderBottom: '1px solid var(--rule)' }}>
+      <button
+        onClick={onToggle}
+        className="bs-el"
+        style={{
+          width: '100%', textAlign: 'left', padding: '14px 0', background: 'none', border: 'none', cursor: 'pointer',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'var(--ink)',
+        }}
+      >
+        <span style={{ fontFamily: "'Bodoni Moda', serif", fontSize: 20, fontWeight: 700, letterSpacing: 0 }}>{drawer.label}</span>
+        <span style={{ fontSize: 11, color: 'var(--faint)' }}>{drawer.items.length} entries {isOpen ? '−' : '+'}</span>
+      </button>
+      {isOpen && (
+        <div style={{ paddingBottom: 18 }}>
           {drawer.items.map((item, i) => (
             <div className="bs-brief" key={item.id || i} style={{ alignItems: 'flex-start' }}>
               <span className="bs-n">{String(i + 1).padStart(2, '0')}</span>
@@ -84,10 +93,68 @@ export default function Study() {
               </div>
             </div>
           ))}
-        </React.Fragment>
-      ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function Study() {
+  const navigate = useNavigate();
+  const [openDrawer, setOpenDrawer] = useState(null);
+  const [rerollIdx, setRerollIdx] = useState(0);
+
+  const books2025 = books.filter(b => b.yearRead === 2025).sort((a, b) => (a.order || 0) - (b.order || 0));
+  const books2026 = books.filter(b => b.yearRead === 2026).sort((a, b) => (a.order || 0) - (b.order || 0));
+
+  const recBooks = [...books].filter(b => b.rating >= 9).sort((a, b) => b.rating - a.rating);
+  const totalGroups = Math.max(1, Math.ceil(recBooks.length / 3));
+  const featuredBooks = recBooks.slice(rerollIdx * 3, rerollIdx * 3 + 3);
+
+  return (
+    <BroadsheetShell pageTitle="The Study">
+      <p style={{ marginTop: 20 }} className="bs-el">
+        <span onClick={() => document.getElementById('cv-section')?.scrollIntoView({ behavior: 'smooth' })} style={{ fontSize: 11, color: 'var(--red)', cursor: 'pointer', letterSpacing: '.08em', textTransform: 'uppercase' }}>
+          Just here for the résumé? Jump to the CV →
+        </span>
+      </p>
 
       <div className="bs-shead">
+        <h2>On the Shelf</h2>
+        <span className="bs-no">{books.length} books read since 2025</span>
+      </div>
+      <YearShelf year={2025} list={books2025} />
+      <YearShelf year={2026} list={books2026} />
+
+      <div className="bs-shead">
+        <h2>Recommendations</h2>
+        <span className="bs-no" style={{ cursor: 'pointer' }} onClick={() => setRerollIdx(i => (i + 1) % totalGroups)}>don't like these? reroll ↻</span>
+      </div>
+      <div className="bs-previews">
+        {featuredBooks.map(b => (
+          <div className="bs-preview" key={b.id}>
+            <div className="bs-k">★ {b.rating}/10 · {b.yearRead}</div>
+            <h3 style={{ fontSize: 20 }}>{b.title}</h3>
+            <p style={{ fontStyle: 'italic' }}>by {b.author}</p>
+            <p>{b.review?.split('.')[0]}.</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="bs-shead">
+        <h2>The Cabinet</h2>
+        <span className="bs-no">projects, bootcamp work, web apps — collapsed by default</span>
+      </div>
+      {CABINET.map(drawer => (
+        <CabinetSection
+          key={drawer.id}
+          drawer={drawer}
+          isOpen={openDrawer === drawer.id}
+          onToggle={() => setOpenDrawer(o => o === drawer.id ? null : drawer.id)}
+        />
+      ))}
+
+      <div className="bs-shead" id="cv-section">
         <h2>The CV</h2>
         <span className="bs-no">printable, one page</span>
       </div>

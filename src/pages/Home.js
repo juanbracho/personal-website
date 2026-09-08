@@ -26,7 +26,7 @@ export default function Home() {
           <h1 className="bs-hl">A bit about me, and what you'll find here.</h1>
           <div className="bs-intro">
             <p>I'm originally from Maracaibo, Venezuela — went through Buenos Aires, Argentina, and now live in Austin, Texas. Day to day I work in operations and compliance. Outside of that, I read a lot, write the occasional essay, and build small apps mostly for myself, because I wanted them to exist.</p>
-            <p>I speak Spanish and English, and I'm slowly working on Italian. This site is where I keep all of it — the apps, the writing, the books I've read, and a proper résumé if you need one.</p>
+            <p>I speak Spanish, English, and Italian, and I'm slowly working on French. This site is where I keep all of it — the apps, the writing, the books I've read, and a proper résumé if you need one.</p>
           </div>
           <div className="bs-byline">Maracaibo → Buenos Aires → Austin</div>
         </div>
@@ -40,7 +40,7 @@ export default function Home() {
             <div className="bs-facts">
               <span><b>Now</b><i>Ops &amp; Compliance · HydroGraph</i></span>
               <span><b>Based</b><i>Austin, Texas</i></span>
-              <span><b>Speaks</b><i>ES · EN · IT (learning)</i></span>
+              <span><b>Speaks</b><i>ES · EN · IT · FR (learning)</i></span>
               <span><b>Building</b><i>{mobileApps.length} personal apps</i></span>
             </div>
           </div>

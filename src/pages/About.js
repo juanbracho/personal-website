@@ -42,7 +42,7 @@ export default function About() {
             <div className="bs-facts">
               <span><b>Born</b><i>Maracaibo, VE</i></span>
               <span><b>Based</b><i>Austin, TX</i></span>
-              <span><b>Languages</b><i>ES · EN · IT (learning)</i></span>
+              <span><b>Languages</b><i>ES · EN · IT · FR (learning)</i></span>
             </div>
           </div>
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>

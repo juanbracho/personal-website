@@ -117,5 +117,5 @@ export const skills = [
   { cat: 'AI-Assisted Research & Tools', items: ['Notion (workflow / dashboard builds)', 'Claude Code', 'Perplexity (research validation)', 'AI-assisted data modeling and process automation'] },
   { cat: 'Governance & Compliance', items: ['Policy development', 'NIST CSF 2.0', 'ISO 27001', 'ISO 9001', 'Audit coordination', 'Permit compliance', 'Internal controls'] },
   { cat: 'Technical', items: ['Python (Pandas, NumPy)', 'SQL', 'Excel (dashboards, forecasting)', 'Microsoft 365 / SharePoint Admin', 'MDM', 'Tableau'] },
-  { cat: 'Languages', items: ['Spanish (Native/Bilingual)', 'English (Fluent/Bilingual)', 'Italian (Limited Working)'] },
+  { cat: 'Languages', items: ['Spanish (Native/Bilingual)', 'English (Fluent/Bilingual)', 'Italian (Fluent/Bilingual)', 'French (Learning)'] },
 ];

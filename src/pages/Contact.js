@@ -59,6 +59,17 @@ export default function Contact() {
             <label>I wanted to say</label>
             <textarea name="message" value={form.message} onChange={handleChange} required rows={7} placeholder="Write your message here..." />
           </div>
+          <div className="bs-hand" style={{ fontSize: 22, color: 'var(--ink)' }}>
+            Warm regards,<br />
+            <span style={{
+              fontSize: 26,
+              borderBottom: form.name ? 'none' : '2px dashed var(--rule)',
+              minWidth: 160, display: 'inline-block',
+              color: form.name ? 'var(--red)' : 'var(--faint)',
+            }}>
+              {form.name || '_____________'}
+            </span>
+          </div>
           <button type="submit" disabled={status === 'sending'}>
             {status === 'sending' ? 'Sending…' : 'Submit →'}
           </button>

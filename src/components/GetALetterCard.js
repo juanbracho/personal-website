@@ -36,14 +36,14 @@ export default function GetALetterCard() {
   const cardBase = {
     position: 'absolute', width: '100%', height: '100%',
     backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
-    background: '#1f1d18', color: '#fbeed8',
-    padding: 22, borderRadius: 4, boxSizing: 'border-box',
-    boxShadow: '0 12px 24px -8px rgba(0,0,0,0.5)',
+    background: 'rgba(255,253,247,.6)', border: '1px solid var(--rule)',
+    padding: 18, boxSizing: 'border-box',
   };
 
   const labelStyle = {
-    fontFamily: '"Special Elite", monospace', fontSize: 11,
-    letterSpacing: 2, color: '#e8a878', textTransform: 'uppercase', marginBottom: 10,
+    fontFamily: "'Special Elite', monospace", fontSize: 10,
+    letterSpacing: '.18em', color: 'var(--mid)', textTransform: 'uppercase',
+    marginBottom: 10, paddingBottom: 7, borderBottom: '1px solid var(--rule)',
   };
 
   return (
@@ -57,23 +57,20 @@ export default function GetALetterCard() {
 
         {/* ── Front ── */}
         <div style={cardBase}>
-          <div style={labelStyle}>get a letter</div>
-          <div style={{ fontFamily: '"Fraunces", serif', fontSize: 17, lineHeight: 1.4, marginBottom: 14 }}>
+          <div style={labelStyle}>Get a Letter</div>
+          <div style={{ fontFamily: "'Bodoni Moda', serif", fontSize: 17, fontWeight: 700, lineHeight: 1.3, marginBottom: 14, color: 'var(--ink)' }}>
             New essays, straight to your inbox.
           </div>
           <button
             onClick={() => setFlipped(true)}
+            className="bs-el"
             style={{
-              width: '100%', padding: '10px', background: 'transparent',
-              color: '#e8a878', border: '1px solid rgba(232,168,120,0.35)',
-              borderRadius: 6, fontSize: 13, cursor: 'pointer',
-              fontFamily: '"Special Elite", monospace', letterSpacing: 1,
-              transition: 'background 0.2s',
+              width: '100%', padding: '10px', background: 'none',
+              color: 'var(--red)', border: '2px solid var(--red)',
+              fontSize: 11, letterSpacing: '.1em', textTransform: 'uppercase', cursor: 'pointer',
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(232,168,120,0.08)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
           >
-            SUBSCRIBE →
+            Subscribe →
           </button>
         </div>
 
@@ -81,17 +78,17 @@ export default function GetALetterCard() {
         <div style={{ ...cardBase, transform: 'rotateY(180deg)' }}>
           {status === 'done' ? (
             <>
-              <div style={labelStyle}>you're on the list</div>
-              <div style={{ fontFamily: '"Fraunces", serif', fontSize: 17, lineHeight: 1.4 }}>
+              <div style={labelStyle}>You're On the List</div>
+              <div style={{ fontFamily: "'Bodoni Moda', serif", fontSize: 17, fontWeight: 700, lineHeight: 1.3, color: 'var(--ink)' }}>
                 I'll write to you soon.
               </div>
-              <div style={{ fontFamily: '"Caveat", cursive', fontSize: 30, color: '#c4633c', marginTop: 10 }}>
+              <div className="bs-hand" style={{ fontSize: 24, color: 'var(--red)', marginTop: 10 }}>
                 ~ Juan
               </div>
             </>
           ) : (
             <form onSubmit={handleSubmit}>
-              <div style={labelStyle}>your email</div>
+              <div style={labelStyle}>Your Email</div>
               <input
                 type="email"
                 value={email}
@@ -100,8 +97,8 @@ export default function GetALetterCard() {
                 autoFocus={flipped}
                 style={{
                   width: '100%', background: 'none', border: 'none',
-                  borderBottom: '1px solid rgba(232,168,120,0.4)',
-                  color: '#fbeed8', fontFamily: '"Caveat", cursive', fontSize: 20,
+                  borderBottom: '1px solid var(--rule)',
+                  color: 'var(--ink)', fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 15,
                   padding: '6px 0', outline: 'none', marginBottom: 16, boxSizing: 'border-box',
                 }}
               />
@@ -109,30 +106,30 @@ export default function GetALetterCard() {
                 <button
                   type="button"
                   onClick={() => { setFlipped(false); setStatus('idle'); setEmail(''); }}
+                  className="bs-el"
                   style={{
-                    flex: 1, padding: '8px', background: 'transparent',
-                    color: '#a08060', border: '1px solid rgba(160,128,96,0.3)',
-                    borderRadius: 6, fontSize: 12, cursor: 'pointer',
-                    fontFamily: '"Special Elite", monospace', letterSpacing: 1,
+                    flex: 1, padding: '8px', background: 'none',
+                    color: 'var(--faint)', border: '1px solid var(--rule)',
+                    fontSize: 10, letterSpacing: '.08em', textTransform: 'uppercase', cursor: 'pointer',
                   }}
                 >
-                  ← BACK
+                  ← Back
                 </button>
                 <button
                   type="submit"
                   disabled={status === 'sending'}
+                  className="bs-el"
                   style={{
-                    flex: 2, padding: '8px', background: '#c4633c',
-                    color: '#fff', border: 'none', borderRadius: 6,
-                    fontWeight: 600, fontSize: 12, cursor: status === 'sending' ? 'wait' : 'pointer',
-                    fontFamily: '"Special Elite", monospace', letterSpacing: 1,
+                    flex: 2, padding: '8px', background: 'none',
+                    color: 'var(--red)', border: '2px solid var(--red)',
+                    fontSize: 10, letterSpacing: '.08em', textTransform: 'uppercase', cursor: status === 'sending' ? 'wait' : 'pointer',
                   }}
                 >
-                  {status === 'sending' ? '...' : 'SEND →'}
+                  {status === 'sending' ? '…' : 'Send →'}
                 </button>
               </div>
               {status === 'error' && (
-                <div style={{ fontFamily: '"Caveat", cursive', fontSize: 15, color: '#c4633c', marginTop: 8 }}>
+                <div style={{ fontSize: 12, color: 'var(--red)', marginTop: 8 }}>
                   Something went wrong. Try again.
                 </div>
               )}
